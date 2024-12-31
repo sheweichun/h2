@@ -1,0 +1,130 @@
+
+
+@headHeight:64px;
+
+.head{
+    height: @headHeight;
+    background: #ff9560;
+}
+
+.head-right{
+    float: right;
+    height: @headHeight;
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+}
+.avatar{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.nick{
+    padding-left: 12px;
+    color:white;
+}
+.body{
+    // background: red;
+    padding: 12px;
+}
+
+.container{
+    // background: #a55f5f;
+    position: absolute;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom: 0;
+}
+
+
+@componentHeight:240px;
+.btn-plus-container{
+    width: 100%;
+    height: 100%;
+    background: #e17b05;
+    color:white;
+    font-size: 62px;
+    line-height:@componentHeight;
+    text-align: center;
+    &:hover{
+        background: lighten(#e17b05,10%);
+    }
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    cursor: pointer;
+}
+
+.item-component{
+    width: 200px;
+    height: @componentHeight;
+    margin-right: 32px;
+    background: #fbfbfb;
+}
+
+.item-component-hover{
+    transition: transform .3s;
+    cursor: pointer;
+    position: relative;
+    &:hover{
+        box-shadow: 0px 2px 8px 2px #ccc;
+        transform: translateY(-2px);
+        .item-component-desc{
+            max-height: 200px;
+            
+        }
+    }
+}
+
+.item-component-name{
+    padding: 6px 20px 0px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // text-align: center;
+}
+.item-component-desc-wrapper{
+    padding: 4px 12px;
+    min-height: 40px;
+}
+.item-component-desc{
+    max-height: 0px;
+    transition: all .3s;
+    background: rgba(235, 108, 40, 0.87);
+    color:white;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.item-component-logo{
+    width: 200px;
+    height: 200px;
+}
+
+.panel{
+    padding: 12px 24px;
+    .panel-head{
+        padding-left: 12px;
+        font-size: 16px;
+        border-left: 3px solid #ff9560;
+        margin-bottom: 24px;
+    }
+    .panel-body{
+        display: flex;
+        // justify-content: space-between;
+    }
+}
+
+.new-compoennt-row{
+    margin-bottom: 12px;
+    :global{
+        .next-input,.next-select{
+            width: 100%;
+        }
+    }
+}

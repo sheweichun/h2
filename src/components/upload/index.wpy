@@ -1,0 +1,250 @@
+<style lang="less">
+.upload-container{
+    .run-container{
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        padding: 18px 12px 0;
+        background: white;
+        .run-wrapper{ 
+            // width: @wrapSize;
+            // height: @wrapSize;
+            // overflow: hidden;
+            // border-radius: 50%;
+            // background: #ccc;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
+            // justify-content: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #ccc;
+        }
+        .run-label{
+            // margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            .bonus{
+                color:#ffa206;
+                font-size:18px;
+                margin-right:4px;
+            }
+            .run{
+                color:blue;
+                font-size: 20px;
+            }
+        }
+        .run-value{
+            font-size: 28px;
+            color:green;
+        }
+    }
+    .bottom-container{
+        padding: 24px 16px 0;
+        button{
+            margin-bottom: 12px;
+        }
+    }
+    .message-container{
+        font-size: 12px;
+        background-color: #ffbd54;
+        color:white;
+        padding: 6px 0 6px 12px;
+    }
+    .upload-notice{
+        font-size: 12px;
+        color:#666;
+    }
+    .daka{
+        width:190rpx;
+        height:190rpx;
+        line-height:190rpx;
+        border-radius:50%;
+        margin:180rpx auto 0;
+        right:10px;
+        bottom:10px;
+        background:#FC833E;
+        color:white;
+        font-size:30rpx;
+        text-align:center;
+        box-shadow:0 10rpx 17rpx 3rpx rgba(20,7,0,0.3);
+    }
+    .daka-disable{
+        background:#CCC;
+    }
+}
+
+</style>
+<template>
+  <view class="upload-container">
+        <view wx:if="{{latestMesaage && latestMesaage.uid}}" class="message-container" bindtap="go2BonusRecord">
+            <text>{{latestMesaage.create_time_str}}</text>
+            <text>【{{latestMesaage.type_name}}】获得</text> 
+            <text style="margin:0 2px;">{{latestMesaage.add_bonus}}</text>
+            <text>积分</text>
+            <text style="padding-left:12px;">点击查看</text>
+        </view>
+        <view class="run-container">
+            <view class="run-wrapper">
+                <view class="run-label">
+                    <i class="icon bonus-icon bonus"></i>我的积分：<text style="color:#ffa206;">{{user.bonus}}</text>
+                </view>
+                <view class="run-label">
+                    <i class="icon run-icon run"></i><text>今日步数：</text><text style="font-size:24px;">{{todaystep}}</text><text style="color:#ccc;">/10000</text>
+                </view>
+            </view>
+        </view>
+        <view class="bottom-container">
+            <view wx:if="{{user.last_upload_run_time}}" style="margin-bottom:6px;color:#999;font-size:12px;">上一次上传时间：{{formatLastUploadTime}}</view>
+            <button type="primary"  bindtap="uploadRunInfo">上传运动步数</button>
+            <text class="upload-notice">注：只会保留近七天的运动步数，请及时上传获取积分</text>
+        </view>
+        <view class="daka" wx:if="{{dakaFlag !== 0}}" bindtap="uploadDakaInfo">
+            {{dakaFlag === 1 ? "早起打卡" : "早睡打卡"}}
+        </view>
+        <view class="daka daka-disable" wx:else bindtap="cannotDaka">
+            早起早睡打卡
+        </view>
+        
+  </view>
+</template>
+<script>
+//="{{disableUploadRunData}}"
+    import wepy from 'wepy';
+    const svrConfig = require('../../vendor/config');
+    import dayjs from 'dayjs';
+    const util = require('../../util/index');
+    // const UPLOAD_TIME = 'weapp_upload_time';
+    const {req} = util;
+    export default class Upload extends wepy.component {
+        props = {
+            user:Object,
+            skey:String,
+            loginCode:String,
+            authFlag:Boolean,
+            dakaFlag:Number,
+            rundata:Object,
+            latestMesaage:Object,
+            todaystep:[Number,String]
+        };
+        components = {
+          // shopitem:ShopItem
+        };
+        computed = {
+            disableUploadRunData:function(){
+                // console.log(`!this.todaystep && this.todaystep !== '--' :`,!this.todaystep && this.todaystep !== '--');
+                return this.todaystep == null || this.todaystep === '--' 
+            },
+            formatLastUploadTime:function(){
+                if(this.user && this.user.last_upload_run_time){
+                    return dayjs(this.user.last_upload_run_time).format('YYYY-MM-DD HH:mm:ss');
+                }
+                return ''
+            }
+        };
+        data = {
+        };
+        methods = {
+            cannotDaka:function(){
+                util.showModel('非打卡时间',`早上6-8点早起打卡,晚上9-11点早睡打卡`)
+            },
+            uploadDakaInfo:async function(){
+                const user = this.user
+                if(!util.checkUserInfo(user) || this.isDaka){
+                   return
+                }
+                this.isDaka = true;
+                try{
+                    const ret = await req({
+                        url:svrConfig.service.updateCustomerDakaInfo,
+                        method:'POST',
+                        data:{
+                            type:this.dakaFlag
+                        }
+                    });
+                    this.isDaka = false;
+                    if(ret !== user.bonus){
+                        this.user.bonus = ret;
+                    }
+                    this.$apply();
+                    util.showSuccess('打卡成功');
+                }catch(e){
+                    this.isDaka = false;
+                    util.showModel('打卡失败',e.message || '未知错误')
+                }
+            },
+           uploadRunInfo:async function(){
+               const self = this;
+               const user = this.user; 
+               if(!self.authFlag){
+                   wx.navigateTo({
+                    url:'login?loginCode='+this.loginCode,
+                    events: {
+                        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+                        acceptDataFromOpenedPage: function(data) {
+                            self.$emit('onLoginSuccess',data);
+                        }
+                    }
+                   })
+                   return;
+               }
+               if(!util.checkUserInfo(user)){
+                   return
+               }
+               const runData = await this.getRunData();
+               const reqData = {
+                //    data:this.runData,
+                   curBonus:user.bonus,
+                   uid:user.uid,
+                   encryptedData:runData.encryptedData,
+                   iv:runData.iv
+               }
+               try{
+                    const ret = await req({
+                        url:svrConfig.service.updateCustomerRunInfo,
+                        method:'POST',
+                        data:reqData
+                    });
+                    const uploadTime = dayjs().format('YYYY-MM-DD HH:mm:ss');
+                    if(ret.newBonus !== user.bonus){
+                        this.user.bonus = ret.newBonus;
+                        this.runInfoList = ret.data;
+                    }
+                    this.user.last_upload_run_time = ret.uploadTime;
+                    this.$apply();
+                    util.showSuccess('上传成功');
+               }catch(e){
+                   util.showModel('上传失败',e.message || '未知错误')
+               }
+           },
+           go2BonusRecord:function(){
+              if(this.user && this.user.uid != null){
+                wepy.navigateTo({
+                  url:`bonus_record?cid=${this.user.uid}`
+                })
+              }
+            }
+        };
+        getRunData(){
+            const self = this;
+            return new Promise((resolve,reject)=>{
+                wepy.getWeRunData({
+                    success (res) {
+                        return resolve({
+                            encryptedData:res.encryptedData,
+                            iv:res.iv
+                        })
+                    },
+                    fail (err) {
+                        reject(err)
+                    }
+                })
+            })
+        }
+        onLoad(){
+            // this.$parent.getRunData()
+        }
+        onShow(){
+
+        }
+    }
+</script>

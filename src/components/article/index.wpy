@@ -1,0 +1,98 @@
+<style lang="less">
+@itemHeight:100px;
+.scroll-view-item{
+  // height: 120px;
+  // padding: 12px 0;
+  padding: 0 12px 12px;
+  // padding-bottom: 12px;
+  .article-inner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    border-radius: 6px;
+    width: 100%;
+    // padding:12px 10px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+  }
+  image{
+    width:100%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .shop-item-content{
+    flex:1;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    font-size: 14px;
+    padding: 12px 8px;
+    // height: @itemHeight;
+  }
+  .shop-item-unit{
+    font-size: 14px;
+    text-align:left;
+  }
+  .shop-item-title{
+    // height:40px;
+    margin-bottom:8px;
+    overflow: hidden;
+  }
+  .shop-item-price{
+    flex: 1;
+    color:#999;
+    // align-items: center;
+    // display: flex;
+  }
+  .shop-item-label{
+    flex: 1;
+    font-size: 12px;
+    color:#666;
+    align-items: flex-end;
+    display: flex;
+  }
+}
+</style>
+<template>
+  <view class="scroll-view-item" bindtap="goLink">
+    <view class="article-inner" >
+        <image src="{{article.logo}}" mode="widthFix"/>
+        <view class="shop-item-content">
+          <view class="shop-item-title shop-item-unit">
+            {{article.title}}
+          </view>
+          <!-- <view class="shop-item-price shop-item-unit">
+            {{data.price}}
+          </view> -->
+          <view class="shop-item-label shop-item-unit">
+            {{article.subTitle}}
+          </view>
+        </view>
+    </view>
+  </view>
+</template>
+<script>
+    import wepy from 'wepy';
+
+    export default class Article extends wepy.component {
+        props = {
+          article:Object
+        };
+        data = {
+        };
+
+
+        methods = {
+          goLink(){
+            // console.log('data :',this.article);
+            const {article} = this;
+            article && wx.navigateTo({
+              url:'view?url='+encodeURIComponent(article.url)
+            })
+          }
+        };
+        onLoad(){
+        };
+    }
+</script>

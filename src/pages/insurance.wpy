@@ -1,0 +1,146 @@
+<style lang="less">
+  @import '../styles/base.less';
+  .report-container{
+    height: 100%;
+    width: 100%;
+    // overflow: hidden;
+    background: #FBF9FE;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    .report-wrapper{
+        // height:calc(~"100% - 46px");
+        height: 100%;
+        width: 100%;
+    }
+    .report-list{
+        width: 100%;
+        height: 100%;
+    }
+    .empty_container{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        align-items: center;
+        justify-content: center;
+    }
+    // .opr-container{
+    //      flex:1;
+    //     // padding: 0 16px;
+    // }
+    .report-record{
+        background: white;
+        padding:0;
+        display: flex;
+        margin-bottom: 12px;
+        flex-direction: column;
+        .top-record{
+            // width:40%;
+            // height: 160px;
+            width: 100%;
+            // height: auto;
+            // height: 240px;
+        }
+        .bottom-record{
+            padding: 8px 12px ;
+        }
+    }
+    //     .right-record{
+    //         padding-left:16px;
+    //         padding-bottom: 12px;
+    //         flex:1;
+    //         // font-size: 12px;
+    //         flex-direction: column;
+    //         display: flex;
+    //         // align-items: center;
+    //         justify-content: center;
+    //     }
+    // }
+  }
+</style>
+<template>
+  <view class="report-container">
+    <view class="report-wrapper">
+        <view wx:if="{{loaded && uploadList.length === 0 }}" class="empty_container">
+            你暂时没有保单托管报告
+        </view>
+        <scroll-view wx:if="{{loaded && uploadList.length > 0 }}" class="report-list" scroll-y>
+            <repeat for="{{uploadList}}" key="index" index="index" item="item">
+                <view class="report-record">
+                    <image class="top-record"  src="{{item.url}}" bindtap="previewImage({{item.url}})"/>
+                    <view class="bottom-record">
+                        <view>
+                            {{item.name}}
+                        </view>
+                        <view>
+                            {{item.nuploadTime}}
+                        </view>
+                    </view>
+                </view>
+            </repeat>
+        </scroll-view>
+    </view>
+  </view>
+</template>
+
+<script>
+// wx:if="{{loaded && userinfo && userinfo.realName}}"
+    import wepy from 'wepy';
+    const util = require('../util/index');
+    import dayjs from 'dayjs';
+    const {req} = util;
+    const svrConfig = require('../vendor/config');
+
+    export default class PersonInfo extends wepy.page {
+
+        config = {
+            "navigationBarTitleText": "保单托管报告"
+        };
+        components = {
+        };
+
+        // mixins = [testMixin];
+
+        data = {
+            loaded:false,
+            uploadList :[]
+        };
+        computed = {
+
+        };
+        methods = {
+            previewImage:function(url){
+                wepy.previewImage({
+                    current:url,
+                    urls:this.uploadList.map((item)=>{
+                        return item.url
+                    })
+                })
+            }
+        };
+        async getUploadList(){
+            const ret = await req({
+                url:svrConfig.service.reportUrl,
+                data:{}
+            });
+            if(!ret.forEach) {
+                this.loaded = true;
+                this.$apply();
+            };
+            ret.forEach((item)=>{
+                if(!item.nuploadTime){
+                    item.nuploadTime = dayjs(new Date(item.create_time)).format('YYYY-MM-DD HH:mm:ss');
+                }
+            })
+            this.loaded = true;
+            this.uploadList = ret;
+            this.$apply();
+            // console.log('ret1 :',ret);
+        }
+        onLoad(option) {
+            this.getUploadList();
+            this.$apply();
+        }
+    }
+</script>

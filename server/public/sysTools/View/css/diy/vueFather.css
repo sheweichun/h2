@@ -1,0 +1,9 @@
+@charset "utf-8";
+#vue-father-obj{
+    position: fixed;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    z-index: 899;
+}

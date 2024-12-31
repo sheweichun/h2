@@ -1,0 +1,191 @@
+<style lang="less">
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+button[type=primary] {
+  color:#FFFFFF;
+  background-color:#f37327;
+  &.button-hover{
+    background-color: #d04f01;
+    color:white;
+  }
+}
+
+button[disabled][type=primary]{
+  background-color: #ffaa78;
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+import { setStore } from 'wepy-redux'
+import configStore from './store/index'
+const qcloud = require('./vendor/wafer2-client-sdk/index')
+const svrConfig = require('./vendor/config');
+const util = require('./util/index');
+
+const store = configStore();
+setStore(store); 
+export default class extends wepy.app {
+  config = {
+    pages: [
+      // 'pages/exchange',
+      'pages/index', 
+      'pages/personInfo',
+      'pages/report',
+      'pages/bonus_record',
+      'pages/view' ,
+      'pages/exchange',
+      'pages/insurance',
+      'pages/test',
+      'pages/login'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    }
+  }
+
+  globalData = {
+    logged:false
+  }
+  constructor () {
+    super()
+    this.use('requestfix')
+  }
+  login(userResult,loginCode){
+    // console.log('userResult :',userResult);
+    return new Promise((resolve,reject)=>{
+      qcloud.login({
+        userResult,
+        loginCode,
+        success:function(userInfo){
+          resolve(qcloud.Session.get());
+        },
+        fail:function(err){
+          reject(new Error(err.errMsg))
+        }
+      });
+    })
+  }
+  loginWidthCode(){
+    return new Promise((resolve,reject)=>{
+      wepy.checkSession({
+        success:async function(retSec){
+          const sess = qcloud.Session.get();
+          if(sess){
+            try{
+              console.log('has sess :',sess);
+              const ret = await util.req({
+                url:svrConfig.service.sessionUrl,
+                data:{
+                  openId:sess.userinfo.openId
+                }
+              });
+              //ret.skey = sess.skey
+              return resolve(ret);
+            }catch(e){
+              return reject(e)
+            }
+            
+          }else{
+            // console.log('no sess');
+            reject(new Error(err.errMsg))
+            // qcloud.login({
+            //   success:function(userInfo){
+            //     resolve(qcloud.Session.get());
+            //   },
+            //   fail:function(err){
+            //     reject(new Error(err.errMsg))
+            //   }
+            // });
+          }
+          
+        },
+        fail:function(){
+          // console.log('fail!!!');
+          reject('checkSession fail')
+          // qcloud.login({
+          //   success:function(userInfo){
+          //     resolve(qcloud.Session.get());
+          //   },
+          //   fail:function(err){
+          //     reject(err)
+          //   }
+          // });
+        }
+      })
+    }).then((resp)=>{
+      wx.showShareMenu({ 
+        withShareTicket: true
+      })
+      return resp
+    })
+  }
+  onShow(opt){
+    this.option = opt;
+    this.checkUpdate(); //每次用户打开app检测更新
+  } 
+  checkUpdate(){
+    const updateManager = wx.getUpdateManager()
+
+    updateManager.onCheckForUpdate(function (res) {
+      // 请求完新版本信息的回调
+      // console.log(res.hasUpdate)
+    })
+
+    updateManager.onUpdateReady(function () {
+      wx.showModal({
+        title: 'EHPP更新提示',
+        content: '新版本已经准备好，是否重启应用？',
+        success: function (res) {
+          if (res.confirm) {
+            // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+            updateManager.applyUpdate()
+          }
+        }
+      })
+    })
+
+    updateManager.onUpdateFailed(function () {
+      // 新版本下载失败
+    })
+  }
+  onLaunch(obj) {
+    qcloud.setLoginUrl(svrConfig.service.loginUrl);
+    
+    // if (!wx.cloud) {
+    //   console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+    // } else {
+    //   wx.cloud.init()
+    // }
+    // qcloud.setLoginUrl(svrConfig.service.loginUrl);
+    // console.log('session :',qcloud.Session.get());
+    // this.bindGetUserInfo();
+    // this.login();
+    // this.bindGetUserInfo();
+  }
+
+  sleep (s) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('promise resolved')
+      }, s * 1000)
+    })
+  }
+
+  async testAsync () {
+    const data = await this.sleep(3)
+    console.log(data)
+  }
+}
+</script>

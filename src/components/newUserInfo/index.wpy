@@ -1,0 +1,320 @@
+<style lang="less">
+@topHeight:500rpx;
+
+
+.top-bg{
+  height:@topHeight;
+  background: #FF721D; /* fallback for old browsers */ 
+  background:  linear-gradient(to bottom, #FA9056 , #FF721D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  position:absolute;
+  left:0;
+  top:0;
+  width: 100%;
+}
+
+.top-title{
+  color:white;
+  font-size:60rpx;
+  text-align:center;
+  margin:40rpx 0 28rpx;
+}
+
+.top-info{
+  //height: 1140rpx;
+  height:@topHeight;
+  position:absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  
+  background-image:url("https://gw.alicdn.com/tfs/TB1NIvnrp67gK0jSZPfXXahhFXa-1210-848.png");
+  //background-size:cover;
+
+  background-size:auto 214px;
+  background-position:100% 50%;
+
+
+  background-repeat:no-repeat;
+}
+
+.user-info{
+  display: flex;
+  .user-info-avatar{
+  display:flex;
+align-items:center;
+
+    padding-left: 20px;
+    // .user-image{
+    //   border-radius: 50%;
+    //   overflow:hidden;  
+    //   width: 80px;
+    //   height: 80px;
+    // }
+    image{
+      width: 96rpx;
+      border-radius: 50%;
+      height: 96rpx;
+    }
+  }
+  .user-info-detail{
+    flex: 1;
+    .user-info-name{
+      padding-left: 20rpx;
+      font-size: 12px;
+      color: white;
+    }
+    .user-info-bonus{
+      padding-left: 20rpx;
+      font-size: 12px;
+      color: white;
+      .bonus-point{
+        //color:#ffc106;
+      }
+    }
+  }
+}
+
+.user-container{
+  background-color:#fafafa;
+  height: 100vh;
+  height:100%;
+  overflow:hidden;
+  .content{
+    height:calc(~"100% - @{topHeight}");
+    margin-top:@topHeight;
+  }
+  .group{
+    margin-top:24rpx;
+  }
+}
+
+.target-list{
+  display:flex;
+  justify-content: space-between;
+  padding:0 40rpx;
+  margin-top:60rpx;
+  .target{
+    color:white;
+    text-align:center;
+  }
+
+  .target-top{
+    width:102rpx;
+    height:102rpx;
+    border-radius:12rpx;
+    background-color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    image{
+      width:58rpx;
+      height:58rpx;
+    }
+  }
+  
+
+}
+.card{
+  box-shadow:0 10rpx 17rpx 3rpx rgba(20,7,0,0.3);
+  margin: 0 40rpx;
+  padding:36rpx;
+  border-radius:20rpx;
+}
+.card-title{
+  font-size:36rpx;
+}
+.card-title-icon{
+  width:36rpx;
+  height:26rpx;
+  margin-left:12rpx;
+}
+
+.bonus-info{
+  margin-top:46rpx;
+  font-size:32rpx;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  .bonus-left{
+    text-align:center;
+  }
+
+  .bonus-right{
+  text-align:center;
+  }
+}
+
+.card-item{
+  background:#FC833E;
+  display:flex;
+  padding:18rpx 36rpx;
+  flex-direction:row;
+  align-items:center;
+  margin-top:36rpx;
+  justify-content: space-between;
+  color:white;
+}
+
+.view-row{
+display:flex;
+justify-content: space-between;
+}
+
+</style>
+<template>
+  <view class="user-container">
+    <view class="top-bg"></view>
+    <view class="top-info">
+      <view class="top-title">
+        私人健康银行
+      </view>
+      <view class="user-info" bindtap="go2PersonInfo" wx:if="authFlag">
+        <view class="user-info-avatar">
+          <image src="{{user.avatarUrl}}" />
+        </view>
+        <view class="user-info-detail">
+            <view class="user-info-name">
+                <text style="margin-right:24rpx;font-size:40rpx">{{tip}}!</text>
+                <text>{{user.nickName}}</text>
+            </view>
+            <view class="user-info-bonus">
+                <text>上次积分上传：</text>
+                <text class="bonus-point">{{lastUploadTime}}</text>
+            </view>
+        </view>
+      </view>
+      <view class="target-list">
+        <view class="target" bindtap="go2BonusRecord">
+          <view class="target-top">
+            <image src="https://img.alicdn.com/tfs/TB1avY_rAP2gK0jSZPxXXacQpXa-116-118.png"/>
+          </view>
+          <text style="font-size:12px;">健步行</text>
+        </view>
+        <view class="target" bindtap="goTijianReport(1)">
+          <view class="target-top">
+            <image src="https://gw.alicdn.com/tfs/TB1d6n.ruH2gK0jSZFEXXcqMpXa-102-106.png"/>
+          </view>
+          <text style="font-size:12px;">体检报告</text>
+        </view>
+        <view class="target" bindtap="goTijianReport(3)">
+          <view class="target-top">
+            <image src="https://gw.alicdn.com/tfs/TB1HNwbrxD1gK0jSZFyXXciOVXa-112-116.png"/>
+          </view>
+          <text style="font-size:12px;">洗牙证明</text>
+        </view>
+        <view class="target" bindtap="wait">
+          <view class="target-top">
+            <image src="https://gw.alicdn.com/tfs/TB1P1b_rpP7gK0jSZFjXXc5aXXa-130-128.png"/> 
+          </view>
+          <text style="font-size:12px;">积分兑换</text>
+        </view>
+      </view>
+    </view>
+     <scroll-view scroll-y class="content">
+        <view class="group card" bindtap="go2BonusRecord">
+            <view class="view-row">
+              <view class="card-title">
+                账户总览
+                <image class="card-title-icon" src="https://img.alicdn.com/tfs/TB1kQ.DrBr0gK0jSZFnXXbRRXXa-72-52.png"/>
+              </view>
+              <view style="color:#B3B7C2;">
+                >
+              </view>
+            </view>
+            <view class="bonus-info">
+              <view class="bonus-left">
+                <view>总积分</view>
+                <view>{{user.bonus}}分</view>
+              </view>
+              <view class="bonus-right">
+                <view>今日积分</view>
+                <view>{{user.todayTotal}}分</view>
+              </view>
+            </view>
+        </view>
+        <view class="card card-item" bindtap="go2Insurance">
+          <view style="display:flex;align-items:center;">
+            <image style="width:52rpx;height:62rpx;margin-right:32rpx;" src="https://gw.alicdn.com/tfs/TB1dQExrBv0gK0jSZKbXXbK2FXa-104-124.png" />
+            保单托管报告
+          </view>
+          <view>
+            >>>
+          </view>
+        </view>
+      </scroll-view>
+  </view>
+</template>
+<script>
+    import wepy from 'wepy';
+    const util = require('../../util/index');
+    const svrConfig = require('../../vendor/config');
+
+    //last_upload_run_time
+    function formatDt(hour){
+      if(hour < 12){
+        return '早上好'
+      }else if(hour < 18){
+        return '下午好'
+      }
+      return '晚上好'
+    }
+    export default class NewUserView extends wepy.component {
+        props = {
+          user:Object,
+          authFlag:Boolean
+        };
+        components = {
+          // shopitem:ShopItem
+        };
+        data = { 
+          tip:formatDt(new Date().getHours())
+        };
+        computed = {
+          lastUploadTime:function(){
+            //console.log('user :',this.user)
+            if(this.user == null || this.user.last_upload_run_time == null) return '';
+            return util.formatTime(new Date(this.user.last_upload_run_time))
+          }
+        }
+        methods = {
+            go2Insurance:function(){
+                wepy.navigateTo({
+                  url:`insurance`
+                })
+            },
+            go2PersonInfo:function(){
+              if(this.user && this.user.uid != null){
+                wepy.navigateTo({
+                  url:`personInfo?uid=${this.user.uid}`
+                })
+              }
+            },
+            goTijianReport:function(type){
+              //console.log('type :',type);
+              if(this.user && this.user.uid != null && util.checkUserInfo(this.user)){
+                wepy.navigateTo({
+                  url:`report?cid=${this.user.uid}&type=${type}`
+                })
+              }
+            },
+            go2BonusRecord:function(){
+              if(this.user && this.user.uid != null){
+                wepy.navigateTo({
+                  url:`bonus_record?cid=${this.user.uid}`
+                })
+              }
+            },
+            wait:function(){
+              // console.log('wait');
+              // util.showModel('敬请期待','疯狂建设中...')
+              wepy.navigateTo({
+                  url:`exchange`
+                })
+              // wx.showToast({
+              //     title: '敬请期待',
+              //     icon: 'none'
+              // })
+            }
+        };
+    }
+</script>

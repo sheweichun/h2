@@ -1,0 +1,41 @@
+<style lang="less">
+
+  @import '../styles/base.less';
+
+
+</style>
+<template>
+  <userinfo :user.sync="userInfo"></userinfo>
+  
+  
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import UserInfo from '../components/newUserInfo/index';
+  export default class TestView extends wepy.page {
+    config = { 
+      navigationBarTitleText: '健康促进计划' 
+    }
+    components = {
+      userinfo:UserInfo,
+    }
+
+    mixins = []
+
+    data = {
+      userInfo:{
+        nickName:'加载中...',
+        bonus:200,
+        avatarUrl:'https://gw.alicdn.com/tfs/TB152MhdeH2gK0jSZJnXXaT1FXa-900-500.jpg'
+      }
+    }
+    
+    computed = {
+    }
+
+
+    onLoad() {
+    }
+  }
+</script>

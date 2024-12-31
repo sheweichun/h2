@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 启用极速模式(webkit) -->
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!--  -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="KeyWords" content="H2健康促进计划，汉尔思，有保无险，私人健康银行，PHB，健康管理，风险管理，企业福利，汉尔思(上海)信息技术有限公司">
+<meta name="description" content="首页">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name='apple-touch-fullscreen' content='yes' />
+<meta name="full-screen" content="yes">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<title>H2健康促进计划</title>
+<link rel="shortcut icon" type="image/x-icon" href="/userimg/11596/favicon.ico" />
+<!-- SEO友好提示 -->
+<meta name="applicable-device" content="pc,mobile">
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/sysTools/View/js/comm/html5shiv.js"></script>
+<script type="text/javascript" src="/sysTools/View/js/comm/respond.min.js"></script>
+<![endif]-->
+<!--MAIN_CSS_PATH-->
+    <link rel="stylesheet" type="text/css" href="/sysTools/View/css/comm/iconfont.css?1"/><script type="text/javascript" src="/sysTools/View/js/comm/comm.js.php?0=jquery.min.js&1=jquery.lazyload.min.js&2=jquery.nicescroll.min.js&isfx=0" charset="utf-8"></script><script type="text/javascript" src="/sysTools/View/js/diy/comm.js.php?0=pageCom.js&1=ubox.js&2=wow.js&3=alert.js&4=20180817&isfx=0" charset="utf-8"></script><link rel="stylesheet" type="text/css" href="/sysTools/View/css/comm/font-awesome-4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/sysTools/View/css/diy/pageCom.css?20221203"/>
+<link rel="stylesheet" type="text/css" href="/sysTools/View/css/comm/animate.min.css"/>
+<link rel="stylesheet" type="text/css" href="/sysTools/View/css/diy/alert.css"/>
+<link href="/sysTools/Model/systemStyle/sys_dialog.css" rel="stylesheet" type="text/css">
+<script>
+    var isOpenMobie = 2;
+    var isOpenPad = 2;
+    if(isOpenMobie == 1){
+        if(isOpenPad == 1){
+            $("body").css("width","auto");
+        }else{
+            //是否手机端判断
+            var ua = navigator.userAgent;
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                isIphone =!ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+                isMobile = isIphone || isAndroid;
+            if(isMobile){
+                $("body").css("width","1280px");
+            }else{
+                $("body").css("width","auto");
+            }
+        }
+    }else{
+        $("body").css("width","auto");
+        $("head").append("<meta id='headScreen' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport' />");
+    }
+    //手机屏幕尺寸兼容 purewinter 2019-03-26
+    $(window).on('load',function() {
+        bodyScale();
+    });
+    function bodyScale(){
+        var windowWidth = $(window).width();
+        $("#bodyScale").remove();
+        if(windowWidth < 680){
+            var scale = windowWidth / 375;
+            $("#headScreen").remove();
+            $("head").append("<meta id='headScreen' content='width=375, initial-scale="+scale+", maximum-scale="+scale+", user-scalable=no' name='viewport' />");
+        }else if(windowWidth < 960){
+            var scale = windowWidth / 960;
+            $("#headScreen").remove();
+            $("head").append("<meta id='headScreen' content='width=960, initial-scale="+scale+", maximum-scale="+scale+", user-scalable=no' name='viewport' />");
+        }
+    }
+</script>
+<script>
+String.prototype.replaceAll= function(s1,s2){
+    return this.replace(new RegExp(s1,"gm"),s2);
+}
+// 字体大小限制不跟随系统
+$(document).ready(function(){
+    if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+        handleFontSize();
+    } else {
+        document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+    }
+    function handleFontSize() {
+        // 设置网页字体为默认大小
+        WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+        // 重写设置网页字体大小的事件
+        WeixinJSBridge.on('menu:setfont', function() {
+            WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+        });
+    }
+})
+    $(window).on('load',function() {
+        if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){//好像是动画插件
+            setTimeout(function(){
+                new WOW().init()
+            },150)
+        };
+    });
+var DIY_WEBSITE_ID = "11596";
+var DIY_JS_SERVER = "admin.site.my-qcloud.com";
+var DIY_CUR_URL = "https://admin.site.my-qcloud.com/welcome/?pageid=&w_id=11596&t=1727487043&mkey=140184";
+</script>
+    <script src="/webapp/js/backscript.js"></script>
+	<script type="text/javascript">var Default_isFT = 0;</script>
+    <script type="text/javascript" src="/sysTools/View/js/diy/transform.js?201603091"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="/webapp/js/panel_js.js?a=8604" charset="utf-8"></script>
+    <script src="https://admin.site.my-qcloud.com/exusers/login_html_v9_diy.php?idweb=11596&langid=0&FIDUser=0"></script>
+<script type="text/javascript" src="/webapp/systool/setting.php"></script><link rel="stylesheet" type="text/css" href="/webapp/systool/css.php"><script type="text/javascript" src="/webapp/systool/js.php"></script><style type="text/css">
+body{overflow-x: hidden;}
+@media screen and (max-width:640px) {
+  ::-webkit-scrollbar { width: 0px;}
+}
+</style>
+</head>
+<style>body{background-position:left top;}</style><body>
+            <div id="comm_layout_header" class="layout   scrollView"  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div class="view_contents">
+                                <div id="div_blank_new01_1588816697045" class="view blank_new01 div  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="div"
+                     class="view_contents" >
+                    <style>.blank_new01{width:100%;height:100%;}
+.blank_new01 .roundcs{width:100%;height:100%;background:rgba(7,126,244,0.7);box-sizing: border-box;}</style>
+<script class="editor-view-extend">
+    </script><div class="blank_new01">
+<div class="roundcs modSet" ></div>
+</div>
+<style>
+			</style>
+                </div>
+            </div>
+                        <div id="image_style_13_1_1634180182989" class="view style_13_1 image  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <style>.imgStyle_13_1{ width:100%; }
+.imgStyle_13_1 *{ font-size:'微软雅黑'; }
+.imgStyle_13_1 .imgTextUl{ display:flex; justify-content: space-between; flex-wrap: wrap; }
+.imgStyle_13_1 .imgTextLi{ overflow: hidden; margin-bottom:2%;box-sizing: border-box;}
+.imgStyle_13_1 li{ width: 32%;}
+.imgStyle_13_1 .imgTextLi .left{width: 130px;}
+.imgStyle_13_1 .imgTBox{ text-align: left; float:left; display:inline-block;height: 100%;width: 100%;}
+.imgStyle_13_1 .imgTBox>img{ display: inline-block; width:100%;box-sizing: border-box;height: 100%;}
+.imgStyle_13_1 .imgTBox .bbx-new-font{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+.imgStyle_13_1 .cont{ float:right; display:inline-block;width: calc(100% - 130px);}
+.imgStyle_13_1 .name{  font-size:16px; line-height:2.5; padding-left:10px;word-break: break-word;}
+.imgStyle_13_1 .subName{ font-size:12px; color:#666; padding-left:10px;word-break: break-word;white-space: pre-wrap;}
+.imgStyle_13_1 .left{position: relative;float: left;width: 130px;height: auto;}
+.imgStyle_13_1 .image-box{position: absolute;left: 0;right: 0;top: 0;bottom: 0;overflow: hidden;}
+.imgStyle_13_1 .cont .btn{padding-left: 10px;}
+.imgStyle_13_1 .cont .btnSet{width: auto;height: 25px;line-height: 25px;display: block;border: 1px solid #7d7d7d;color: #333;text-align: center;margin-right: 40%;margin-top: 10px;word-break: break-all;overflow: hidden;}
+@media screen and (max-width: 768px){
+	.imgStyle_13_1 .imgTextLi{ width:100%;margin-bottom: 4%;}
+	.imgStyle_13_1 .cont{width: calc(100% - 130px);}
+	.imgStyle_13_1 .name{ font-size:16px;}
+}</style><!-- pageSet pagecurSet -->
+<div class="imgStyle_13_1">
+	<input type='hidden' id='current_page_1' value="1"/>
+	<input type='hidden' id='show_per_page_1' value="2"/>
+	<ul class="imgTextUl" id="content_1">
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://cdn.yun.sooce.cn/6/35043/png/1633764919392652cc37a50d5d056.png?version=1633764540" alt="">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">400-006-8321</div>
+					</a>
+					<div class="subName detailSet"></div>
+				</div>
+			</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<div class="page_btn">
+	</div>
+</div>
+    <style>
+        /*pc*/
+        #image_style_13_1_1634180182989  ul li{width: 49%;}
+        #image_style_13_1_1634180182989  ul li.imgTextLi{margin-bottom:2%;}
+        #image_style_13_1_1634180182989  ul li.imgTextLi .left{width: 25px;}
+        #image_style_13_1_1634180182989  ul li.imgTextLi .cont{width: calc(100% - 25px);}
+        @media screen and (max-width: 1024px){/*ipad*/
+        #image_style_13_1_1634180182989  ul li{width: 49.5%;}
+        #image_style_13_1_1634180182989  ul li.imgTextLi{margin-bottom:1%;}
+        #image_style_13_1_1634180182989  ul li.imgTextLi .left{width: 25px;}
+        #image_style_13_1_1634180182989  ul li.imgTextLi .cont{width: calc(100% - 25px);}
+        }
+        @media screen and (max-width: 768px){/*mobi*/
+        #image_style_13_1_1634180182989  ul li{width: 100%;}
+        #image_style_13_1_1634180182989  ul li.imgTextLi{margin-bottom:2%;}
+                    #image_style_13_1_1634180182989  ul li.imgTextLi .left{width: 30px;}
+            #image_style_13_1_1634180182989  ul li.imgTextLi .cont{width: calc(100% - 30px);}
+                }
+    </style>
+                </div>
+            </div>
+                        <div id="dh_style_28_1588818670562" class="view style_46 dh  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="dh"
+                     class="view_contents" >
+                    <style>.menuStyle_46{width:100%; position:relative;}
+.menuStyle_46 *{box-sizing: border-box;}
+.menuStyle_46 .miniMenu *,
+.menuStyle_46 .menuUl li *{
+	-webkit-transition-duration:.2s; -moz-transition-duration:.2s; -o-transition-duration:.2s; transition-duration:.2s;
+	-webkit-transition-property:background,height,padding; -moz-transition-property:background,height,padding; -moz-transition-property:background,height,padding; transition-property:background,height,padding;
+	-webkit-transition-timing-function:ease-out; -moz-transition-timing-function:ease-out; -o-transition-timing-function:ease-out; transition-timing-function:ease-out;
+}
+.menuStyle_46 .dflex{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;}
+.menuStyle_46 .rflex{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1; float: left\0;}
+.menuStyle_46 ul,.menuStyle_46 li{padding:0;margin:0px;list-style:none}
+.menuStyle_46 .menuLayout{position:relative; margin:0 auto;width:100%;}
+.menuStyle_46 .menuLayout:after{content:''; display:block; clear:both;}
+.menuStyle_46 .menuUl_box{position:relative; width:100%; text-align:center;}
+.menuStyle_46 .menuUl{position:relative; width:100%; text-align:center;}
+.menuStyle_46 .menuUl>li{position:relative;overflow: hidden;}
+.menuStyle_46 .menuUl>li>a{ background: rgba(0,0,0,0.0); position: relative; text-decoration:none;font-size:16px;font-weight: bold; box-sizing:border-box; display:block;text-align:center; letter-spacing:normal; white-space:nowrap; color: #17233d; line-height:44px; padding: 0; padding: 0 1em\0;}
+.menuStyle_46 .menuUl>li>a:hover{ color:#750406;}
+.menuStyle_46 .menuUl #hot>a{color:#750406;}
+.menuStyle_46 .menuUl>li>a span{display:block; width: 100%; text-align: center; color: rgba(0,0,0,.3); font-size: 12px;}
+.menuStyle_46 .menuUl #hot>a span{color:inherit;}
+.menuStyle_46 .menuLayout .miniMenu{display:none;}
+.menuStyle_46 .menuUl02 {position: relative; left: 50%; opacity: 1; display: none; width: 100%; height: auto; transform: translate(-50%,0); -webkit-transform: translate(-50%,0); -moz-transform: translate(-50%,0); -o-transform: translate(-50%,0);}
+.menuStyle_46 .menuUl>li>#menuLogo{height: 85%;}
+.menuStyle_46 .menuUlSubView{display: none;}
+.menuStyle_46 .menuUlSubView .menuUl02{display: block;}
+.menuStyle_46 .showMenuUl02{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;}
+.menuStyle_46 .menuUl02 .subMenu02 {position: relative;  color: #4d5158; font-size:14px; line-height: 40px; padding: 0 15px;}
+.menuStyle_46 .menuUl02 .subMenu02#subCurSet{color:#750406;}
+.menuStyle_46 .menuUl02 .subMenu02>a { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;color: inherit; font-size:inherit; line-height: inherit;}
+.menuStyle_46 .menuUl02 .subMenu02:hover {color:#750406;}
+.menuStyle_46 .menuUl02 .subMenu02>a .fa{float: right; line-height: inherit;}
+.menuStyle_46 .menuUl02 .subMenu02:first-child{
+	border-top-left-radius: 0px;border-top-right-radius: 0px;
+}
+.menuStyle_46 .menuUl02 .subMenu02:last-child{
+	border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;
+}
+.menuStyle_46 .rflex { position: relative;}
+.menuStyle_46 .maxWidth{margin: auto;}
+.menuStyle_46 .imgIco{vertical-align: middle; display:inline-block; overflow:hidden; position:relative; padding:15px;  box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box;}
+.menuStyle_46 .imgIco img{width:auto; height:100%; vertical-align: top;  position:absolute; top:50%; left:50%;  transform:translateY(-50%) translateX(-50%); -webkit-transform:translateY(-50%) translateX(-50%); -moz-transform:translateY(-50%) translateX(-50%); -ms-transform:translateY(-50%) translateX(-50%); -o-transform:translateY(-50%);}
+@media screen and (max-width:640px) {
+.menuStyle_46 .imgIco{ margin-right:10px;}
+.menuStyle_46 .menuUl,
+.menuStyle_46 .menuUl_box {display:none;}
+.menuStyle_46 .menuScroll{height: calc(100% - 100px); width: 100%;}
+.menuStyle_46 .menuScroll>.menuUlCopy{width:100%; height: 100%; overflow-x: hidden; overflow-y: scroll; }
+.menuStyle_46 .menuLayout .miniMenu{display:block; position:relative; overflow:hidden; width: 100%; height:44px;}
+.menuStyle_46 .miniMenu .leftBox{height: 100%;}
+.menuStyle_46 .miniMenu .leftBox .sidebar{font-size:24px; line-height:44px; font-weight:normal;cursor:pointer;color:#4d5158; position:absolute; top:0; right:0px; width:44px; text-align:center;}
+.menuStyle_46 .miniMenu .leftBox .sidebar .fa{font-size: inherit; line-height: inherit; color: inherit;}
+.menuStyle_46 .miniMenu .leftBox .nav{width:100%; height:44px; }
+.menuStyle_46 .miniMenu.Mslide .leftBox .nav{border-bottom: 1px solid rgba(0,0,0,.05);}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy{padding:0 0 0 30px; clear: both;}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy .menuUlCopy{display: none;padding: 0;}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy .menuUlCopy .menuUlCopy{width: calc(100% - 50px);}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy .menuUlCopy li a{padding-left: 30px;box-sizing: border-box;}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy .menuUlCopy .menuUlCopy li a{padding-left: 60px;box-sizing: border-box;}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy li{width:100%; overflow: hidden; color:#fff; font-size:12px; line-height:44px;}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy li a{width:calc(100% - 50px); float: left; display:block; text-align:left;color:inherit; text-decoration:none; font-size:inherit; line-height:inherit; height: inherit; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;border-bottom:1px solid rgba(0,0,0,.2);margin-left:0!important;margin-right:0!important;}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy li#hot>a{border-bottom: 1px solid #fff;}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy li .fa{color: inherit; font-size: inherit; float: left; width: 50px; text-align: center; line-height: inherit; background: rgba(0, 0, 0, 0.1);}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy li .fa:active{background: rgba(0,0,0,.3);}
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy li.subMenuSet#subCurSet>a,
+.menuStyle_46 .miniMenu .leftBox .menuUlCopy li#thrCurSet>a{border-bottom: 1px solid #fff;}
+.menuStyle_46 .menuLayout .miniMenu.Mslide{height:100% !important; height:100vh !important; background:rgba(23, 25, 29, 0.95); position: fixed; width: 100%; top: 0; left: 0; -webkit-transition: all linear .3s; -moz-transition: all linear .3s; -o-transition: all linear .3s; transition: all linear .3s;}
+.menuStyle_46 .menuLayout .miniMenu.Mslide .sidebar{color:#fff; background: rgba(0,0,0,.05);}
+.menuStyle_46 .menuLayout .miniMenu.Mslide .nav a{display:none !important;}
+}
+</style>
+<div id="menu" class="menu menuStyle_46">
+	<div class="menuLayout">
+		<ul class="miniMenu columnSet showmobile">
+			<li class="leftBox">
+				<div class="nav"></div>
+				<div class="sidebar icoMenuSet"><i class="fa fa-navicon" onclick="setDhListen('style_01',this)"></i></div>
+				<div class="menuScroll">
+					<ul class="menuUlCopy">
+								<li id="hot" class="rflex" pageid="131648" showmobile=""><a class="mainMenuSet" href="/welcome/index.php?&pageid=131648&">
+								首页</a>
+								</li>
+								<li class="rflex" pageid="131653" showmobile=""><a class="mainMenuSet" href="/welcome/index.php?&pageid=131653&">
+								关于我们</a>
+								</li>
+								<li class="rflex" pageid="131655" showmobile=""><a class="mainMenuSet" href="/welcome/index.php?&pageid=131655&">
+								解决方案</a>
+								</li>
+								<li class="rflex" pageid="131651" showmobile=""><a class="mainMenuSet" href="/welcome/index.php?&pageid=131651&">
+								私人健康银行</a>
+								<i class="fa fa-angle-down" onclick="navSwtich(this)"></i>
+									<ul class="menuUlCopy">
+											<li pageid="166497" showmobile="">
+													<a class="subMenuSet" href="/welcome/index.php?&pageid=166497&">会员权益</a>
+											</li>
+									</ul>
+								</li>
+								<li class="rflex" pageid="131652" showmobile=""><a class="mainMenuSet" href="/welcome/index.php?&pageid=131652&">
+								联系我们</a>
+								<i class="fa fa-angle-down" onclick="navSwtich(this)"></i>
+									<ul class="menuUlCopy">
+											<li pageid="144471" showmobile="">
+													<a class="subMenuSet" href="/welcome/index.php?&pageid=144471&">招募信息</a>
+											</li>
+									</ul>
+								</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<div class="menuUl_box columnSet dhAreaSet showpc">
+			<ul class="menuUl dflex maxWidth ">
+						<li id="hot" class="rflex isLi" pageid="131648" showpc="">
+							<a class="mainMenuSet" href="/welcome/index.php?&pageid=131648&">
+								首页
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="131653" showpc="">
+							<a class="mainMenuSet" href="/welcome/index.php?&pageid=131653&">
+								关于我们
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="131655" showpc="">
+							<a class="mainMenuSet" href="/welcome/index.php?&pageid=131655&">
+								解决方案
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="131651" showpc="">
+							<a class="mainMenuSet" href="/welcome/index.php?&pageid=131651&">
+								私人健康银行
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="131652" showpc="">
+							<a class="mainMenuSet" href="/welcome/index.php?&pageid=131652&">
+								联系我们
+							</a>
+						</li>
+			</ul>
+			<!-- 二级内容 -->
+				<ul class="menuUl dflex menuUlSubView twoBgSet">
+						<li class="rflex isLi" pageid="131648" showpc="">
+						</li>
+						<li class="rflex isLi" pageid="131653" showpc="">
+						</li>
+						<li class="rflex isLi" pageid="131655" showpc="">
+						</li>
+						<li class="rflex isLi" pageid="131651" showpc="">
+								<ul class="menuUl02">
+								</ul>
+						</li>
+						<li class="rflex isLi" pageid="131652" showpc="">
+								<ul class="menuUl02">
+										<li class="subMenu02 subMenuSet" pageid="144471" showpc="">
+											<a href="/welcome/index.php?&pageid=144471&">
+											招募信息
+											</a>
+										</li>
+								</ul>
+						</li>
+				</ul>
+		</div>
+	</div>
+</div>
+<script>
+	$(function(){
+		$('#dh_style_28_1588818670562 .menuStyle_46 .menuUl .isLi').hover(function(){
+			$('#dh_style_28_1588818670562 .menuStyle_46 .menuUlSubView').addClass('showMenuUl02');
+		},function(){
+			$('#dh_style_28_1588818670562 .menuStyle_46 .menuUlSubView').removeClass('showMenuUl02');
+		});
+	})
+</script>
+<!-- 导航栏目有下级时禁止跳转 -->
+<script>
+    /*pc,手机显示隐藏*/
+    function is_mobile(){
+        return window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767);
+    }
+    $(function(){
+        $("#dh_style_28_1588818670562 li").each(function(){
+                    });
+            })
+</script>
+<!-- 二级菜单宽度自适应 -->
+    <script>
+        function navSwtich(obj) {
+            $(obj).siblings(".menuUlCopy").slideToggle(200);
+            $(obj).toggleClass('ontoggle');
+            $(obj).parent().siblings().find(".menuUlCopy").slideUp(200);
+            $(obj).parent().siblings().find(".fa-angle-down").removeClass('ontoggle');
+        }
+        function subLeft_dh_style_28_1588818670562(){
+            $("#dh_style_28_1588818670562 .menuUl>li").each(function(){
+                $(this).find(".menuUl03").css("left",'100%');
+            })
+        }
+        $(window).resize(function() {
+            subLeft_dh_style_28_1588818670562();
+        })
+        $(function(){
+            $("#dh_style_28_1588818670562 .fa-navicon").click(function(){
+        $("#dh_style_28_1588818670562").addClass('clearTransform');
+                $("#dh_style_28_1588818670562 .menuUlCopy").each(function(){
+                    $(this).siblings(".fa").show();
+                })
+            })
+            subLeft_dh_style_28_1588818670562();
+                        $("#dh_style_28_1588818670562 .subBox").css("top",$("#dh_style_28_1588818670562 .menuUl_box").height());
+            if($("#dh_style_28_1588818670562 .menuUl").hasClass("noHover")){
+                var tabNum = 0;
+                $("#dh_style_28_1588818670562 .menuUl>li").find(".Onsub").each(function(){
+                    tabNum += 1;
+                    $(this).parent().attr("tabNum",tabNum)
+                })
+                $("#dh_style_28_1588818670562 .menuUl>li .Onsub").mouseover(function(){
+                    $("#dh_style_28_1588818670562 .subBox").show();
+                    var index = $(this).parent().attr("tabNum");
+                    $("#dh_style_28_1588818670562 .subBox .subItems").eq(index-1).fadeIn(100).siblings().hide();
+                                        $("#dh_style_28_1588818670562 .subBox .subMenuImgArea .subMenuImgCon").eq(0).fadeIn(100).siblings().hide();
+                                    })
+				                $("#dh_style_28_1588818670562 .subBox").mouseleave(function(){
+                    $(this).hide();
+                });
+                $("#dh_style_28_1588818670562 .menuUl>li .Nosub").mouseover(function(){
+                    $("#dh_style_28_1588818670562 .subBox").hide();
+                })
+                //风格41 42
+            }
+        })
+    </script>
+<style type="text/css">
+#dh_style_28_1588818670562.clearTransform{transform:none!important;}
+#dh_style_28_1588818670562 .menuUl02 .subMenu02>a .fa{position: absolute;top: 0;right: 8px;}
+</style>
+    <style type="text/css">
+            </style>
+                </div>
+            </div>
+                        <div id="image_logo_1633750942285" class="view logo image  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <style>.logoStyle *{box-sizing: border-box;}</style><div class="logoStyle modSet">
+<a href='/welcome/index.php?&pageid=131648&' target="_self"><img class="imgSet" src="/temp/logos/logo11596.png?1727487791" title="H2健康促进计划" alt="H2健康促进计划" style="width:auto; height:100%; position:relative; top:0; left:50%; transform:translate(-50%,0);"/></a>
+</div><style>
+.logoStyle { height:100%; width:100%; overflow: hidden; box-sizing: border-box;}
+.logoStyle>a{overflow: hidden; width: 100%;height: 100%; display: block;}
+.logoName{white-space: nowrap;}
+</style>                </div>
+            </div>
+                            </div>
+            </div>
+                        <div id="layout_diy_1588816476" class="layout   scrollView"  data-wow-duration='1s' data-wow-delay='0.25s' data-wow-offset='0' data-wow-iteration='1'>
+                <div class="view_contents">
+                                <div id="text_style_01_1588819704362" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><a href="/welcome/index.php?&pageid=131651&pageid=131651" target='_self' style='color:inherit' class='editor-view-extend link-type-1-1'>打造【有保无险】健康新生态</a>
+                </div>
+            </div>
+                        <div id="text_style_01_1588819751436" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><a href="/welcome/index.php?&pageid=131651&pageid=131651" target='_self' style='color:inherit' class='editor-view-extend link-type-1-1'>全生命周期健康+风险管理顾问                <div>Health &amp; Happiness</div></a>
+                </div>
+            </div>
+                        <div id="button_style_02_1588819889106" class="view style_02 button  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="button"
+                     class="view_contents" >
+                    <style>.button_default02 { width: 100%; height:40px; background: #a2a3e9; color: #fff;border-width: 0px; box-sizing: border-box; font-size: 14px; cursor: pointer; transition: all ease-in .1s; -webkit-transition: all ease-in .1s; -moz-transition: all ease-in .1s; -o-transition: all ease-in .1s; }</style>
+<script class="editor-view-extend">
+    </script><script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default02  1-1 btnaSet" onclick="window.open('/welcome/index.php?&pageid=131652&pageid=131652','_self')">联系我们</button>
+<style>
+	#button_style_02_1588819889106 .button_default .buttonImg {width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}@media screen and (min-width:641px) and (max-width:1200px) {#button_style_02_1588819889106 .button_default .buttonImg {width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}}@media screen and (max-width:640px) {#button_style_02_1588819889106 .button_default .buttonImg {width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}}</style>
+<script type="text/javascript">
+    if(typeof showcart !== 'function'){
+        function showcart(){
+            var langid = 0;
+            if (langid==0 && BodyIsFt) langid = 1;
+            if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
+                location.href = "https://admin.site.my-qcloud.com/exusers/u_cart.php?idweb=11596&act=show&lang="+langid+"&ismobile=1";
+            }else{
+                document.getElementById("boxName").innerHTML="";
+                if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
+                document.getElementById("showiframe").src="https://admin.site.my-qcloud.com/exusers/u_cart.php?idweb=11596&act=show&lang="+langid+"&v=9";
+                box.Show({width:'1000px', height:'600px'});
+            }
+        }
+    }
+</script>                </div>
+            </div>
+                        <div id="button_style_02_1633752274379" class="view style_02 button  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="button"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default02  1-1 btnaSet" onclick="window.open('/welcome/index.php?&pageid=131653&pageid=131653','_self')">了解更多</button>
+<style>
+	#button_style_02_1633752274379 .button_default .buttonImg {width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}@media screen and (min-width:641px) and (max-width:1200px) {#button_style_02_1633752274379 .button_default .buttonImg {width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}}@media screen and (max-width:640px) {#button_style_02_1633752274379 .button_default .buttonImg {width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}}</style>
+<script type="text/javascript">
+    if(typeof showcart !== 'function'){
+        function showcart(){
+            var langid = 0;
+            if (langid==0 && BodyIsFt) langid = 1;
+            if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
+                location.href = "https://admin.site.my-qcloud.com/exusers/u_cart.php?idweb=11596&act=show&lang="+langid+"&ismobile=1";
+            }else{
+                document.getElementById("boxName").innerHTML="";
+                if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
+                document.getElementById("showiframe").src="https://admin.site.my-qcloud.com/exusers/u_cart.php?idweb=11596&act=show&lang="+langid+"&v=9";
+                box.Show({width:'1000px', height:'600px'});
+            }
+        }
+    }
+</script>                </div>
+            </div>
+                        <div id="banner_style_01_1588819507114" class="view style_01 banner  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="banner"
+                     class="view_contents" >
+                    <style>.bannerStyle_1{width:100%; height:100%; position:relative;}
+.bannerStyle_1 .main_visual{height:100%; overflow:hidden; position:relative; }
+.bannerStyle_1 .main_image{height:100%; overflow:hidden; position:relative; }
+.bannerStyle_1 div.flicking_con{position:absolute; bottom:20px; left:0; z-index:999; width:100%; height:14px; text-align:center; z-index: 105;}
+.bannerStyle_1 div.flicking_con a{width:14px; height:14px; padding:0; background:none; border:1px solid white; display:inline-block; box-sizing:border-box; margin:0 3px; border-radius:100%; }
+.bannerStyle_1 div.flicking_con a.on{background:white; border:0;}
+.bannerStyle_1 .btn_prev,.bannerStyle_1 .btn_next{z-index:11111; position:absolute; top:50%; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); display:none;text-align: center;line-height: 1;font-size: 60px;color: #999;padding:0 20px;font-family: simsun,'宋体';}
+.bannerStyle_1 .btn_prev{left: 0;}
+.bannerStyle_1 .btn_next{right:0;}
+.bannerStyle_1 .arrowSet .awesome-font{display: none;}
+.bannerStyle_1 .arrowSet .awesome-font:before{padding: 0 3px;box-sizing: border-box;}
+.bannerStyle_1 .ground_glass{display:none; position:absolute; top:0; left:0; opacity:0; width:100%; height:100%; z-index:998; background-color:#fff;}
+@media screen and  (min-width:326px) and (max-width:767px){
+	.bannerStyle_1 div.flicking_con a{width: 9px; height: 9px;}
+	.bannerStyle_1 .btn_prev,.bannerStyle_1 .btn_next{font-size: 36px;padding:0 12px;}
+}
+@media screen and  (max-width:640px){
+	.bannerStyle_1 div.flicking_con a{width: 9px; height: 9px;}
+}
+.bannerStyle_1 .main_image .img-list{width:100%; height:100%; overflow:hidden; position:absolute; top:0; left:0}
+.bannerStyle_1 .main_image .img-item{position:absolute; width:100%; height:100%; display:block; top:0;}
+.bannerStyle_1 .main_image .img-item span{display:block; width:100%; height:100%; background-size:cover !important;}
+.bannerStyle_1 .main_image .img-item a{display:block; width:100%; height:100%; overflow: hidden;box-sizing: border-box;}
+.bannerStyle_1.rotate-3d .img-part{
+	position: absolute;
+	top: 0;
+	width: calc(20% + 1px);
+	height: 100%;
+	background-color: #fff;
+	transition: all .7s;
+	transform-style: preserve-3d;
+}
+.bannerStyle_1.rotate-3d .img-part .img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-size: 500% auto;
+}
+.bannerStyle_1.rotate-3d .img-part .img:nth-child(1){
+	transform: rotateX(0deg) translateZ(150px);
+}
+.bannerStyle_1.rotate-3d .img-part .img:nth-child(2){
+	transform: rotateX(-90deg) translateZ(150px);
+}
+.bannerStyle_1.rotate-3d .img-part .img:nth-child(3){
+	transform: rotateX(-180deg) translateZ(150px);
+}
+.bannerStyle_1.rotate-3d .img-part .img:nth-child(4){
+	transform: rotateX(-270deg) translateZ(150px);
+}
+.img_url{ position:absolute; width:100%; height:100%; left:0; top:0; display:block; z-index: 100;}</style><script></script><div class="bannerStyle_1 normal" viewId="banner_style_01_1588819507114" autoPc="0" autoPad="0" autoMobile="0">
+	<div class="main_visual">
+			<div class="flicking_con">
+					<a href="#" class=""></a>
+					<a href="#" class=""></a>
+			</div>
+		<div class="ground_glass"></div>
+		<div class="main_image">
+			<div class="img-list">
+					<div class="img-item" style="">
+						<img class="hide_img noimgLoadLate" src="https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/1587200479250867ae2498992e0c878c338f1adf7f9b1.jpg!1920" alt="H2健康促进计划"/>
+                            <a class="picSet" href="/welcome/index.php?&pageid=131651&" target=""><span class="img_0"></span></a>
+                    </div>
+					<div class="img-item" style="left:100%;">
+						<img class="hide_img noimgLoadLate" src="https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/1587200479250059dc7ac262d249085d0ba15bda485b7.jpg!1920" alt="1587200479250059dc7ac262d249085d0ba15bda485b7"/>
+                            <a class="picSet"><span class="img_1"></span></a>
+                    </div>
+			</div>
+			<a href="javascript:;" class="btn_prev arrowSet"><i class='fa fa-angle-left awesome-font'></i><span class="text-font"><</span></a>
+			<a href="javascript:;" class="btn_next arrowSet"><i class='fa fa-angle-right awesome-font'></i><span class="text-font">></span></a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	arrowShow();
+	$(window).resize(function(){
+		arrowShow();
+	});
+	// 箭头显示
+	function arrowShow(){
+		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767) || navigator.userAgent.indexOf('Mac OS X') != -1){
+			$("#banner_style_01_1588819507114 .bannerStyle_1 .awesome-font").show().siblings().hide();
+		}else{
+			$("#banner_style_01_1588819507114 .bannerStyle_1 .awesome-font").hide().siblings().show();
+		}
+	}
+});
+</script>
+<style>
+		                </style>
+<style type="text/css">
+            #banner_style_01_1588819507114 .bannerStyle_1 .main_image .img-item .img_0{background: url('https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/1587200479250867ae2498992e0c878c338f1adf7f9b1.jpg!1920') center top no-repeat;}
+                #banner_style_01_1588819507114 .bannerStyle_1 .main_image .img-item .img_1{background: url('https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/1587200479250059dc7ac262d249085d0ba15bda485b7.jpg!1920') center top no-repeat;}
+                #banner_style_01_1588819507114 .bannerStyle_1 .ground_glass{}
+    </style>
+<script type="application/javascript">
+    /*
+     * Banner 轮播图类
+     */
+	var intervaltimer;
+    function Banner(config) {
+        this._default = {
+            'list':[],
+            'length':0,
+            'current':0,
+            'timer':undefined,      // 计时器
+            'view':undefined,           // 视图
+            'flick':undefined,      // 圆点选择器
+            'duration':3,               // 切换时间间隔
+            'animation':0.5         // 动画时间
+        };
+        config = $.extend(true, this._default, config);
+        this.config = config;
+        this.init(config);
+    }
+    Banner.prototype.init = function(config) {
+        this.animateStyle = 'normal';       // 动画效果 ( 根据动画效果, 不同的方法有不同的实现 )
+        this.direction = 'right';   // 当前滚动方向
+        this.view = this.config.view;
+        this.config.length = this.config.list.length;
+        this.config.flick = this.view ? this.view.find(".bannerStyle_1 .flicking_con > a") : undefined;
+    };
+    // 计算下一个要显示的图片的索引
+    // by: 如果没有传入参数, 则使用配置中的数据this.config.current, 否则使用传入的参数
+    Banner.prototype.nextIndex = function(by) {
+        by === undefined && (by = this.config.current);
+        var next = this.direction == 'right' ? by + 1 : by - 1;
+        next >= this.config.length && (next = 0);
+        next < 0 && (next = this.config.length - 1);
+        return next;
+    };
+    //图片链接
+    $url_html = new Array();
+    $i = 0;
+    $url_len = 2;
+            $url_html[0] = "/welcome/index.php?&pageid=131651&pageid=131651";
+            $url_html[1] = "";
+    $('#banner_style_01_1588819507114 a.img_url').attr('href',$url_html[$i]);
+    // 跳到指定图片
+    Banner.prototype.animateIndex = function(index) {
+        this.endAnimate();
+        if(index >= 0 && index < this.config.length && this.config.current != index) {
+            if(this.config.current < index) {
+                this.direction = 'right';
+                this.config.current = index - 1;
+            } else {
+                this.direction = 'left';
+                this.config.current = index + 1;
+            }
+            this.showIndex(this.config.current);
+            this.startAnimate();
+        }
+    };
+    // 向右动画
+    Banner.prototype.startAnimateRight = function() {
+        this.direction = 'right';
+        this.startAnimate();
+    };
+    // 向左动画
+    Banner.prototype.startAnimateLeft = function() {
+        this.direction = 'left';
+        this.startAnimate();
+    };
+    // 结束动画
+    Banner.prototype.endAnimate = function() {
+			clearTimeout(this.config.timer);
+    };
+	// 结束动画
+	Banner.prototype.hoverEndAnimate = function() {
+			var that = this;
+			intervaltimer = setInterval(function(){
+				clearTimeout(that.config.timer);
+			},100);
+	};
+    Banner.prototype.startAnimate = function() {
+        switch(this.animateStyle) {
+            case 'normal':
+                // 默认效果
+                this.endAnimate();
+                if(this.config.length > 1) {
+                    var prev = this.config.current, next = this.nextIndex(),
+                            end = this.direction == 'right' ? {prev:"-100%", current:"100%"} : {prev:"100%", current:"-100%"};  // 前一个图片和当前图片的最后停留位置
+                    this.config.flick.eq(next).addClass("on").siblings().removeClass("on");
+                    // 执行动画
+                    var banner = this;
+                    this.imgs.eq(prev).stop().animate({"left":end.prev}, this.config.animation, function(){
+                        banner.config.timer = setTimeout(function(){
+                            banner.startAnimate();
+                        },banner.config.duration);
+                    });
+                    this.imgs.eq(next).css({"left":end.current}).stop().animate({"left":"0%"}, this.config.animation);
+                    this.config.current = next;
+                }
+                break;
+            case 'rotate-3d':
+                // 3D旋转效果
+                this.endAnimate();
+                this.updateBgImg();
+                if(this.config.length > 1) {
+                    var prev = this.config.current, next = this.nextIndex();
+                    this.config.flick.eq(next).addClass("on").siblings().removeClass("on");
+                    this.config.current = next;
+                    this.parts.css("transform", "rotateX(" + ((this.direction == 'right' ? ++this.rotate : --this.rotate) * 90) + "deg)");
+                    var banner = this;
+                    this.config.timer = setTimeout(function(){
+                        banner.startAnimate();
+                    },banner.config.duration);
+                }
+                $('#banner_style_01_1588819507114 a.img_url').attr('href',$url_html[this.config.current]);
+                break;
+        }
+    };
+    // 指定显示的图片
+    Banner.prototype.showIndex = function(index) {
+        switch(this.animateStyle) {
+            case 'normal':
+                // 默认效果
+                this.imgs.eq(index).css("left","0%").siblings(".img-item").css("left","100%");
+                this.config.flick.eq(index).addClass("on").siblings().removeClass("on");
+                break;
+            case 'rotate-3d':
+                // 3D旋转效果
+                this.updateFaceBottonTopImg(index);
+                this.config.flick.eq(index).addClass("on").siblings().removeClass("on");
+                break;
+        }
+    };
+    /*
+     * ********************************************
+     * 3D旋转效果 特有函数 begin
+     */
+    // 每次旋转前都需要更新背部的图片
+    Banner.prototype.updateBgImg = function() {
+        // 计算背部要显示的图片
+        var bg_image_index = this.nextIndex(this.nextIndex());
+        // index: 计算背景图片当前显示在哪个img中( 总共有4个图片, 分别位于正面/底部/背部/顶部, 索引分别为0, 1, 2, 3 )
+        var c, index = (c = (this.rotate + 2) % 4) >= 0 ? c : c + 4;
+        var banner = this;
+        // console.log('第',index,'个面-使用更新为第',bg_image_index,'张图');
+        this.parts && this.parts.each(function () {
+            $(this).find('.img:eq('+index+')').css({'background-image': 'url("'+banner.config.list[bg_image_index]+'")'});
+        });
+    };
+    // 更新正面/顶部/底部的图片
+    // index: 要显示哪张图片
+    // 备注: 因为总共有四个面的图片需要更新, 初始化时, 正面/顶部/底部的图片只需更新一次即可 (背部的图片在每次旋转前都需要更新)
+    Banner.prototype.updateFaceBottonTopImg = function(index) {
+        // face, bottom, top: 计算正面/顶部/底部图片当前显示在哪个img中( 总共有4个图片, 分别位于正面/底部/背部/顶部, 索引分别为0, 1, 2, 3 )
+        var c, face = (c = this.rotate % 4) >= 0 ? c : c + 4, bottom, top;
+        bottom = face + 1; bottom >= this.config.length && (bottom = 0);
+        top = face - 1; top < 0 && (top = this.config.length - 1);
+        var banner = this;
+        this.parts && this.parts.each(function () {
+            // console.log('第',face,'个面-使用更新为第',index,'张图');
+            $(this).find('.img:eq('+face+')').css({'background-image': 'url("'+banner.config.list[index]+'")'});
+            // console.log('第',bottom,'个面-使用更新为第',index < banner.config.length - 1 ? index + 1 : 0,'张图');
+            $(this).find('.img:eq('+bottom+')').css({'background-image': 'url("'+banner.config.list[index < banner.config.length - 1 ? index + 1 : 0]+'")'});
+            // console.log('第',top,'个面-使用更新为第',index > 0 ? index - 1 : banner.config.length - 1,'张图');
+            $(this).find('.img:eq('+top+')').css({'background-image': 'url("'+banner.config.list[index > 0 ? index - 1 : banner.config.length - 1]+'")'});
+        });
+    };
+    // 初始化旋转部分: 设置3d旋转的四个面的图片, index表示默认显示哪张图片
+    Banner.prototype.initImgPart = function(index) {
+        var banner = this;
+        this.parts && this.parts.each(function () {
+            $(this).find('.img').each(function (i) {
+                var j = 0;
+                switch (i) {
+                    case 0: j = index; break;   // 正面
+                    case 1: j = index + 1; break;   // 底部
+                    case 2: break;  // 背部
+                    case 3: j = index - 1; break;   // 顶部
+                }
+                j >= banner.config.length && (j = 0);
+                j < 0 && (j = banner.config.length - 1);
+                $(this).css({'background-image': 'url("'+banner.config.list[j]+'")', 'background-repeat':'no-repeat', 'background-color':'#fff'});
+            });
+        });
+    };
+    // 更新旋转部分: 之所以使用定时器, 是因为无法实时获取模块宽度
+    Banner.prototype.updateImgPart = function() {
+        this.parts && this.parts.each(function(index) {
+            $(this).css({
+                "left":$(this).width() * index + "px"
+            });
+            $(this).find(".img").css({
+                "background-position": -$(this).width() * index + "px"
+            });
+        });
+        var banner = this;
+        setTimeout(function () {
+            banner.updateImgPart();
+        }, 800);
+    };
+    /*
+     * 3D旋转效果 特有函数 end
+     * ********************************************
+     */
+    // 图片数据
+    var list_banner_style_01_1588819507114 = [];
+    list_banner_style_01_1588819507114.push('https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/1587200479250867ae2498992e0c878c338f1adf7f9b1.jpg!1920');list_banner_style_01_1588819507114.push('https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/1587200479250059dc7ac262d249085d0ba15bda485b7.jpg!1920');
+    var banner_banner_style_01_1588819507114;        // 轮播图对象
+    $(function(){
+        // 创建轮播图
+        $arrHref = new Array();
+        banner_banner_style_01_1588819507114 = new Banner({
+            'list':list_banner_style_01_1588819507114,
+            'view':$('#banner_style_01_1588819507114'),
+            'duration':parseFloat('3') * 1000,
+            'animation':parseFloat('0.5') * 1000
+        });
+                banner_banner_style_01_1588819507114.animateStyle = 'normal';
+        banner_banner_style_01_1588819507114.imgs = banner_banner_style_01_1588819507114.view.find(".bannerStyle_1 .main_image .img-list").children(".img-item");
+        banner_banner_style_01_1588819507114.view.find('a').each(function (i) {
+            $(this).click(function () {
+                if(!$(this).attr('href')) {
+                    return false;
+                }
+            });
+        });
+        banner_banner_style_01_1588819507114.view.find('a.picSet').each(function(i){
+             $arrHref[i] = $(this).attr('href');
+        });
+        // 显示指定索引的图片
+        banner_banner_style_01_1588819507114.showIndex(banner_banner_style_01_1588819507114.config.current);
+        // 监听 点击圆点
+        banner_banner_style_01_1588819507114.config.flick.click(function(){
+            banner_banner_style_01_1588819507114.animateIndex($(this).index());
+            $('#banner_style_01_1588819507114 a.img_url').attr('href',$url_html[$(this).index()]);
+            $i = $(this).index();
+            return false;
+        });
+        // 监听 鼠标悬浮时
+        banner_banner_style_01_1588819507114.view.hover(
+                function(){
+                    banner_banner_style_01_1588819507114.hoverEndAnimate();
+                    banner_banner_style_01_1588819507114.view.find(".bannerStyle_1 .btn_prev, .bannerStyle_1 .btn_next").fadeIn();
+                },
+                function(){
+						clearInterval(intervaltimer);
+                    banner_banner_style_01_1588819507114.config.timer = setTimeout(function(){
+                        banner_banner_style_01_1588819507114.startAnimateRight();
+                    },banner_banner_style_01_1588819507114.config.duration);
+                    banner_banner_style_01_1588819507114.view.find(".bannerStyle_1 .btn_prev, .bannerStyle_1 .btn_next").fadeOut()
+                }
+        );
+        // 监听 点击左右按钮
+        banner_banner_style_01_1588819507114.view.find(".btn_prev").click(function() {
+            banner_banner_style_01_1588819507114.startAnimateLeft();
+        });
+        banner_banner_style_01_1588819507114.view.find(".btn_next").click(function() {
+            banner_banner_style_01_1588819507114.startAnimateRight();
+        });
+        // 监听 触摸事件
+        var touchVal = null;
+        document.addEventListener("touchstart", function(e){
+            if($(e.target).is(banner_banner_style_01_1588819507114.view) || $(e.target).closest("#"+banner_banner_style_01_1588819507114.view.attr("id")).length > 0) {
+                touchVal = {};
+                touchVal.downX = e.touches[0].clientX;  // 记录触摸起始位置
+            }
+        }, false);
+        document.addEventListener("touchmove", function(e){
+            if(touchVal && touchVal.downX) {
+                touchVal.moveX = e.touches[0].clientX - touchVal.downX;     // 计算触摸中的偏移位置
+            }
+        }, false);
+        document.addEventListener("touchend", function(e){
+            if(touchVal && touchVal.moveX){
+                if(touchVal.moveX > 30){
+                    banner_banner_style_01_1588819507114.startAnimateLeft();             // 触摸生效
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnvalue = false;
+                    }
+                }else if(touchVal.moveX < -30){
+                    banner_banner_style_01_1588819507114.startAnimateRight();                // 触摸生效
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnvalue = false;
+                    }
+                }
+            }
+            touchVal = null;
+        }, false);
+        // 运行
+        banner_banner_style_01_1588819507114.config.timer = setTimeout(function(){
+            banner_banner_style_01_1588819507114.startAnimateRight();
+        }, banner_banner_style_01_1588819507114.config.duration);
+    });
+</script>
+<style>
+    #banner_style_01_1588819507114 .bannerStyle_1 .main_image .img-item span{background-size:100% 100%!important;}
+    @media screen and (min-width:641px) and (max-width:1200px) {
+    #banner_style_01_1588819507114 .bannerStyle_1 .main_image .img-item span{background-size:auto 100%!important;}
+    }
+    @media screen and (max-width:640px) {
+    #banner_style_01_1588819507114 .bannerStyle_1 .main_image .img-item span{}    }
+    #banner_style_01_1588819507114 .hide_img{ display: none;  width: 100%; vertical-align: top;}
+    #banner_style_01_1588819507114 .bannerStyle_1 .main_image .img-item a{ position: relative; z-index: 10; }
+</style>
+                </div>
+            </div>
+                            </div>
+            </div>
+                        <div id="layout_1633759641669" class="layout   scrollView"  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div class="view_contents">
+                                <div id="banner_style_08_1650355300621" class="view style_08 banner  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="banner"
+                     class="view_contents" >
+                    <style>/*banner样式*/
+.bannerStyle_8{width:100%; height:100%; position:relative;}
+.bannerStyle_8 .main_visual{height:100%; overflow:hidden; position:relative; }
+.bannerStyle_8 .main_image{height:100%; overflow:hidden; position:relative; }
+.bannerStyle_8 .main_image ul{width:100%; height:100%; overflow:hidden; position:absolute; top:0; left:0}
+.bannerStyle_8 .main_image li{position: relative; float:left; width:100%; height:100%; }
+.bannerStyle_8 .main_image li a{position: relative; display:block; width:100%; height:100%; overflow: hidden;box-sizing: border-box;}
+.bannerStyle_8 .main_image li a img{position: absolute; left: 50%; top: 0; width: auto; height: 100%; -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -o-transform: translateX(-50%); transform: translateX(-50%);}
+.bannerStyle_8 .main_image li div.tipsText{background:rgba(0,0,0,0.5);color:white;box-sizing:border-box;position: absolute; left:50%; bottom: 5%; width: 90%; height: auto; max-width: 1200px; padding:20px;font-size:16px;-webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -o-transform: translateX(-50%); transform: translateX(-50%);}
+.bannerStyle_8 .main_image li div.tipsText span{width: 100%; height: auto;}
+.bannerStyle_8 div.flicking_con{position:absolute; bottom:0; left:50%; z-index:999; width:100%; max-width: 1200px; text-align:center; -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -o-transform: translateX(-50%); transform: translateX(-50%);}
+.bannerStyle_8 div.flicking_con a{float: left; width:50%; height:5px; padding:0; background:rgba(255,255,255,.6); box-sizing:border-box; -webkit-transition: all ease .3s; -moz-transition: all ease .3s; -o-transition: all ease .3s; transition: all ease .3s;}
+.bannerStyle_8 div.flicking_con a.on{background:#348eaa;}
+.bannerStyle_8 #btn_prev,.bannerStyle_8 #btn_next{z-index:11111; position:absolute;top:50%; border-radius: 100%; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); box-shadow:0 0 10px rgba(0,0,0,.2); display:none;text-align: center;line-height: 1;font-size: 46px;color: #fff;padding: 2px 14px;font-family: simsun,'宋体';margin: 0 20px;border: 2px solid #fff;box-sizing: border-box;}
+.bannerStyle_8 #btn_prev{left:0;}
+.bannerStyle_8 #btn_next{right:0;}
+.bannerStyle_8 .arrowSet .awesome-font{display: none;}
+.bannerStyle_8 .arrowSet .awesome-font:before{padding: 0 3px;box-sizing: border-box;}
+@media screen and (max-width:767px){
+	.bannerStyle_ div.flicking_con a{}
+	.bannerStyle_8 #btn_prev,.bannerStyle_8 #btn_next{display: none !important;}
+	.bannerStyle_8 .main_image li div.tipsText{bottom:0;padding: 10px; font-size: 14px; width: 100%; min-height: auto; top:auto; bottom: 0; }
+	.bannerStyle_8 .main_image li div.tipsText span{}
+}</style><script></script><div id="banner" class="bannerStyle_8">
+	<div class="main_visual">
+		<div class="main_image">
+			<ul>
+				<li>
+                    <a class="picSet" style="cursor:default;">
+                        <img src="https://wds-service-1258344699.file.myqcloud.com/20/11596/png/1650355067064cb886adebe465334.png?version=1650355099" alt="我们是谁">
+                            <div class="tipsText"><span>我们是谁</span></div>
+                    </a>
+                </li>
+				<li>
+                    <a class="picSet" style="cursor:default;">
+                        <img src="https://wds-service-1258344699.file.myqcloud.com/20/11596/png/1650872592194cd15fba49b779b42.png?version=1650872595" alt="创造【有保无险】新生态！">
+                            <div class="tipsText"><span>创造【有保无险】新生态！</span></div>
+                    </a>
+                </li>
+				<li>
+                    <a class="picSet" style="cursor:default;">
+                        <img src="https://cdn.img.sooce.cn/nicetuku/202004/30/png/15882455567705169662faa6600585b8a9a1091fa3ca0.png" alt="打造全生命周期的动态健康+风险管理服务模式">
+                            <div class="tipsText"><span>打造全生命周期的动态健康+风险管理服务模式</span></div>
+                    </a>
+                </li>
+			</ul>
+			<a href="javascript:;" id="btn_prev" class="arrowSet"><i class='fa fa-angle-left awesome-font'></i><span class="text-font"><</span></a>
+			<a href="javascript:;" id="btn_next" class="arrowSet"><i class='fa fa-angle-right awesome-font'></i><span class="text-font">></span></a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	arrowShow();
+	$(window).resize(function(){
+		arrowShow();
+	});
+	// 箭头显示
+	function arrowShow(){
+		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767) || navigator.userAgent.indexOf('Mac OS X') != -1){
+			$("#banner_style_08_1650355300621 .bannerStyle_8 .awesome-font").show().siblings().hide();
+		}else{
+			$("#banner_style_08_1650355300621 .bannerStyle_8 .awesome-font").hide().siblings().show();
+		}
+	}
+	var datestay=parseFloat('3')*1000;
+	var timeAnimi=parseFloat('1')*1000;
+	var obj=$("#banner_style_08_1650355300621");
+	if(obj&&obj.length>0){
+		var timeoutObj=null;
+		var nowItem=0;
+		var father=obj.find(".bannerStyle_8 .main_image ul");
+		var Ulen = father.children("li").length;
+		father.children("li").eq(nowItem).css({"display":"block","float":"none","left":"0%","top":"0px","position":"absolute"}).siblings("li").css({"display":"none","float":"none","left":"0%","top":"0px","position":"absolute"});
+		obj.hover(function(){
+			if(timeoutObj){
+				window.clearTimeout(timeoutObj);
+			}
+			obj.find(".bannerStyle_8 #btn_prev, .bannerStyle_8 #btn_next").fadeIn()
+		},function(){
+			timeoutObj=setTimeout(function(){
+				animiIn(animiIn);
+			},datestay);
+			obj.find(".bannerStyle_8 #btn_prev, .bannerStyle_8 #btn_next").fadeOut()
+		});
+		$("#banner_style_08_1650355300621 .bannerStyle_8 #btn_prev").click(function(){
+			animiOut();
+		});
+		$("#banner_style_08_1650355300621 .bannerStyle_8 #btn_next").click(function(){
+			animiIn();
+		});
+		var touchVal=null;
+		document.addEventListener("touchstart", function(e){
+			if($(e.target).is(obj)||$(e.target).parents("#"+obj.attr("id")).length>0){
+				touchVal={};
+				touchVal.downX=e.touches[0].clientX;
+				if (e.preventDefault) {
+			        e.preventDefault();
+			    }
+			    else {
+			        e.returnvalue = false;
+			    }
+			}
+		}, false);
+		document.addEventListener("touchmove", function(e){
+			if(touchVal&&touchVal.downX){
+				touchVal.moveX=e.touches[0].clientX-touchVal.downX;
+				if (e.preventDefault) {
+			        e.preventDefault();
+			    }
+			    else {
+			        e.returnvalue = false;
+			    }
+			}
+		}, false);
+		document.addEventListener("touchend", function(e){
+			if(touchVal&&touchVal.moveX){
+				if(touchVal.moveX>30){
+					animiOut(animiIn);
+				}else if(touchVal.moveX<-30){
+					animiIn(animiIn);
+				}
+				if (e.preventDefault) {
+			        e.preventDefault();
+			    }
+			    else {
+			        e.returnvalue = false;
+			    }
+			}
+			touchVal=null;
+		}, false);
+		function animiIn(callback){
+			if(timeoutObj){
+				window.clearTimeout(timeoutObj);
+			}
+			if(Ulen>1){
+				var now=nowItem;
+				var next=now+1;
+				if(next>=Ulen){
+					next=0;
+				}
+				father.children("li").eq(now).stop().fadeOut(timeAnimi,function(){
+					if(typeof(callback)=="function"){
+						timeoutObj=setTimeout(function(){
+							callback(callback);
+						},datestay);
+					}
+				});
+				father.children("li").eq(next).stop(false,true).fadeIn(timeAnimi);
+				nowItem=next;
+			}
+		}
+		function animiOut(){
+			if(timeoutObj){
+				window.clearTimeout(timeoutObj);
+			}
+			if(Ulen>1){
+				var now=nowItem;
+				var next=now-1;
+				if(next<0){
+					next=Ulen-1;
+				}
+				father.children("li").eq(now).stop().fadeOut(timeAnimi,function(){
+					if(typeof(callback)=="function"){
+						timeoutObj=setTimeout(function(){
+							callback(callback);
+						},datestay);
+					}
+				});
+				father.children("li").eq(next).stop(false,true).fadeIn(timeAnimi);
+				nowItem=next;
+			}
+		}
+		timeoutObj=setTimeout(function(){
+			animiIn(animiIn);
+		},datestay);
+	}
+});
+</script>
+<style>
+		                </style>
+                </div>
+            </div>
+                        <div id="text_style_01_1633759715284" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>H2是一家为用户提供全生命周期“保险+健康“动态管理服务的专业机构，致力于为企业及家庭客户提供全面风险梳理、专业资产配置、优质健康管理服务。<div>我们的团队拥有十余年保险、医疗、健康、法律、税务行业资深服务经验及管理经验，为客户提供全方位服务。
+<div>我们首创的【Health &amp; Happiness】理念，旨在为客户带来【有保无险】的数字化健康生态服务体验！
+                </div></div>
+                </div>
+            </div>
+                        <div id="text_style_01_1650622265259" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>关于我们
+                </div>
+            </div>
+                            </div>
+            </div>
+                        <div id="layout_1650622154179" class="layout   scrollView"  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div class="view_contents">
+                                <div id="titleText_style_04_1650356907334" class="view style_04 titleText  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="titleText"
+                     class="view_contents" >
+                    <style>.titleStyle_4 .viewtop{position: relative;display: flex;align-items: center;justify-content: center;}
+.titleStyle_4 .viewtop .line{flex: 1;position: relative;box-sizing: border-box;height: 2px;background: #005CB2;}
+.titleStyle_4 .viewtop .circle{position: relative;width: 8px;height: 8px;border-radius: 100%;background: #005CB2;}
+.titleStyle_4 .viewtop .titletop{position: relative;text-align: center;white-space: nowrap;overflow: hidden;width: auto;font-size: 18px;padding: 0 24px;}
+.titleStyle_4 .viewtop .view_cont{    position: relative;display: inline-block;text-align: center;}
+.titleStyle_4 .viewtop .titlebottom{position: relative; display: inline-block;padding: 0 10px;font-size: 18px;}
+@media screen and (max-width: 768px){
+	.titleStyle_4 .viewtop .circle{width: 6px;height: 6px;}
+	.titleStyle_4 .viewtop .titletop{font-size: 16px;}
+	.titleStyle_4 .viewtop .titlebottom{font-size: 16px;}
+}</style>
+<script class="editor-view-extend">
+    </script><div class="titleStyle_4 modSet">
+	<div class="viewtop">
+		<div class="line lineleft lineshapeSet"></div>
+		<div class="circle circleleft circledotSet"></div>
+		<div class="view_cont">
+				<div class="titletop bigtitsSet">企业福利体系现状</div>
+		</div>
+		<div class="circle circleright circledotSet"></div>
+		<div class="line lineright lineshapeSet"></div>
+	</div>
+</div>
+<style>
+	    </style>
+                </div>
+            </div>
+                        <div id="image_style_20_1650356222628" class="view style_20 image  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <style>.imgStyle_20{ width:100%;height: 100%; }
+.imgStyle_20 *{ font-size:'微软雅黑'; }
+.imgStyle_20 .imgTextUl{width: 100%;height: 100%;overflow: hidden;}
+.imgStyle_20 .imgTextLi{position: relative; height: 100%; width:20%; overflow: hidden;float: left;box-sizing: border-box;transition: width .4s;-moz-transition: width .4s;	/* Firefox 4 */-webkit-transition: width .4s;	/* Safari 閿熸枻鎷凤拷锟絟rome */-o-transition: width .4s;}
+.imgStyle_20 .imgTextLi:nth-child(1){width:40%;}
+.imgStyle_20 .imgTextLi:last-child{overflow: visible;}
+.imgStyle_20 .imgTBox{width: 100%;height: 100%;  text-align: left; float:left; display:inline-block;}
+.imgStyle_20 .imgTBox img{ display: inline-block; width:auto;height:100%; box-sizing: border-box;}
+.imgStyle_20 .imgTBox .bbx-new-font{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+.imgStyle_20 .imgTBox .noMobile{ display:block; width:100%;height:100%;}
+.imgStyle_20 .imgTBox .isMobile{ display:none;}
+.imgStyle_20 .textBox{position: absolute;bottom: 0;left: 0;background: rgba(255,255,255,0.5);width: 100%;padding: 10px;box-sizing: border-box;}
+.imgStyle_20 .imgBt{  font-size:16px; line-height:1; display: inline-block;border-bottom: 2px solid transparent;}
+.imgStyle_20 .imgDetail{ font-size:12px; color:#666;display: none!important;white-space: pre-wrap;}
+.imgStyle_20 .showDetail{display: block!important;}
+.imgStyle_20 .showBtBorder{border-bottom: 2px solid #ffffff;padding-bottom: 10px;margin-bottom: 4px;}
+@media screen and (max-width: 768px){
+	.imgStyle_20 .imgTextLi{ width:100%;}
+	.imgStyle_20 .imgBt{ font-size:14px;}
+	.imgStyle_20 .imgTBox .noMobile{ display:none;}
+	.imgStyle_20 .imgTBox .isMobile{ display:inline-block;}
+	.imgStyle_20 .imgTBox .isMobile.bbx-new-font{
+		display: flex;
+	}
+}</style><!-- modSet titleSet imgSet detailSet-->
+ <div class="imgStyle_20">
+ 	<ul class="imgTextUl">
+			<li class="imgTextLi modSet">
+				<div class="imgTBox">
+                    <a class="noMobile" style="cursor:default;">
+						<img class="imgSet" src="https://cdn.img.sooce.cn/nicetuku/202004/17/jpg/1587121413329387bce9ea33707172e0699cbfcd5580c.jpg!1920" alt="预算难"/>
+					</a>
+					<img class="imgSet isMobile" src="https://cdn.img.sooce.cn/nicetuku/202004/17/jpg/1587121413329387bce9ea33707172e0699cbfcd5580c.jpg!1920" alt="预算难"/>
+				</div>
+				<div class="textBox twoBgSet">
+                    <a style="cursor:default;">
+						<div class="cont">
+							<div class="imgBt titleSet">预算难</div>
+							<div class="imgDetail detailSet">医疗费通胀逐年攀升 保险赔付率持续走高 每年面临涨费压力</div>
+						</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="imgTBox">
+                    <a class="noMobile" style="cursor:default;">
+						<img class="imgSet" src="https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/15871768944614707a1aa2ac3477a2019fe085834fff9.jpg!1920" alt="覆盖难"/>
+					</a>
+					<img class="imgSet isMobile" src="https://cdn.img.sooce.cn/nicetuku/202004/18/jpg/15871768944614707a1aa2ac3477a2019fe085834fff9.jpg!1920" alt="覆盖难"/>
+				</div>
+				<div class="textBox twoBgSet">
+                    <a style="cursor:default;">
+						<div class="cont">
+							<div class="imgBt titleSet">覆盖难</div>
+							<div class="imgDetail detailSet">企业团险服务单一 服务覆盖率小 员工感受度低</div>
+						</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="imgTBox">
+                    <a class="noMobile" style="cursor:default;">
+						<img class="imgSet" src="https://cdn.img.sooce.cn/nicetuku/202005/08/jpg/158892663826371cd707d155abceae91a83952e0ac12b.jpg!1920" alt="生产力难"/>
+					</a>
+					<img class="imgSet isMobile" src="https://cdn.img.sooce.cn/nicetuku/202005/08/jpg/158892663826371cd707d155abceae91a83952e0ac12b.jpg!1920" alt="生产力难"/>
+				</div>
+				<div class="textBox twoBgSet">
+                    <a style="cursor:default;">
+						<div class="cont">
+							<div class="imgBt titleSet">生产力难</div>
+							<div class="imgDetail detailSet">员工健康问题频发 大病发生率增长 低效生产力蔓延</div>
+						</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="imgTBox">
+                    <a class="noMobile" style="cursor:default;">
+						<img class="imgSet" src="https://cdn.img.sooce.cn/nicetuku/202004/16/jpg/1587025163053b7f0cfc5f7626a7f5063d32ced8a6124.jpg!1920" alt="投保难"/>
+					</a>
+					<img class="imgSet isMobile" src="https://cdn.img.sooce.cn/nicetuku/202004/16/jpg/1587025163053b7f0cfc5f7626a7f5063d32ced8a6124.jpg!1920" alt="投保难"/>
+				</div>
+				<div class="textBox twoBgSet">
+                    <a style="cursor:default;">
+						<div class="cont">
+							<div class="imgBt titleSet">投保难</div>
+							<div class="imgDetail detailSet">不了解保险市场 客户信息不对称 销售的利益导向</div>
+						</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="imgTBox">
+                    <a class="noMobile" style="cursor:default;">
+						<img class="imgSet" src="https://cdn.img.sooce.cn/nicetuku/202005/19/jpg/1589877911439bc90cd1603979bbc522da46c7454fa84.jpg!1920" alt="就医难"/>
+					</a>
+					<img class="imgSet isMobile" src="https://cdn.img.sooce.cn/nicetuku/202005/19/jpg/1589877911439bc90cd1603979bbc522da46c7454fa84.jpg!1920" alt="就医难"/>
+				</div>
+				<div class="textBox twoBgSet">
+                    <a style="cursor:default;">
+						<div class="cont">
+							<div class="imgBt titleSet">就医难</div>
+							<div class="imgDetail detailSet">不了解医疗情况 就医信息不对称 预防保健需求</div>
+						</div>
+					</a>
+				</div>
+			</li>
+ 		<li></li>
+ 		<li></li>
+ 		<li></li>
+ 		<li></li>
+ 		<li></li>
+ 		<li></li>
+ 		<li></li>
+ 	</ul>
+ </div><style type="text/css">
+			#image_style_20_1650356222628 .imgDetail{ display:block; }
+				#image_style_20_1650356222628 .imgTextLi{transition-duration:0.4s;-moz-transition-duration:0.4s;-webkit-transition-duration:0.4s;-o-transition-duration:0.4s;}
+			#image_style_20_1650356222628 .imgTextLi{width:calc((100% - 360px)/(5 - 1));}
+			#image_style_20_1650356222628 .imgTextLi:nth-child(1){width:360px;}
+			#image_style_20_1650356222628 .imgTextLi.hideImg{width:calc((100% - 360px)/(5 - 1));}
+			#image_style_20_1650356222628 .imgTextLi.showImg,#image_style_20_1650356222628 .imgTextLi.showImg .textBox{width:360px;}
+			#image_style_20_1650356222628 .imgTextLi.hideImg .textBox{width:100%;}
+			@media screen and (min-width: 767px) and (max-width: 1024px){
+				#image_style_20_1650356222628 .imgTextLi{width:calc((100% - 285px)/(5 - 1));}
+				#image_style_20_1650356222628 .imgTextLi:nth-child(1){width:285px;}
+				#image_style_20_1650356222628 .imgTextLi.hideImg{width:calc((100% - 285px)/(5 - 1));}
+				#image_style_20_1650356222628 .imgTextLi.showImg,#image_style_20_1650356222628 .imgTextLi.showImg .textBox{width:285px;}
+				#image_style_20_1650356222628 .imgTextLi.hideImg .textBox{width:100%;}
+			}
+			@media screen and (max-width: 768px){
+				#image_style_20_1650356222628 .imgTextLi{width:calc((100% - 230px)/(5 - 1));}
+				#image_style_20_1650356222628 .imgTextLi:nth-child(1){width:230px;}
+				#image_style_20_1650356222628 .imgTextLi.hideImg{width:calc((100% - 230px)/(5 - 1));}
+				#image_style_20_1650356222628 .imgTextLi.showImg,#image_style_20_1650356222628 .imgTextLi.showImg .textBox{width:230px;}
+				#image_style_20_1650356222628 .imgTextLi.hideImg .textBox{width:100%;}
+			}
+</style>
+<script type="text/javascript">
+    if(typeof showcart !== 'function'){
+        function showcart(){
+            var langid = 0;
+            if (langid==0 && BodyIsFt) langid = 1;
+            if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
+                location.href = "https://admin.site.my-qcloud.com/exusers/u_cart.php?idweb=11596&act=show&lang="+langid+"&ismobile=1";
+            }else{
+                document.getElementById("boxName").innerHTML="";
+                if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
+                document.getElementById("showiframe").src="https://admin.site.my-qcloud.com/exusers/u_cart.php?idweb=11596&act=show&lang="+langid+"&v=9";
+                box.Show({width:'1000px', height:'600px'});
+            }
+        }
+    }
+        $('#image_style_20_1650356222628 .imgTextLi').eq(0).find('.imgBt').addClass('showBtBorder');
+    $('#image_style_20_1650356222628 .imgTextLi').eq(0).find('.imgDetail').addClass('showDetail');
+    if(isMobile()){
+        //移动端
+        $('#image_style_20_1650356222628 .imgTextLi').click(function(){
+            var obj = $(this);
+            let check = obj.is('.showImg');
+            if (!check) {
+                animation(obj);
+            } else {
+                let url = obj.find('.noMobile').attr('href');
+                if (url) {
+                    window.open(url);
+                }
+            }
+        })
+    }else {
+        //pc端
+        $('#image_style_20_1650356222628 .imgTextLi').hover(function(){
+            var obj = $(this);
+            animation(obj);
+        })
+        // 主要用于预览的时候
+        $('#image_style_20_1650356222628 .imgTextLi').click(function(){
+            var obj = $(this);
+            let check = obj.is('.showImg');
+            if (!($('body').width() > 0 && $('body').width() < 767)) {
+                check = false;
+            }
+            if (!check) {
+                return true;
+            }
+            let url = obj.find('.noMobile').attr('href');
+            let target = obj.find('.noMobile').attr('target');
+            if (url) {
+                if (target == '_blank') {
+                    window.open(url);
+                } else {
+                    window.location.href = url;
+                }
+            }
+        })
+    }
+    // 风格20的动画效果
+function animation(obj){
+	obj.addClass('showImg').removeClass('hideImg').siblings().addClass('hideImg').removeClass('showImg');
+	obj.find('.imgBt').addClass('showBtBorder');
+	obj.siblings().find('.imgBt').removeClass('showBtBorder');
+	obj.siblings().find('.imgDetail').removeClass('showDetail');
+	obj.find('.imgDetail').addClass('showDetail');
+}
+// 判断PC还是手机
+function isMobile() {
+	var userAgentInfo = navigator.userAgent;
+	var mobileAgents = [ "Android", "iPhone", "SymbianOS", "Windows Phone", "iPad","iPod"];
+	var mobile_flag = false;
+	//根据userAgent判断是否是手机
+	for (var v = 0; v < mobileAgents.length; v++) {
+		if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {
+			mobile_flag = true;
+			break;
+		}
+	}
+	var screen_width = window.screen.width;
+	var screen_height = window.screen.height;
+	//根据屏幕分辨率判断是否是手机
+	if(screen_width < 500 && screen_height < 800){
+		mobile_flag = true;
+	}
+	return mobile_flag;
+}
+</script>                </div>
+            </div>
+                            </div>
+            </div>
+                        <div id="layout_1650363038479" class="layout   scrollView"  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div class="view_contents">
+                                <div id="image_style_13_1_1650363038499" class="view style_13_1 image  wow opacityHide a2 fadeInDown lockHeightView "  data-wow-duration='1s' data-wow-delay='0.25s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <!-- pageSet pagecurSet -->
+<div class="imgStyle_13_1">
+	<input type='hidden' id='current_page_1' value="5"/>
+	<input type='hidden' id='show_per_page_1' value="5"/>
+	<ul class="imgTextUl" id="content_1">
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/165036331184344afe035438e628e.svg?version=1650363313" alt="专业客观立场为用户提供风险梳理、风险咨询，并出具专业风险报告">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">专业风险顾问</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/165036331184673b2a6828f211c1c.svg?version=1650363313" alt="解决医疗需求问题，稳固供需关系">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">医疗健康服务资源</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/16503633118491780f8ab5dc74a05.svg?version=1650363313" alt="激活企业端员工参与率，提升服务覆盖率、曝光度及企业满意度">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">健康讲座、健康日运营</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/1650363311850bc15db31c3ac68f7.svg?version=1650363314" alt="基于健康行为奖励的促进计划，养成健康生活习惯，改善健康，降低风险发生率">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">私人健康银行</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/1650363311851431a13ea23ef4fee.svg?version=1650363314" alt="面向企业端的专业报告提升企业健康认知度、满意度、参与度">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">年度服务数据报告</div>
+					</a>
+				</div>
+			</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+    <style>
+        /*pc*/
+        #image_style_13_1_1650363038499  ul li{width: 46.5%;}
+        #image_style_13_1_1650363038499  ul li.imgTextLi{margin-bottom:7%;}
+        #image_style_13_1_1650363038499  ul li.imgTextLi .left{width: 80px;}
+        #image_style_13_1_1650363038499  ul li.imgTextLi .cont{width: calc(100% - 80px);}
+        @media screen and (max-width: 1024px){/*ipad*/
+        #image_style_13_1_1650363038499  ul li{width: 48%;}
+        #image_style_13_1_1650363038499  ul li.imgTextLi{margin-bottom:4%;}
+        #image_style_13_1_1650363038499  ul li.imgTextLi .left{width: 60px;}
+        #image_style_13_1_1650363038499  ul li.imgTextLi .cont{width: calc(100% - 60px);}
+        }
+        @media screen and (max-width: 768px){/*mobi*/
+        #image_style_13_1_1650363038499  ul li{width: 100%;}
+        #image_style_13_1_1650363038499  ul li.imgTextLi{margin-bottom:2%;}
+                    #image_style_13_1_1650363038499 ul li.imgTextLi{text-align: center;}
+            #image_style_13_1_1650363038499 ul li.imgTextLi .left{width:44px;left: 50%;transform: translateX(-50%);-webkit-transform: translateX(-50%);-moz-transform: translateX(-50%);-ms-transform: translateX(-50%);-o-transform: translateX(-50%);}
+            #image_style_13_1_1650363038499 ul li.imgTextLi .cont{width:100%;}
+                }
+    </style>
+                </div>
+            </div>
+                        <div id="text_style_01_1650363038509" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><a href="/welcome/index.php?&pageid=131655&pageid=131655" target='_self' style='color:inherit' class='editor-view-extend link-type-1-1'>解决方案-H2健康促进计划</a>
+                </div>
+            </div>
+                        <div id="text_style_01_1650443159088" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>5大核心措施，聚焦企业预算与员工满意度的平衡，针对性解决痛点
+                </div>
+            </div>
+                        <div id="image_style_13_1_1650874520720" class="view style_13_1 image  wow opacityHide a2 fadeInDown lockHeightView "  data-wow-duration='1s' data-wow-delay='0.25s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <!-- pageSet pagecurSet -->
+<div class="imgStyle_13_1">
+	<input type='hidden' id='current_page_1' value="5"/>
+	<input type='hidden' id='show_per_page_1' value="5"/>
+	<ul class="imgTextUl" id="content_1">
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/165036331184344afe035438e628e.svg?version=1650363313" alt="专业客观立场为用户提供风险梳理、风险咨询，并出具专业风险报告">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:150%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">专业风险顾问</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/165036331184673b2a6828f211c1c.svg?version=1650363313" alt="解决医疗需求问题，稳固供需关系">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:150%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">医疗健康服务资源</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/16503633118491780f8ab5dc74a05.svg?version=1650363313" alt="激活企业端员工参与率，提升服务覆盖率、曝光度及企业满意度">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:150%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">健康讲座、健康日运营</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/1650363311850bc15db31c3ac68f7.svg?version=1650363314" alt="基于健康行为奖励的促进计划，养成健康生活习惯，改善健康，降低风险发生率">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:150%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">私人健康银行</div>
+					</a>
+				</div>
+			</li>
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/1650363311851431a13ea23ef4fee.svg?version=1650363314" alt="面向企业端的专业报告提升企业健康认知度、满意度、参与度">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:150%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">年度服务数据报告</div>
+					</a>
+				</div>
+			</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+    <style>
+        /*pc*/
+        #image_style_13_1_1650874520720  ul li{width: 46.5%;}
+        #image_style_13_1_1650874520720  ul li.imgTextLi{margin-bottom:7%;}
+        #image_style_13_1_1650874520720  ul li.imgTextLi .left{width: 80px;}
+        #image_style_13_1_1650874520720  ul li.imgTextLi .cont{width: calc(100% - 80px);}
+        @media screen and (max-width: 1024px){/*ipad*/
+        #image_style_13_1_1650874520720  ul li{width: 48%;}
+        #image_style_13_1_1650874520720  ul li.imgTextLi{margin-bottom:4%;}
+        #image_style_13_1_1650874520720  ul li.imgTextLi .left{width: 60px;}
+        #image_style_13_1_1650874520720  ul li.imgTextLi .cont{width: calc(100% - 60px);}
+        }
+        @media screen and (max-width: 768px){/*mobi*/
+        #image_style_13_1_1650874520720  ul li{width: 49%;}
+        #image_style_13_1_1650874520720  ul li.imgTextLi{margin-bottom:2%;}
+                    #image_style_13_1_1650874520720 ul li.imgTextLi{text-align: center;}
+            #image_style_13_1_1650874520720 ul li.imgTextLi .left{width:34px;left: 50%;transform: translateX(-50%);-webkit-transform: translateX(-50%);-moz-transform: translateX(-50%);-ms-transform: translateX(-50%);-o-transform: translateX(-50%);}
+            #image_style_13_1_1650874520720 ul li.imgTextLi .cont{width:100%;}
+                }
+    </style>
+                </div>
+            </div>
+                        <div id="text_style_01_1650874606878" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>5大核心措施，聚焦企业预算与员工满意度的平衡，<div>针对性解决痛点</div>
+                </div>
+            </div>
+                        <div id="text_style_01_1650874647731" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><a href="/welcome/index.php?&pageid=131655&pageid=131655" target='_self' style='color:inherit' class='editor-view-extend link-type-1-1'>解决方案-H2健康促进计划</a>
+                </div>
+            </div>
+                            </div>
+            </div>
+                        <div id="layout_1633763594532" class="layout   scrollView"  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div class="view_contents">
+                                <div id="text_style_01_1633763594533" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><a href="/welcome/index.php?&pageid=131651&pageid=131651" target='_self' style='color:inherit' class='editor-view-extend link-type-1-1'>H2私人健康银行</a>
+                </div>
+            </div>
+                        <div id="image_style_12_1_1633915334754" class="view style_12_1 image  wow opacityHide a2 fadeInLeft lockHeightView "  data-wow-duration='1s' data-wow-delay='0.25s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <style>.imgStyle_12_1{ width:100%; }
+.imgStyle_12_1 *{ font-size:'微软雅黑'; }
+.imgStyle_12_1 .imgTextUl{ display:flex; justify-content: space-between; flex-wrap: wrap; }
+.imgStyle_12_1 .imgTextLi{ width:calc(100% / 3); overflow: hidden; margin-bottom:2%;box-sizing: border-box;}
+.imgStyle_12_1 .imgTBoxArea{position: relative;float: left;width: 186px;left: 50%;transform: translateX(-50%);max-width: 100%;}
+.imgStyle_12_1 .image-box{position: absolute;left: 0;right: 0;top: 0;bottom: 0;}
+.imgStyle_12_1 .imgTBox{ text-align: center;height: 100%;width: 100%;}
+.imgStyle_12_1 .imgTBox img.picFit{ display: inline-block; width:100%;height: 100%; box-sizing: border-box;border-radius: 100px;}
+.imgStyle_12_1 .imgTBox .bbx-new-font{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    box-sizing: border-box;
+}
+.imgStyle_12_1 .cont{padding: 0 5px;clear: both;}
+.imgStyle_12_1 .cont .name{ text-align: center; font-size:16px; line-height:2;word-break: break-word;}
+.imgStyle_12_1 .cont .subName{ text-align: center; font-size:12px;word-break: break-word; white-space: pre-wrap;}
+.imgStyle_12_1 .cont .btn{width: auto;height: 30px;display: block;border: 1px solid #7d7d7d;line-height: 28px;color: #333;text-align: center;margin-left: 25%;margin-right: 25%;margin-top: 10px;word-break: break-all;overflow: hidden;}
+@media screen and (max-width: 768px){
+    .imgStyle_12_1 .imgBt{ font-size:16px; line-height:2.5;}
+    .imgStyle_12_1 .cont .btn{margin-left: 5%;margin-right: 5%;}
+}</style><!-- pageSet pagecurSet -->
+<div class="imgStyle_12_1">
+	<ul class="imgTextUl">
+			<li class="imgTextLi modSet">
+                <a style="cursor:default;display: block;">
+				<div class="imgTBoxArea">
+					<div class="image-box">
+						<div class="imgTBox">
+							<img class="picSet picFit" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/1650443681900096fe049df7a0a53.svg?version=0" alt="鼓励员工养生健康的生活行为习惯">
+						</div>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+					<div class="name titProSet">养成良好行为习惯</div>
+					<div class="hide_view">
+						<div class="subName defProSet">鼓励员工养生健康的生活行为习惯</div>
+					</div>
+				</div>
+				</a>
+			</li>
+			<li class="imgTextLi modSet">
+                <a style="cursor:default;display: block;">
+				<div class="imgTBoxArea">
+					<div class="image-box">
+						<div class="imgTBox">
+							<img class="picSet picFit" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/16504436818964ef1c20b29d67a8b.svg?version=1650443684" alt="基于健康行为奖励获得健康积分">
+						</div>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+					<div class="name titProSet">获得健康积分</div>
+					<div class="hide_view">
+						<div class="subName defProSet">基于健康行为奖励获得健康积分</div>
+					</div>
+				</div>
+				</a>
+			</li>
+			<li class="imgTextLi modSet">
+                <a style="cursor:default;display: block;">
+				<div class="imgTBoxArea">
+					<div class="image-box">
+						<div class="imgTBox">
+							<img class="picSet picFit" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/svg/1650443681900b3037182d5fd5bd9.svg?version=1650443684" alt="健康积分兑换健康礼品，建立良性循环机制">
+						</div>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+					<div class="name titProSet">兑换健康奖励</div>
+					<div class="hide_view">
+						<div class="subName defProSet">健康积分兑换健康礼品，建立良性循环机制</div>
+					</div>
+				</div>
+				</a>
+			</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+    <style>
+        /*pc*/
+        #image_style_12_1_1633915334754  ul li{width: 32%;}
+        #image_style_12_1_1633915334754  ul li.imgTextLi{margin-bottom:2%;}
+        #image_style_12_1_1633915334754  ul li.imgTextLi .imgTBoxArea{width: 100px;}
+                @media screen and (max-width: 1024px){/*ipad*/
+        #image_style_12_1_1633915334754  ul li{width: 32.666666666667%;}
+        #image_style_12_1_1633915334754  ul li.imgTextLi{margin-bottom:1%;}
+        #image_style_12_1_1633915334754  ul li.imgTextLi .imgTBoxArea{width: 80px;}
+        }
+        @media screen and (max-width: 768px){/*mobi*/
+        #image_style_12_1_1633915334754  ul li{width: 49%;}
+        #image_style_12_1_1633915334754  ul li.imgTextLi{margin-bottom:2%;}
+        #image_style_12_1_1633915334754  ul li.imgTextLi .imgTBoxArea{width: 60px;}
+                }
+    </style>
+                </div>
+            </div>
+                        <div id="text_style_01_1650443329351" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><div>鼓励员工健康生活，全面激活企业福利，大幅提升员工归属感及满意度</div>
+                </div>
+            </div>
+                        <div id="text_style_01_1650871747317" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><a href="/welcome/index.php?&pageid=131651&pageid=131651" target='_self' style='color:inherit' class='editor-view-extend link-type-1-1'>Private Health Bank</a>
+                </div>
+            </div>
+                            </div>
+            </div>
+                        <div id="comm_layout_footer" class="layout   scrollView"  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div class="view_contents">
+                                <div id="div_a_includeBlock_1588832712022" class="view a_includeBlock div  includeView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="div"
+                     class="view_contents" >
+                                <div id="copyright_style_01_1633936262456" class="view style_01 copyright  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="copyright"
+                     class="view_contents" >
+                    <style>.copyrightStyle01{text-align: center;color:#999;font-size: 14px;font-family: "Microsoft YaHei",微软雅黑;}
+.copyrightStyle01 .copyright_view{display: inline;padding-right: 10px;}
+.copyrightStyle01 .icp_view{display: inline-block;padding-right: 10px;}
+.copyrightStyle01 .lw_view{display: inline-block;}
+.copyrightStyle01 .lw_icon{width: 18px;vertical-align: top;margin-right: 4px;}
+.copyrightStyle01 .line_view a{color:inherit;}
+@media screen and (max-width: 640px){
+    .copyrightStyle01{font-size: 12px;line-height: 1.75;}
+}</style><div class="copyrightStyle01 modSet">
+        <div class="copyright_view line_view">Copyright @ 2019-2023 Company name All rights reserved.</div>
+        <div class="icp_view line_view"><a target="_blank" href="https://beian.miit.gov.cn/">沪ICP备2022010654号</a></div>
+        <div class="lw_view line_view"><a target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502018936"><img class="lw_icon" src="/sysTools/Model/views/copyright/style_01/v9Res/beiab.png" alt="沪公网安备31011502018936号">沪公网安备31011502018936号</a></div>
+</div>
+                </div>
+            </div>
+                        <div id="footerCustom_footerDh_01_1633936559221" class="view footerDh_01 footerCustom  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="footerCustom"
+                     class="view_contents" >
+                    <style>.footerCustom_01{width:100%; position:relative;}
+.footerCustom_01 *{box-sizing: border-box;}
+.footerCustom_01 .miniMenu *,
+.footerCustom_01 .menuUl li *{
+	-webkit-transition-duration:.2s; -moz-transition-duration:.2s; -o-transition-duration:.2s; transition-duration:.2s;
+	-webkit-transition-property:background,height,padding; -moz-transition-property:background,height,padding; -moz-transition-property:background,height,padding; transition-property:background,height,padding;
+	-webkit-transition-timing-function:ease-out; -moz-transition-timing-function:ease-out; -o-transition-timing-function:ease-out; transition-timing-function:ease-out;
+}
+.footerCustom_01 .dflex{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-align: center; -webkit-flex-wrap: wrap;  -moz-flex-wrap: wrap;  -ms-flex-wrap: wrap;  -o-flex-wrap: wrap;  flex-wrap: wrap; }
+.footerCustom_01 .rflex{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1; float: left\0; white-space: nowrap; overflow: hidden;}
+.footerCustom_01 ul,.footerCustom_01 li{padding:0;margin:0px;list-style:none}
+.footerCustom_01 .menuLayout{position:relative; margin:0 auto;width:100%;}
+.footerCustom_01 .menuLayout:after{content:''; display:block; clear:both;}
+.footerCustom_01 .menuUl_box{position:relative; width:100%; text-align:center;}
+.footerCustom_01 .menuUl{position:relative; width:100%; text-align:center;}
+.footerCustom_01 .menuUl>li{position:relative;}
+.footerCustom_01 .menuUl>li>a{ background: rgba(0,0,0,0.0); position: relative; text-decoration:none;font-size:16px; box-sizing:border-box; display:inline-block;width:100%; max-width: 100%; text-align:center; letter-spacing:normal; white-space:nowrap; color: #333d5f; line-height:44px; padding: 0; padding: 0 1em\0;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.footerCustom_01 .menuUl>li>a span{display:block; width: 100%; text-align: center; color: rgba(0,0,0,.3); font-size: 12px;}
+.footerCustom_01 .menuUl #hot>a span{color:inherit;}
+.footerCustom_01 .menuUl02 {left: 50%;  width: 100%;}
+.footerCustom_01 .menuUl>li>#menuLogo{height: 85%;}
+.footerCustom_01 .menuUl02 .subMenu02 {position: relative;  color: #333d5f; font-size:14px; line-height: 28px;}
+.footerCustom_01 .menuUl02 .subMenu02>a { display: inline-block;max-width: 100%; white-space: nowrap; overflow: hidden;color: inherit; font-size:inherit; line-height: inherit;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.footerCustom_01 .menuUl02 .subMenu02>a .fa{float: right;padding-right: 6px; line-height: inherit;}
+.footerCustom_01 .menuUl02 .subMenu02:hover .menuUl03{display: block;}
+.footerCustom_01 .menuUl02 .subMenu02:first-child{
+	border-top-left-radius: 0px;border-top-right-radius: 0px;
+}
+.footerCustom_01 .menuUl02 .subMenu02:last-child{
+	border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;
+}
+.footerCustom_01 .menuUl03{position: absolute; top: 0; left: 100%; display: none; }
+.footerCustom_01 .menuUl03 .subMenu03{ line-height: 40px;margin-left: 10px;}
+.footerCustom_01 .menuUl03 .subMenu03>a{ color: #17233d; background: #333d5f; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;padding: 0 15px;}
+.footerCustom_01 .menuUl03 .subMenu03:first-child a{
+	border-top-left-radius: 0px;border-top-right-radius: 0px;
+}
+.footerCustom_01 .menuUl03 .subMenu03:last-child a{
+	border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;
+}
+.footerCustom_01 .rflex { position: relative;}
+.footerCustom_01 .maxWidth{margin: auto;}
+.footerCustom_01 .subBox{position: absolute; left: 0; width: 100%; background: rgba(238, 238, 238, 0.85); display: none;}
+.footerCustom_01 .subBox .subBoxContent{padding: 15px; text-align: left; overflow: hidden;}
+.footerCustom_01 .subBox .subBoxContent .subItems{overflow: hidden; display: none;}
+.footerCustom_01 .subBox .sublm{float: left; width: calc(100% - 440px); min-height: 10px;}
+.footerCustom_01 .subBox .sublm>div{clear: both; overflow: hidden; margin: 8px 0;}
+.footerCustom_01 .subBox .subImgsbox{float: left; width: 440px; height: 160px;}
+.footerCustom_01 .subBox .subImgsbox>a{display: block; height: 100%; float: right; width: calc((100% - 20px)/2); margin-left: 20px;}
+.footerCustom_01 .subBox .subImgsbox>a:last-child{margin-left: 0;}
+.footerCustom_01 .subBox .subImgsbox>a>div.subImg{ position: relative; height: 100%; overflow: hidden; background-repeat: no-repeat; background-size: cover !important;}
+.footerCustom_01 .subBox .subImgsbox>a>div.subImg span{position: absolute; bottom: 0; left: 0; width: 100%; display: block; padding: 5px; background: rgba(255,255,255,.8); color: #17233d; font-size: 12px;}
+.footerCustom_01 .subBox p{overflow: hidden; float: left;}
+.footerCustom_01 .subBox p:first-child{margin-right: 10px; width: 100px;}
+.footerCustom_01 .subBox p:last-child{width: calc(100% - 110px);}
+.footerCustom_01 .subBox .subMenu02{font-size: 14px; margin-bottom: 5px; clear: both; color: #17233d; line-height: 28px;}
+.footerCustom_01 .imgIco{vertical-align: middle; display:inline-block; overflow:hidden; position:relative; padding:15px;  box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box;}
+.footerCustom_01 .imgIco img{width:auto; height:100%; vertical-align: top;  position:absolute; top:50%; left:50%;  transform:translateY(-50%) translateX(-50%); -webkit-transform:translateY(-50%) translateX(-50%); -moz-transform:translateY(-50%) translateX(-50%); -ms-transform:translateY(-50%) translateX(-50%); -o-transform:translateY(-50%);}
+</style>
+<div id="menu" class="menu footerCustom_01">
+	<div class="menuLayout">
+		<div class="menuUl_box columnSet dhAreaSet showpc">
+			<ul class="menuUl dflex maxWidth ">
+						<li class="rflex isLi" pageid="131653" showpc="">
+							<a class="mainMenuSet Nosub" href="/welcome/index.php?&pageid=131653&">
+								关于我们
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="131655" showpc="">
+							<a class="mainMenuSet Nosub" href="/welcome/index.php?&pageid=131655&">
+								解决方案
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="131651" showpc="">
+							<a class="mainMenuSet Onsub" href="/welcome/index.php?&pageid=131651&">
+								私人健康银行
+							</a>
+								<ul class="menuUl02 subminSet">
+								</ul>
+						</li>
+						<li class="rflex isLi" pageid="131652" showpc="">
+							<a class="mainMenuSet Onsub" href="/welcome/index.php?&pageid=131652&">
+								联系我们
+							</a>
+								<ul class="menuUl02 subminSet">
+								</ul>
+						</li>
+			</ul>
+		</div>
+		<div class="menuUl_box columnSet dhAreaSet showmobile">
+			<ul class="menuUl dflex maxWidth ">
+							<li id="hot" class="rflex isLi" pageid="131648" showpc="">
+							<a class="mainMenuSet Nosub" href="/welcome/index.php?&pageid=131648&">
+								首页
+							</a>
+						</li>
+							<li class="rflex isLi" pageid="131655" showpc="">
+							<a class="mainMenuSet Nosub" href="/welcome/index.php?&pageid=131655&">
+								解决方案
+							</a>
+						</li>
+							<li class="rflex isLi" pageid="131651" showpc="">
+							<a class="mainMenuSet Onsub" href="/welcome/index.php?&pageid=131651&">
+								私人健康银行
+							</a>
+								<ul class="menuUl02 subminSet">
+								</ul>
+						</li>
+							<li class="rflex isLi" pageid="131652" showpc="">
+							<a class="mainMenuSet Onsub" href="/welcome/index.php?&pageid=131652&">
+								联系我们
+							</a>
+								<ul class="menuUl02 subminSet">
+								</ul>
+						</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 导航栏目有下级时禁止跳转 -->
+<script>
+$(function(){
+	if($("#footerCustom_footerDh_01_1633936559221 .menuUl").hasClass("noHover")){
+		var tabNum = 0;
+		$("#footerCustom_footerDh_01_1633936559221 .menuUl>li").find(".Onsub").each(function(){
+			tabNum += 1;
+			$(this).parent().attr("tabNum",tabNum)
+		})
+	}
+})
+</script>
+<style type="text/css">
+#footerCustom_footerDh_01_1633936559221 .menuUl02 .subMenu02>a .fa{position: absolute;top: 0;right: 0;}
+</style>
+<!-- 每行显示列数 -->
+    <style>
+        /*pc*/
+        #footerCustom_footerDh_01_1633936559221 .footerCustom_01 .menuUl>li{min-width: calc(100% / 2);max-width: calc(100% / 2);}
+        @media screen and (max-width: 1024px){/*pad*/
+            #footerCustom_footerDh_01_1633936559221 .footerCustom_01 .menuUl>li{min-width: calc(100% / 2);max-width: calc(100% / 2);}
+        }
+        @media screen and (max-width: 768px){/*mobi*/
+            #footerCustom_footerDh_01_1633936559221 .footerCustom_01 .menuUl>li{min-width: calc(100% / 2);max-width: calc(100% / 2);}
+        }
+    </style>
+<!--  -->
+<script>
+/*pc,手机显示隐藏*/
+function is_mobile(){
+	return window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767);
+}
+function _checkWindwo(){
+	if(is_mobile()){
+		$("#footerCustom_footerDh_01_1633936559221 .showmobile").show();
+		$("#footerCustom_footerDh_01_1633936559221 .showpc").hide();
+	}else{
+		$("#footerCustom_footerDh_01_1633936559221 .showmobile").hide();
+		$("#footerCustom_footerDh_01_1633936559221 .showpc").show();
+	}
+}
+_checkWindwo();
+$(window).resize(function() {
+	_checkWindwo();
+})
+</script>
+                </div>
+            </div>
+                        <div id="text_style_01_1652943584558" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>汉尔思（上海）信息技术有限公司
+                </div>
+            </div>
+                        <div id="image_style_13_1_1633939900423" class="view style_13_1 image  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <!-- pageSet pagecurSet -->
+<div class="imgStyle_13_1">
+	<input type='hidden' id='current_page_1' value="1"/>
+	<input type='hidden' id='show_per_page_1' value="1"/>
+	<ul class="imgTextUl" id="content_1">
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://cdn.yun.sooce.cn/6/35043/png/163376491939392f95170dbd36684.png?version=1633764540" alt="">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">7x24 服务热线</div>
+					</a>
+					<div class="subName detailSet"></div>
+				</div>
+			</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+    <style>
+        /*pc*/
+        #image_style_13_1_1633939900423  ul li{width: 100%;}
+        #image_style_13_1_1633939900423  ul li.imgTextLi{margin-bottom:2%;}
+        #image_style_13_1_1633939900423  ul li.imgTextLi .left{width: 25px;}
+        #image_style_13_1_1633939900423  ul li.imgTextLi .cont{width: calc(100% - 25px);}
+        @media screen and (max-width: 1024px){/*ipad*/
+        #image_style_13_1_1633939900423  ul li{width: 100%;}
+        #image_style_13_1_1633939900423  ul li.imgTextLi{margin-bottom:1%;}
+        #image_style_13_1_1633939900423  ul li.imgTextLi .left{width: 25px;}
+        #image_style_13_1_1633939900423  ul li.imgTextLi .cont{width: calc(100% - 25px);}
+        }
+        @media screen and (max-width: 768px){/*mobi*/
+        #image_style_13_1_1633939900423  ul li{width: 100%;}
+        #image_style_13_1_1633939900423  ul li.imgTextLi{margin-bottom:2%;}
+                    #image_style_13_1_1633939900423 ul li.imgTextLi{text-align: center;}
+            #image_style_13_1_1633939900423 ul li.imgTextLi .left{width:30px;left: 50%;transform: translateX(-50%);-webkit-transform: translateX(-50%);-moz-transform: translateX(-50%);-ms-transform: translateX(-50%);-o-transform: translateX(-50%);}
+            #image_style_13_1_1633939900423 ul li.imgTextLi .cont{width:100%;}
+                }
+    </style>
+                </div>
+            </div>
+                        <div id="text_style_01_1633940127314" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>400-006-8321
+                </div>
+            </div>
+                        <div id="image_style_13_1_1633940348393" class="view style_13_1 image  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <!-- pageSet pagecurSet -->
+<div class="imgStyle_13_1">
+	<input type='hidden' id='current_page_1' value="1"/>
+	<input type='hidden' id='show_per_page_1' value="1"/>
+	<ul class="imgTextUl" id="content_1">
+			<li class="imgTextLi modSet">
+				<div class="left">
+					<div class="image-box">
+                        <a style="cursor:default;">
+						<div class="imgTBox">
+							<img class="imgSet" src="https://cdn.yun.sooce.cn/6/35043/png/1633764919395397a594520480e9d.png?version=1633764542" alt="">
+						</div>
+						</a>
+					</div>
+					<div class="ratio" style="margin-top:100%;"></div>
+				</div>
+				<div class="cont">
+						<a style="cursor:default;">
+					<div class="name titleSet">联系邮箱</div>
+					</a>
+					<div class="subName detailSet"></div>
+				</div>
+			</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+    <style>
+        /*pc*/
+        #image_style_13_1_1633940348393  ul li{width: 100%;}
+        #image_style_13_1_1633940348393  ul li.imgTextLi{margin-bottom:2%;}
+        #image_style_13_1_1633940348393  ul li.imgTextLi .left{width: 25px;}
+        #image_style_13_1_1633940348393  ul li.imgTextLi .cont{width: calc(100% - 25px);}
+        @media screen and (max-width: 1024px){/*ipad*/
+        #image_style_13_1_1633940348393  ul li{width: 100%;}
+        #image_style_13_1_1633940348393  ul li.imgTextLi{margin-bottom:1%;}
+        #image_style_13_1_1633940348393  ul li.imgTextLi .left{width: 25px;}
+        #image_style_13_1_1633940348393  ul li.imgTextLi .cont{width: calc(100% - 25px);}
+        }
+        @media screen and (max-width: 768px){/*mobi*/
+        #image_style_13_1_1633940348393  ul li{width: 100%;}
+        #image_style_13_1_1633940348393  ul li.imgTextLi{margin-bottom:2%;}
+                    #image_style_13_1_1633940348393  ul li.imgTextLi .left{width: 30px;}
+            #image_style_13_1_1633940348393  ul li.imgTextLi .cont{width: calc(100% - 30px);}
+                }
+    </style>
+                </div>
+            </div>
+                        <div id="text_style_01_1633940385031" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>Chirs.xu@health-pb.com
+                </div>
+            </div>
+                        <div id="image_style_01_1588835601962" class="view style_01 image  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+                    <style>.imgStyle{font-size:0;}</style>
+<script class="editor-view-extend">
+    </script><div class="imgStyle CompatibleImg picSet" >
+			<img class="link-type-" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/jpg/16481973246177c73863af67dcc36.jpg?version=0" title="" alt="橙堡保二维码" id="imageModeShow" style="border-radius: inherit;"/>
+</div><style>
+	#image_style_01_1588835601962 .CompatibleImg img{width:100%; height:auto; margin-left:0px}@media screen and (min-width:641px) and (max-width:1200px) {#image_style_01_1588835601962 .CompatibleImg img{width:100%; height:auto; margin-left:0px}}@media screen and (max-width:640px) {#image_style_01_1588835601962 .CompatibleImg img{width:100%; height:100%}}
+#image_style_01_1588835601962 a{
+	cursor: default;
+}
+.imgStyle { height:100%; width:100%; overflow: hidden; box-sizing: border-box;}
+.imgStyle>a{overflow: hidden; width: 100%; height: 100%;}
+.imgStyle img{box-sizing: border-box;}
+	@media screen and (max-width:1200px) {
+			}
+	@media screen and (max-width:767px) {
+			}
+</style>
+<!-- 新加的js  -->
+                </div>
+            </div>
+                        <div id="text_style_01_1588835487925" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>扫码关注我们
+                </div>
+            </div>
+                        <div id="div_blank_new05_1633936968586" class="view blank_new05 div  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="div"
+                     class="view_contents" >
+                    <style>.blank_new05.blank_area {
+  width:100%;
+	padding-top: 10px;padding-bottom: 10px;
+}
+.blank_new05 .roundcs {
+  position: relative;
+	border-bottom: none!important;
+	border-right: none!important;
+	border-left: none!important;
+	border:1px solid #1badf8;
+}</style><div class="blank_new05 blank_area">
+  <div class="roundcs modSet">
+  </div>
+</div>
+<style>
+	</style>
+                </div>
+            </div>
+                        <div id="text_style_01_1633936997391" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>打造有保无险新生活！
+                </div>
+            </div>
+                        <div id="image_style_01_1633936800940" class="view style_01 image  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><div class="imgStyle CompatibleImg picSet" >
+			<img class="link-type-" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/png/1680158225767f41ea6f6b4ccf86f.png?version=0" title="" alt="白色logo" id="imageModeShow" style="border-radius: inherit;"/>
+</div><style>
+	#image_style_01_1633936800940 .CompatibleImg img{width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}@media screen and (min-width:641px) and (max-width:1200px) {#image_style_01_1633936800940 .CompatibleImg img{width:100%; height:100%}}@media screen and (max-width:640px) {#image_style_01_1633936800940 .CompatibleImg img{width:100%; height:100%}}
+#image_style_01_1633936800940 a{
+	cursor: default;
+}
+.imgStyle { height:100%; width:100%; overflow: hidden; box-sizing: border-box;}
+.imgStyle>a{overflow: hidden; width: 100%; height: 100%;}
+.imgStyle img{box-sizing: border-box;}
+	@media screen and (max-width:1200px) {
+			}
+	@media screen and (max-width:767px) {
+			}
+</style>
+<!-- 新加的js  -->
+                </div>
+            </div>
+                        <div id="text_style_01_1680158480967" class="view style_01 text  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="text"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script>战略合作单位
+                </div>
+            </div>
+                        <div id="div_blank_new05_1680158531228" class="view blank_new05 div  lockHeightView "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="div"
+                     class="view_contents" >
+                    <div class="blank_new05 blank_area">
+  <div class="roundcs modSet">
+  </div>
+</div>
+<style>
+	</style>
+                </div>
+            </div>
+                        <div id="image_style_01_1680158587182" class="view style_01 image  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><div class="imgStyle CompatibleImg picSet" >
+		<a href='https://family16.com/' target="_blank" style="border-radius: inherit;">
+			<img class="link-type-" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/png/16801588894051c091a33bcf4366c_2379.png?version=1680158928" title="" alt="白色logo" id="imageModeShow" style="border-radius: inherit;"/>
+		</a>
+</div><style>
+	#image_style_01_1680158587182 .CompatibleImg img{width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}@media screen and (min-width:641px) and (max-width:1200px) {#image_style_01_1680158587182 .CompatibleImg img{width:100%; height:100%}}@media screen and (max-width:640px) {#image_style_01_1680158587182 .CompatibleImg img{width:100%; height:100%}}
+.imgStyle { height:100%; width:100%; overflow: hidden; box-sizing: border-box;}
+.imgStyle>a{overflow: hidden; width: 100%; height: 100%;}
+.imgStyle img{box-sizing: border-box;}
+	@media screen and (max-width:1200px) {
+			}
+	@media screen and (max-width:767px) {
+			}
+</style>
+<!-- 新加的js  -->
+                </div>
+            </div>
+                        <div id="image_style_01_1680158599756" class="view style_01 image  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><div class="imgStyle CompatibleImg picSet" >
+		<a href='https://judunlaw.com/zh/' target="_self" style="border-radius: inherit;">
+			<img class="link-type-" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/png/1680158889406beff0d291498c6b6.png?version=1680158892" title="" alt="白色logo" id="imageModeShow" style="border-radius: inherit;"/>
+		</a>
+</div><style>
+	#image_style_01_1680158599756 .CompatibleImg img{width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}@media screen and (min-width:641px) and (max-width:1200px) {#image_style_01_1680158599756 .CompatibleImg img{width:100%; height:100%}}@media screen and (max-width:640px) {#image_style_01_1680158599756 .CompatibleImg img{width:100%; height:100%}}
+.imgStyle { height:100%; width:100%; overflow: hidden; box-sizing: border-box;}
+.imgStyle>a{overflow: hidden; width: 100%; height: 100%;}
+.imgStyle img{box-sizing: border-box;}
+	@media screen and (max-width:1200px) {
+			}
+	@media screen and (max-width:767px) {
+			}
+</style>
+<!-- 新加的js  -->
+                </div>
+            </div>
+                        <div id="image_style_01_1680158606104" class="view style_01 image  "  data-wow-duration='0s' data-wow-delay='0s' data-wow-offset='0' data-wow-iteration='1'>
+                <div names="image"
+                     class="view_contents" >
+<script class="editor-view-extend">
+    </script><div class="imgStyle CompatibleImg picSet" >
+			<img class="link-type-" src="https://wds-service-1258344699.file.myqcloud.com/20/11596/png/1680158889406cef4eaba0327948f.png?version=1680158892" title="" alt="白色logo" id="imageModeShow" style="border-radius: inherit;"/>
+</div><style>
+	#image_style_01_1680158606104 .CompatibleImg img{width:auto; height:100%; position:relative; top:0; left:50%;-webkit-transform:translate(-50%,0);-o-transform:translate(-50%,0);-moz-transform:translate(-50%,0);-ms-transform:translate(-50%,0);transform:translate(-50%,0);}@media screen and (min-width:641px) and (max-width:1200px) {#image_style_01_1680158606104 .CompatibleImg img{width:100%; height:100%}}@media screen and (max-width:640px) {#image_style_01_1680158606104 .CompatibleImg img{width:100%; height:100%}}
+#image_style_01_1680158606104 a{
+	cursor: default;
+}
+.imgStyle { height:100%; width:100%; overflow: hidden; box-sizing: border-box;}
+.imgStyle>a{overflow: hidden; width: 100%; height: 100%;}
+.imgStyle img{box-sizing: border-box;}
+	@media screen and (max-width:1200px) {
+			}
+	@media screen and (max-width:767px) {
+			}
+</style>
+<!-- 新加的js  -->
+                </div>
+            </div>
+                            </div>
+            </div>
+                            </div>
+            </div>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script type="text/javascript">
+    // $(function(){
+    //     let serverUrl = '/weapp/systool/geWxToken.php';
+    //     //获取数据 xhrFields解决传输cookie问题
+    //     $.ajax({
+    //         type: "post",
+    //         cache: false,
+    //         dataType: "json",
+    //         async:true,
+    //         data:{
+    //             idweb:'11596',
+    //             url:'https://admin.site.my-qcloud.com/welcome/?pageid=&w_id=11596&t=1727487043&mkey=140184',
+    //             share_callback_type:'',
+    //             shareTitle:'',
+    //             shareDescription:'',
+    //             shareImg:window.location.origin + '/' + '',
+    //             webName:'H2健康促进计划',
+    //         } ,
+    //         url: serverUrl,
+    //         xhrFields: {
+    //             withCredentials: true
+    //         },
+    //         crossDomain: true,
+    //         success: function(result){
+    //             if(result && result.data && result.data.wx){
+    //                 wx.config({
+    //                     debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    //                     appId: result.data.wx.appId, // 必填，公众号的唯一标识
+    //                     timestamp: result.data.wx.timestamp, // 必填，生成签名的时间戳
+    //                     nonceStr: result.data.wx.nonceStr, // 必填，生成签名的随机串
+    //                     signature: result.data.wx.signature,// 必填，签名
+    //                     jsApiList: [
+    //                         'checkJsApi',
+    //                         'onMenuShareTimeline',
+    //                         'onMenuShareAppMessage',
+    //                         'addCard',
+    //                         'openCard'
+    //                     ] // 必填，需要使用的JS接口列表
+    //                 });
+    //                 let s_img = '';
+    //                 s_img = s_img.indexOf('http://') != -1 || s_img.indexOf('https://') != -1 ? s_img : (window.location.origin + '/' + s_img);
+    //                 let shareTitle = result.data.share ? result.data.share.shareTitle : '';
+    //                 let shareDescription = result.data.share ? result.data.share.shareDescription : '';
+    //                 let shareImg = result.data.share ? result.data.share.shareImg : s_img;
+    //                 console.log(shareImg);
+    //                 wx.ready(function () {
+    //                     // 公共方法
+    //                     let shareData = {
+    //                         title: shareTitle,
+    //                         desc: shareDescription,
+    //                         link: result.data.wx.url ? result.data.wx.url : 'https://admin.site.my-qcloud.com/welcome/?pageid=&w_id=11596&t=1727487043&mkey=140184',
+    //                         imgUrl: shareImg,
+    //                         success: function (res) {
+    //                             //alert('已分享');
+    //                         },
+    //                         cancel: function (res) {
+    //                         }
+    //                     };
+    //                     //分享给朋友接口
+    //                     wx.onMenuShareAppMessage({
+    //                         title: shareTitle,
+    //                         desc: shareDescription,
+    //                         link: result.data.wx.url ? result.data.wx.url : 'https://admin.site.my-qcloud.com/welcome/?pageid=&w_id=11596&t=1727487043&mkey=140184',
+    //                         imgUrl: shareImg,
+    //                         trigger: function (res) {
+    //                             //  alert('用户点击发送给朋友');
+    //                         },
+    //                         success: function (res) {
+    //                             //alert('已分享');
+    //                         },
+    //                         cancel: function (res) {
+    //                             //alert('已取消');
+    //                         },
+    //                         fail: function (res) {
+    //                             console.log("分享失败："+JSON.stringify(res));
+    //                         }
+    //                     });
+    //                     //分享到朋友圈接口
+    //                     wx.onMenuShareTimeline(shareData);
+    //                 });
+    //                 //处理失败验证
+    //                 wx.error(function (res) {
+    //                     console.log("微信配置初始化失败: " + res.errMsg);
+    //                 });
+    //             }
+    //         }
+    //     });
+    // });
+</script>
+</body>
+</html>

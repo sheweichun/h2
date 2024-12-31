@@ -1,0 +1,64 @@
+// @import './styles/common.less';
+@import './styles/font.less';
+
+
+:global{
+    body{
+        font-family: Hiragino, 'Microsoft Yahei', Arial, Helvetica, sans-serif !important;
+        -webkit-font-smoothing: antialiased!important;
+        // background: #ccc;
+        overflow: hidden !important;
+        
+    }
+    .hidden-input{
+        position: absolute;
+        z-index: -9999;
+        pointer-events: none;
+        // width: 0;
+        opacity: 0;
+        padding: 0;
+        border:0;
+        margin: 0;
+    }
+    .editableHover{
+       &:hover{
+            // outline: 1px solid red;
+       }
+    }
+    a{
+        cursor: pointer;
+        text-decoration: none;
+        &:focus,&:hover{
+            text-decoration: none;
+        }
+    }
+    // *{
+    //     user-select: none;
+    // }
+}
+
+.layout-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-body{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    min-height: 1px;
+}
+
+.layout-content{
+    flex:1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 1px;
+    display: flex;
+    flex-direction: column;
+}

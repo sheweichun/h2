@@ -1,0 +1,168 @@
+<style lang="less">
+.user-info{
+  height: 100px;
+  width: 100%;
+  // background: #556270; /* fallback for old browsers */
+  // background: linear-gradient(to left, #556270 , #FF6B6B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #096909; /* fallback for old browsers */ 
+  background:  linear-gradient(to right, #d04f01 , #f37327); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  align-items: center;
+  .user-info-avatar{
+    padding-left: 20px;
+    // .user-image{
+    //   border-radius: 50%;
+    //   overflow:hidden;  
+    //   width: 80px;
+    //   height: 80px;
+    // }
+    image{
+      width: 80px;
+      border-radius: 50%;
+      height: 80px;
+    }
+  }
+  .user-info-detail{
+    flex: 1;
+    .user-info-name{
+      padding-left: 20px;
+      font-size: 12px;
+      color: white;
+      margin-bottom: 18px;
+    }
+    .user-info-bonus{
+      padding-left: 20px;
+      font-size: 12px;
+      color: white;
+      .bonus-point{
+        color:#ffc106;
+      }
+    }
+  }
+
+}
+.user-container{
+  background-color:#fafafa;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .content{
+    flex:1
+  }
+  .group{
+    margin-top:24px;
+  }
+}
+
+
+@itemHeight:48px;
+.item{
+  height: @itemHeight;
+  line-height: @itemHeight;
+  // font-size: 12px;
+  padding: 0 12px;
+  background: white;
+  border-top:1px solid #eee;
+  &:last-child{
+    border-bottom: 1px solid #eee;
+  }
+}
+</style>
+<template>
+  <view class="user-container">
+    <view class="user-info">
+      <view class="user-info-avatar">
+        <image src="{{user.avatarUrl}}" />
+      </view>
+      <view class="user-info-detail">
+          <view class="user-info-name">
+              昵称 : <text>{{user.nickName}}</text>
+          </view>
+          <view class="user-info-bonus">
+              积分 : <text class="bonus-point">{{user.bonus}}</text>
+          </view>
+      </view>
+    </view>
+    <scroll-view scroll-y class="content">
+      <view class="group">
+        <view class="item" bindtap="go2PersonInfo"><i class="personinfo-icon icon" style="color:blue;"></i> 个人信息</view>
+      </view>
+      <view class="group">
+        <view class="item" bindtap="goTijianReport(1)">
+          <i class="report-icon icon" style="font-size:18px;color:#ff8235;"></i> 
+          体检报告
+        </view>
+        <view class="item" bindtap="goTijianReport(3)">
+          <i class="report-icon icon" style="font-size:18px;color:#ff8235;"></i> 
+          洗牙证明
+        </view>
+      </view>
+      <view class="group">
+        <view class="item" bindtap="go2Insurance"><i class="report-icon icon" style="font-size:18px;color:red;" ></i> 保单托管报告</view>
+        <view class="item" bindtap="go2BonusRecord"><i class="list-icon icon" style="font-size:18px;color:red;margin-right:4px;" ></i>积分记录</view>
+        <view class="item" bindtap="wait"><i class="exchange-icon icon" style="font-size:18px;color:red;margin-right:4px;" ></i>积分兑换</view>
+      </view>
+      <!-- <view class="group">
+        <view class="item" bindtap="showShare"><i class="list-icon icon" style="font-size:18px;color:red;margin-right:4px;" ></i>积分记录</view>
+      </view> -->
+    </scroll-view>
+  </view>
+</template>
+<script>
+    import wepy from 'wepy';
+    const util = require('../../util/index');
+    const svrConfig = require('../../vendor/config');
+
+
+    export default class UserView extends wepy.component {
+        props = {
+          user:Object
+        };
+        components = {
+          // shopitem:ShopItem
+        };
+        data = {
+
+        };
+        methods = {
+            go2Insurance:function(){
+                wepy.navigateTo({
+                  url:`insurance`
+                })
+            },
+            go2PersonInfo:function(){
+              if(this.user && this.user.uid != null){
+                wepy.navigateTo({
+                  url:`personInfo?uid=${this.user.uid}`
+                })
+              }
+            },
+            goTijianReport:function(type){
+              // console.log('type :',type);
+              if(this.user && this.user.uid != null && util.checkUserInfo(this.user)){
+                wepy.navigateTo({
+                  url:`report?cid=${this.user.uid}&type=${type}`
+                })
+              }
+            },
+            go2BonusRecord:function(){
+              if(this.user && this.user.uid != null){
+                wepy.navigateTo({
+                  url:`bonus_record?cid=${this.user.uid}`
+                })
+              }
+            },
+            wait:function(){
+              // console.log('wait');
+              // util.showModel('敬请期待','疯狂建设中...')
+              wepy.navigateTo({
+                  url:`exchange`
+                })
+              // wx.showToast({
+              //     title: '敬请期待',
+              //     icon: 'none'
+              // })
+            }
+        };
+    }
+</script>

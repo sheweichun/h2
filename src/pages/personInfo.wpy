@@ -1,0 +1,132 @@
+<style lang="less">
+  @import '../styles/base.less';
+  .personInfo-container{
+    height: 100%;
+    width: 100%;
+    background: #FBF9FE;
+    padding:48px 0 0;
+    box-sizing: border-box;
+    .section{
+      padding: 0 16px 24px;
+      // margin-bottom: 24px;
+    }
+    .input-notice{
+      font-size: 12px;
+      color:#666;
+    }
+    @inputSize:48px;
+    .input{
+      background: white;
+      height: @inputSize;
+      line-height: @inputSize;
+      
+      padding-left: 12px;
+    }
+    .record-container{
+      padding-top:24px;
+      @recordHeight:46px;
+      .record{
+        background: white;
+        height: @recordHeight;
+        line-height:@recordHeight;
+        padding-left:20px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+</style>
+<template>
+  <view class="personInfo-container">
+    <form wx:if="{{loaded && (!userinfo || !userinfo.realName)}}" class="form" bindsubmit="formSubmit" >
+        <view class="section">
+          <input class="input" name="name" placeholder="姓名"/>
+          <text class="input-notice">注：为了积分匹配的准确性，请输入您的真实姓名</text>
+        </view>
+        <view class="section">
+          <input class="input" name="code" placeholder="邀请码"/>
+          <text class="input-notice">注：各项目邀请码具有唯一性，不清楚的可在公众号中输入【邀请码】了解详情</text>
+        </view>
+        <view class="section" >
+          <button type="primary" form-type="submit">提交</button>
+        </view>
+    </form>
+    <view wx:if="{{loaded && userinfo && userinfo.realName}}" class="record-container">
+        <view class="record">姓名 : {{userinfo.realName}}</view>
+        <view class="record">公司 : {{userinfo.companyName}}</view>
+    </view>
+  </view>
+</template>
+
+<script>
+// wx:if="{{loaded && userinfo && userinfo.realName}}"
+    import wepy from 'wepy';
+    const util = require('../util/index');
+    const {req} = util;
+    const svrConfig = require('../vendor/config');
+
+    export default class PersonInfo extends wepy.page {
+
+        config = {
+            "navigationBarTitleText": "个人信息"
+        };
+        components = {
+        };
+
+        // mixins = [testMixin];
+
+        data = {
+          loaded:false,
+          userinfo:{},
+          realName:'',
+          code:'',
+          defaultCode:'temp_visitor'
+        };
+        methods = {
+          formSubmit:function(e){
+            const val = e.detail.value;
+            if(!val.name){
+              util.showModel('姓名不能为空')
+              return;
+            }
+            if(!val.code){
+              util.showModel('邀请码不能为空')
+              return;
+            }
+            req({
+              url:svrConfig.service.updateCustomerCompay,
+              method:'POST',
+              data:{
+                realName:val.name,
+                code:val.code,
+                openId:this.userinfo.openId
+              }
+            }).then((resp)=>{
+              util.showSuccess('提交成功');
+              const{realName,companyName} = resp;
+              this.userinfo.realName = realName;
+              this.userinfo.companyName = companyName;
+              this.$apply();
+            },(err)=>{
+              util.showModel('提交失败',err.message);
+            })
+          }
+        };
+        onLoad(option) {
+            this.uid = option.uid;
+            this.uid && req({
+              url:svrConfig.service.getCustomer,
+              data:{
+                uid:this.uid
+              }
+            }).then((resp)=>{
+              this.userinfo = resp;
+              this.loaded = true;
+              this.$apply();
+            },(err)=>{
+              wx.showToast({
+                title:'数据查询失败'
+              })
+            })
+        }
+    }
+</script>

@@ -1,0 +1,165 @@
+@import './variable.less';
+.dashboard{
+    min-width: 1200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    display: flex;
+    :global{
+        
+    }
+}
+
+
+.middle{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+
+// .right{
+//     width:@panelWidth;
+//     background: @mainColor;
+// }
+
+.middle-center{
+    flex: 1;
+    position: relative;
+    .middle-center-wrapper{
+        position: absolute;
+        width:100%;
+        height: 100%;;
+    }
+}
+
+:global{
+    
+    .theme-next-black{
+        .next-accordion-section-title{
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+        }
+        .next-switch-on{
+            background-color: #b355f1;
+        }
+        .next-accordion .next-accordion-section-expand>.next-accordion-section-content{
+            padding: 8px 10px;
+        }
+        .next-comobobox input{
+            width:88px !important;
+        }
+        .next-input-group.small{
+            width: 148px;
+        }
+        .next-input-addon.next-input-addon-after{
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+        .next-tree-node-handle{
+            color:@textColor;
+        }
+        .next-input{
+            width: 100%;
+            border-color:@tabBorderColor;
+            background: @inputBg;
+            
+            &:hover{
+                border-color:@tabBorderColor;
+                background: @inputBg;
+            }
+            &.focus{
+                border-color:#3490eb;
+                background: @inputBg;
+            }
+            // margin: 2px 0px;
+        }
+        .next-input.next-input-single input{
+            color:@textColor;
+        }
+        .next-input-small{
+            &.disabled{
+                opacity: .3;
+                input{
+                    border-color:@tabBorderColor;
+                    background: @inputBg;
+                }
+            }
+            input{
+                font-size: 12px;
+                
+            }
+        }
+        
+        .next-select.small{
+            vertical-align: middle;
+            margin: 2px 0px;
+            background-color:@inputBg;
+            border-color:@tabBorderColor;
+            color:@textColor;
+            &.disabled{
+                opacity: .3;
+            }
+            .next-comobobox-arrow-wrapper{
+                background-color:@inputBg;
+                border-color:@tabBorderColor;
+            }
+        }
+        .next-select-inner-item{
+            background-color:black;
+            // padding: 2px 16px 2px 4px;
+            // box-sizing: content-box;
+        }
+        .next-overlay-wrapper .next-overlay-inner{
+            z-index: 999999;
+        }
+        input:focus{
+            outline: none;
+        }
+        .next-accordion{
+            border-color: @borderColor;
+            .next-accordion-section-content{
+                background: #404040;
+                color:@textColor;
+            }
+        }
+        .next-accordion-section-title{
+            background:@tabColor;
+            color:@textColor;
+            // border:0px;
+            border-color: @borderColor;
+            &:hover{
+                background:@tabColor;
+            }
+        }
+        .next-accordion .next-accordion-icon:before{
+            color:@textColor;
+        }
+        .next-btn-primary{
+            background-color: #8b59ed;
+            &:hover{
+                background-color: lighten(#8b59ed,10%)
+            }
+        }
+        .next-btn-normal{
+            background-color: #656565;
+            border-color: #38393a;
+            color:#c6c6c6;
+            &:hover{
+                background-color:darken(#656565,10%);
+                border-color: darken(#38393a,5%);
+                color:lighten(#c6c6c6,5%);
+            }
+            &.next-btn.disabled, &.next-btn[disabled]{
+                background-color: #656565;
+                border-color: #38393a;
+                color:#c6c6c6;
+                opacity: 0.3;
+            }
+        }
+    }
+}
+

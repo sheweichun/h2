@@ -1,0 +1,118 @@
+<style lang="less">
+  @import '../styles/base.less';
+  .bonus-record-container{
+    height: 100%;
+    width: 100%;
+    background: #FBF9FE;
+    // padding:48px 0 0;
+    box-sizing: border-box;
+    .empty_container{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .bonus-list-container{
+        width: 100%;
+        height: 100%;
+    }
+    .bonus-record{
+        font-size:12px;
+        background: white;
+        margin-bottom: 4px;
+        padding: 8px 0px 8px 16px;
+    }
+    .exchange-title{
+        font-size: 20px;
+    }
+    .exchange-desc{
+        color:#666;
+        font-size: 14px;
+        padding:4px 0;
+    }
+    .exchange-bottom{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+  }
+</style>
+<template>
+  <view class="bonus-record-container">
+      <view wx:if="{{loaded && records.length === 0}}" class="empty_container">
+          积分兑换规则还未创建，请耐心等待~
+      </view>
+    <scroll-view wx:if="{{loaded && records.length > 0}}" class="bonus-list-container" scroll-y>
+        <repeat for="{{records}}" key="index" index="index" item="item">
+            <view class="bonus-record">
+                <view class="exchange-title">{{item.gift_name}}</view>
+                <view class="exchange-desc">{{item.gift_desc}}</view>
+                <view class="exchange-bottom">
+                    <view>
+                        <text>需要</text>
+                        <text style="margin:0px 2px;color:#f37327;">{{item.threshold}}</text>
+                        <text>积分</text>
+                    </view>
+                    <view style="padding-right:24px">
+                        <button type="primary" size="mini" bindtap="doExchange">兑换</button>
+                    </view>
+                </view>
+            </view>
+        </repeat>
+    </scroll-view>
+  </view>
+</template>
+
+<script>
+// wx:if="{{loaded && userinfo && userinfo.realName}}"
+    import wepy from 'wepy';
+    import dayjs from 'dayjs';
+    const util = require('../util/index');
+    const {req} = util;
+    const svrConfig = require('../vendor/config');
+    const contactUrl = 'https://gw.alicdn.com/tfs/TB1n8WoXAzoK1RjSZFlXXai4VXa-413-413.png';
+    export default class BonusRecord extends wepy.page {
+
+        config = {
+            "navigationBarTitleText": "积分兑换"
+        };
+        components = {
+        };
+        data = {
+          loaded:true,
+          records:[]
+        };
+        computed = {
+        };
+        methods = {
+            async doExchange(){
+                // const ret = await req({
+                //     url:svrConfig.service.sendMessage,
+                //     method:'POST'
+                // });
+                // console.log('ret :',ret);
+                wepy.previewImage({
+                    current:contactUrl,
+                    urls:[contactUrl]
+                })
+            }
+        };
+        async onLoad(option){
+            try{
+                const ret = await req({
+                    url:svrConfig.service.getAllExchangeByUser,
+                    data:{
+                    }
+                })
+                // console.log('ret :',ret); 
+                this.records = ret
+                this.$apply();
+            }catch(e){
+
+            }
+            this.loaded = true;
+        }
+    }
+</script>

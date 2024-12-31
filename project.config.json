@@ -1,0 +1,103 @@
+{
+  "description": "A WePY project",
+  "client": "dist/",
+  "svr": "server/",
+  "qcloudRoot": "server/",
+  "setting": {
+    "urlCheck": false,
+    "es6": false,
+    "enhance": false,
+    "postcss": false,
+    "preloadBackgroundData": false,
+    "minified": false,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "useApiHostProcess": false
+  },
+  "compileType": "miniprogram",
+  "appid": "wx82abd1b5ab833f2d",
+  "projectname": "miniapp",
+  "miniprogramRoot": "dist/",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "test",
+          "pathName": "pages/index",
+          "query": "",
+          "scene": "1008"
+        },
+        {
+          "name": "test",
+          "pathName": "pages/index",
+          "query": "",
+          "scene": "1044",
+          "shareInfo": {
+            "groupName": "测试模拟群0",
+            "shareName": "AvKmDYOLTD6kBCwgcwob12BtKO69q2JExwsekVeFF8E@cr4dev",
+            "shareKey": "U4W3nfH2sF-vEbc9jSLYoMhOCsghAbAWIEt-7VQgTuazLvIP0gg1M1blAKLno6H0-b0qre0nbFqFEUBtQzTmNQ~~"
+          }
+        },
+        {
+          "name": "分享进入",
+          "pathName": "pages/index?uid=5",
+          "query": "",
+          "scene": "1044",
+          "shareInfo": {
+            "groupName": "测试模拟群0",
+            "shareName": "AvKmDYOLTD6kBCwgcwob12BtKO69q2JExwsekVeFF8E@cr4dev",
+            "shareKey": "aIGP8G_76IFV0_TAYvpn1fPw6IR9R6I53Tm79pCDekDeKPY-phUKCGi778-a0oUmTcH7_yIO8Ar6mezxgfFlIw~~"
+          }
+        },
+        {
+          "name": "分享进入正常版",
+          "pathName": "pages/index",
+          "query": "uid=6",
+          "scene": "1044",
+          "shareInfo": {
+            "groupName": "测试模拟群0",
+            "shareName": "AvKmDYOLTD6kBCwgcwob12BtKO69q2JExwsekVeFF8E@cr4dev",
+            "shareKey": "aIGP8G_76IFV0_TAYvpn1fPw6IR9R6I53Tm79pCDekDeKPY-phUKCGi778-a0oUmTcH7_yIO8Ar6mezxgfFlIw~~"
+          }
+        }
+      ]
+    }
+  },
+  "libVersion": "2.14.1",
+  "srcMiniprogramRoot": "dist/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

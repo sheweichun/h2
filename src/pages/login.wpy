@@ -1,0 +1,115 @@
+<style lang="less">
+  @tabHeight:52px;
+
+  @import '../styles/base.less';
+  .index-container{
+    width: 100%;
+    height: 100%;
+  }
+  .auth-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-top:120px;
+    // justify-content: center;
+    flex-direction: column;
+  }
+  .auth-logo-container{
+    text-align: center;
+    image{
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+    }
+    margin-bottom: 18px;
+  }
+</style>
+<template>
+  <view class="index-container">
+    <view class="auth-container" >
+      <view class="auth-logo-container">
+        <image src="https://img.alicdn.com/tfs/TB1t7u2q77mBKNjSZFyXXbydFXa-1181-1181.png" />
+      </view>
+      <button  style="width:80%;" open-type="getUserInfo" type="primary" lang="zh_CN" bindgetuserinfo="onGotUserInfo">微信登录</button>
+    </view>
+  </view>
+  
+  
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import dayjs from 'dayjs'
+ // import UserInfo from '../components/userInfo/index';
+  import UserInfo from '../components/newUserInfo/index';
+  import Progress from '../components/progress/index';
+  import Upload from '../components/upload/index';
+  import News from '../components/news/index';
+  import {CHANGE_TAB} from './action';
+  import { connect } from 'wepy-redux';
+  // const Promise = require('../util/promise');
+  const qcloud = require('../vendor/wafer2-client-sdk/index');
+  const util = require('../util/index');
+  const svrConfig = require('../vendor/config');
+  const LOGIN_AUTH_FLAG = 'weapp_login_auth_flag';
+
+  function isSameDate(dt1,dt2){
+    return dt1.year() === dt2.year()
+    && dt1.month() === dt2.month()
+    && dt1.date() === dt2.date()
+  }
+
+  export default class Login extends wepy.page {
+    config = { 
+      navigationBarTitleText: '登录',
+      usingComponents:{}
+    }
+    components = {
+      userinfo:UserInfo,
+      upload:Upload,
+      news:News
+    }
+
+    mixins = []
+
+    data = {
+
+    }
+    computed = {
+    }
+
+    methods = {
+      onGotUserInfo(e){
+        const self = this;
+        const userInfo = e.detail;
+        util.showBusy('登录中...');
+        this.$parent.login(userInfo,self.loginCode).then((result)=>{
+          wx.hideToast();
+          wx.navigateBack({
+            delta : 1
+          })
+          self.eventChannel.emit('acceptDataFromOpenedPage',{
+            authFlag:true,
+            result
+          })
+        },()=>{
+          wx.hideToast();
+        })
+      }
+    }
+
+    events = {
+      
+    }
+    onShow(){
+  
+    }
+    onLoad(options) {
+    console.log('options :',options);
+      this.loginCode = options.loginCode;
+      this.eventChannel = this.$wxpage.getOpenerEventChannel();
+      
+    }
+  }
+</script>

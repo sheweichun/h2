@@ -1,0 +1,214 @@
+<style lang="less">
+  @import '../styles/base.less';
+  .report-container{
+    height: 100%;
+    width: 100%;
+    // overflow: hidden;
+    background: #FBF9FE;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    .report-wrapper{
+        height:calc(~"100% - 46px");
+        width: 100%;
+    }
+    .report-list{
+        width: 100%;
+        height: 100%;
+    }
+    .opr-container{
+         flex:1;
+        // padding: 0 16px;
+    }
+    .report-record{
+        background: white;
+        padding:0 16px;
+        display: flex;
+        margin-bottom: 12px;
+        .left-record{
+            width:40%;
+            height: 160px;
+        }
+        .right-record{
+            padding-left:16px;
+            padding-bottom: 12px;
+            flex:1;
+            // font-size: 12px;
+            flex-direction: column;
+            display: flex;
+            // align-items: center;
+            justify-content: center;
+        }
+    }
+  }
+</style>
+<template>
+  <view class="report-container">
+    <view class="report-wrapper">
+        <scroll-view class="report-list" scroll-y>
+            <repeat for="{{nuploadList}}" key="index" index="index" item="item">
+                <view class="report-record">
+                    <image class="left-record" mode="aspectFit" src="{{item.imgUrl}}" bindtap="previewImage({{item.imgUrl}})"/>
+                    <view class="right-record">
+                        <view>
+                            上传时间
+                        </view>
+                        <view>
+                            {{item.nuploadTime}}
+                        </view>
+                        <view style="margin-top:12px;">
+                            状态
+                        </view>
+                        <view>
+                            {{item.bonusFlag === 0 ? '待审核' : (item.bonusFlag === 1 ? '审核通过' : '审核未通过')}}
+                        </view>
+                        <view style="margin-top:12px" wx:if="{{item.bonusFlag !== 1 && item.bonusFlag !== 0}}">
+                            未通过原因
+                        </view>
+                        <view style="color:red;" wx:if="{{item.bonusFlag !== 1 && item.bonusFlag !== 0}}">
+                            {{item.reason}}
+                        </view>
+                    </view>
+                </view>
+            </repeat>
+        </scroll-view>
+    </view>
+    <view class="opr-container" wx:if="{{uploadText}}">
+        <button type="primary"  bindtap="doUpload">{{uploadText}}</button>
+    </view>
+  </view>
+</template>
+
+<script>
+// wx:if="{{loaded && userinfo && userinfo.realName}}"
+    import wepy from 'wepy';
+    const util = require('../util/index');
+    import dayjs from 'dayjs';
+    const {req} = util;
+    const svrConfig = require('../vendor/config');
+
+    export default class PersonInfo extends wepy.page {
+
+        config = {
+            "navigationBarTitleText": ""
+        };
+        components = {
+        };
+
+        // mixins = [testMixin];
+
+        data = {
+            uploadList :[]
+        };
+        computed = {
+            nuploadList:function(){
+                const ret =  this.uploadList.map((item)=>{
+                    if(!item.nuploadTime){
+                        item.nuploadTime = dayjs(new Date(item.create_time)).format('YYYY-MM-DD HH:mm:ss');
+                    }
+                    return item;
+                })
+                return ret;
+                // return [].concat(ret,ret);
+            },
+            uploadText:function(){
+                if(this.type == null) return '';
+                return this.type === "1" ? "上传体检报告" : "上传洗牙证明"
+            }
+        };
+        methods = {
+            previewImage:function(url){
+                wepy.previewImage({
+                    current:url,
+                    urls:this.uploadList.map((item)=>{
+                        return item.imgUrl
+                    })
+                })
+            },
+          doUpload: function () {
+                var that = this
+                // 选择图片
+                wx.chooseImage({
+                    count: 1,
+                    sizeType: ['compressed'],
+                    sourceType: ['album', 'camera'],
+                    success: function(res){
+                        util.showBusy('正在上传')
+                        var filePath = res.tempFilePaths[0]
+
+                        // 上传图片
+                        wx.uploadFile({
+                            url: svrConfig.service.uploadUrl,
+                            filePath: filePath,
+                            name: 'file',
+
+                            success: function(res){
+                                if(res.statusCode === 200){
+                                    res = JSON.parse(res.data)
+                                    that.saveUpload(res.data);
+                                }else{
+                                    util.showModel(res.data || '未知错误')
+                                }
+                            },
+
+                            fail: function(e) {
+                                util.showModel('上传图片失败')
+                            }
+                        })
+
+                    },
+                    fail: function(e) {
+                        console.error(e)
+                    }
+                })
+            }
+        };
+        async getUploadList(){
+            const ret = await util.req({
+                url:svrConfig.service.uploadListUrl,
+                data:{
+                    cid:this.cid,
+                    type:this.type
+                }
+            });
+            this.uploadList = ret;
+            this.$apply();
+        }
+        async saveUpload(data){
+            try{
+                const _this = this;
+                const ret = await util.req({
+                    url:svrConfig.service.uploadSaveUrl,
+                    method:'POST',
+                    data:{
+                        imgUrl:data.imgUrl,
+                        size:data.size,
+                        uploadFolder:data.uploadFolder,
+                        type:_this.type,
+                        fileBucket:data.fileBucket,
+                        qcloudAppId:data.qcloudAppId,
+                        imgUrlv4:data.imgUrlv4,
+                        imgKey:data.imgKey,
+                        cid:_this.cid
+                    }
+                });
+                util.showSuccess('上传成功');
+                // console.log('ret :',ret);
+                _this.uploadList.push(ret);
+                _this.$apply();
+            }catch(e){
+                util.showModel('错误','上传文件失败')
+            }
+        }
+        onLoad(option) {
+            // console.log('option :',option);
+            this.type = option.type + '';
+            this.cid = option.cid;
+            wepy.setNavigationBarTitle({
+                title:this.type === "1" ? '体检报告' : '洗牙证明'
+            })
+            this.getUploadList();
+            this.$apply();
+        }
+    }
+</script>

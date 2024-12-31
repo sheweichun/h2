@@ -1,0 +1,121 @@
+// @import '~styles/variables.less';
+@asidewidth: 180px;
+@titleHeight:50px;
+@itemHeight:40px;
+@menuColor:#999AA2;
+@rootMenuColor:#2E3845;
+@paddingLeft:30px;
+@borderWidth: 4px;
+@bgcolor: #1d2837;
+@activeBgcolor: #3c4552;
+@activeBorderColor:#28A3EF;
+
+.scrollContainer{
+    overflow: auto;
+    height: 100%;
+    // width:100%;
+    width: @asidewidth + 15px;
+    // box-sizing: content-box;
+    // padding-right: 15px;
+    & > ul{
+        width: @asidewidth;
+    }
+}
+
+.container{
+    width:@asidewidth;
+    height: 100%;
+    position: absolute;
+    left:0px;
+    top:0px;
+    overflow: hidden;
+    color:@menuColor;
+    font-size: 12px;
+    background-color:@bgcolor;
+}
+
+.menuTitle{
+    height: @titleHeight;
+    line-height: @titleHeight;
+    // padding-left: @paddingLeft;
+    width: @asidewidth;
+    display: inline-block;
+    color:#999AA2 !important;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    &:hover{
+        color:white;
+        cursor: pointer;
+    }
+    &:after{
+        display: block;
+        position: absolute;
+        bottom: 0;
+        content:'';
+        height: 1px;
+        left:10px;
+        right:10px;
+        background-color: rgba(205,212,220,0.1);
+
+    }
+}
+
+
+.menuContainer{
+
+}
+
+.menuItem{
+    overflow: hidden;
+    transition: height .3s;
+    // & > .menuContainer{
+    //     padding-left: 20px;
+    // }
+    &.root.rootSelected{
+        background-color:@rootMenuColor;
+        & > .menuText{
+            color:#fff; 
+            background-color:@activeBgcolor;
+        }
+    }
+    // &.root{
+        
+    // }
+    &.expanded{
+        & > .menuText .arrow{
+            transform:rotate(180deg);
+        }
+    }
+    .arrow{
+        right: 10px;
+        position: absolute;
+        transition: transform .3s;
+    }
+    .menuText{
+        color:@menuColor;
+        height: @itemHeight;
+        width: 100%;
+        line-height: @itemHeight;
+        padding-left: @paddingLeft - @borderWidth;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        border-left:@borderWidth solid transparent;
+        &:hover{
+            color:#fff;
+            background-color:@activeBgcolor;
+        }
+        &.selected{
+            // background-color:@activeBgcolor;
+            // color:#fff; 
+            
+        }
+        &.active{
+            background-color:@activeBgcolor;
+            border-color:@activeBorderColor;
+            color:#fff; 
+        }
+    }
+    
+}

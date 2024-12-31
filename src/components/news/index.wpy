@@ -1,0 +1,86 @@
+<style lang="less">
+.news-container{
+    // display: flex;
+    width: 100%;
+    // align-items: center;
+    // justify-content: center;
+    height: 100%;
+}
+.empty-container{
+  display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.article-list-container{
+    height: 100%;
+}
+</style>
+<template>
+  <view class="news-container">
+        <scroll-view wx:if="{{articles && articles.length > 0}}" class="article-list-container" scroll-y>
+            <repeat for="{{articles}}" key="index" index="index" item="item">
+                <article :article="item" ></article>
+            </repeat>
+        </scroll-view>
+       <view class="empty-container">
+         <i class="icon wait-icon" style="font-size:96px;color:#f37327;"></i>
+       </view>
+  </view>
+</template>
+<script>
+//  <i class="icon wait-icon" style="font-size:96px;"></i>
+    import wepy from 'wepy';
+    import Article from '../article/index';
+    export default class News extends wepy.component {
+        props = {
+          articles:Array
+        };
+        components = {
+          // shopitem:ShopItem
+          article:Article
+        };
+        // data = {
+        //     articles:[{
+        //       logo:"http://puui.qpic.cn/vcover_vt_pic/0/94s79izd2la17ej1482811407/0",
+        //       title:"啥都好说多撒谎的哈萨克和",
+        //       id:1,
+        //       desc:"啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和11"
+        //     },{
+        //       logo:"http://puui.qpic.cn/vcover_vt_pic/0/94s79izd2la17ej1482811407/0",
+        //       title:"啥都好说多撒谎的哈萨克和",
+        //       price:"¥2001",
+        //       id:1,
+        //       desc:"销量 : 2000"
+        //     },{
+        //       logo:"http://puui.qpic.cn/vcover_vt_pic/0/94s79izd2la17ej1482811407/0",
+        //       title:"啥都好说多撒谎的哈萨克和",
+        //       price:"¥2001",
+        //       id:1,
+        //       desc:"啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和啥都好说多撒谎的哈萨克和"
+        //     },{
+        //       logo:"http://puui.qpic.cn/vcover_vt_pic/0/94s79izd2la17ej1482811407/0",
+        //       title:"啥都好说多撒谎的哈萨克和",
+        //       price:"¥2001",
+        //       id:1,
+        //       desc:"销量 : 2000"
+        //     },{
+        //       logo:"http://puui.qpic.cn/vcover_vt_pic/0/94s79izd2la17ej1482811407/0",
+        //       title:"啥都好说多撒谎的哈萨克和",
+        //       price:"¥2001",
+        //       id:1,
+        //       desc:"销量 : 2000"
+        //     },{
+        //       logo:"http://puui.qpic.cn/vcover_vt_pic/0/94s79izd2la17ej1482811407/0",
+        //       title:"啥都好说多撒谎的哈萨克和",
+        //       price:"¥2001",
+        //       id:1,
+        //       desc:"销量 : 2000"
+        //     }]
+        // };
+        methods = {
+
+        };
+    }
+</script>

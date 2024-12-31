@@ -1,0 +1,453 @@
+<style lang="less">
+  @tabHeight:52px;
+
+  @import '../styles/base.less';
+  .index-container{
+    width: 100%;
+    height: 100%;
+  }
+  .tab-container{
+    height: 100%;
+    width: 100%;
+    background: #FBF9FE;
+    // display: flex;
+    // flex-flow: column;
+  }
+  .swiper-tab{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    height: @tabHeight;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    display: flex;
+    // background: rgba(254, 67, 67, 0.53);
+  }
+  .swiper-tab-list{
+    // line-height: @tabHeight;
+    height: 100%;
+    line-height: 1;
+    flex: 1;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color: #777777;
+    &.on{
+      color: #f37327;
+      // color:white;
+      // border-bottom: 5rpx solid #da7c0c;
+    }
+    .tab-content-body{
+      i{
+        // margin-top: 7px;
+        font-size: 20px;
+        display: block;
+      }
+      text{
+        font-size: 12px;
+      }
+    }
+
+  }
+
+
+  // .swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }
+  // .swiper-box view{
+  //   text-align: center;
+  // }
+  .tab-content{
+    height: calc(~"100% - @{tabHeight}");
+    // padding-bottom: @tabHeight;
+    position: relative;
+    box-sizing: content-box;
+  }
+</style>
+<template>
+  <view class="index-container">
+    <view class="tab-container" >
+      <swiper current="{{curtab}}" class="tab-content" duration="300"  bindchange="onChangeSwiper">
+        <!-- 我是哈哈 -->
+        <block>
+          <swiper-item>
+            <view style="height:100%;">
+                <upload  :latestMesaage.sync="latestMesaage" :user.sync="userInfo" :runData.sync="runData" :dakaFlag.sync="dakaFlag" :authFlag.sync="authFlag" :loginCode.sync="loginCode" :todaystep.sync="toDayStep"></upload>
+            </view>
+          </swiper-item>
+        </block>
+        
+          <!-- 我是呵呵 -->
+        <block>
+          <swiper-item>
+            <news :articles.sync="articles"></news>
+          </swiper-item>
+        </block>
+        
+        <block>
+          <swiper-item>
+                <userinfo :user.sync="userInfo"></userinfo>
+          </swiper-item>
+        </block>
+        
+        <!-- 我是嘿嘿 -->
+      </swiper>
+
+      <view class="swiper-tab">
+        <view class="swiper-tab-list {{curtab == 0 ? 'on' : ''}}" bindtap="swichNav(0)">
+          <view class="tab-content-body">
+            <i class="healthy-icon icon" ></i> 
+            <text>健康</text>
+          </view>
+        </view>
+        <view class="swiper-tab-list {{curtab == 1 ? 'on' : ''}}" bindtap="swichNav(1)">
+          <view class="tab-content-body">
+            <i class="new-icon icon"></i>
+            <text>文章</text>
+          </view>
+        </view>
+        <view class="swiper-tab-list {{curtab == 2 ? 'on' : ''}}" bindtap="swichNav(2)">
+          <view class="tab-content-body">
+            <i class="user-icon icon"></i>
+            <text>我</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import dayjs from 'dayjs'
+ // import UserInfo from '../components/userInfo/index';
+  import UserInfo from '../components/newUserInfo/index';
+  import Progress from '../components/progress/index';
+  import Upload from '../components/upload/index';
+  import News from '../components/news/index';
+  import {CHANGE_TAB} from './action';
+  import { connect } from 'wepy-redux';
+  import {LOGIN_AUTH_FLAG} from '../util/constant.js';
+  // const Promise = require('../util/promise');
+  const qcloud = require('../vendor/wafer2-client-sdk/index');
+  const util = require('../util/index');
+  const svrConfig = require('../vendor/config');
+
+  function isSameDate(dt1,dt2){
+    return dt1.year() === dt2.year()
+    && dt1.month() === dt2.month()
+    && dt1.date() === dt2.date()
+  }
+
+  @connect({ 
+    curtab (state) {
+      return state.dashboard.curTab
+    }
+  },{
+    changeTab:CHANGE_TAB
+  })
+  export default class Index extends wepy.page {
+    config = { 
+      navigationBarTitleText: '健康促进计划' 
+    }
+    components = {
+      userinfo:UserInfo,
+      upload:Upload,
+      news:News
+    }
+
+    mixins = []
+
+    data = {
+      userInfo:{
+        nickName:'加载中...'
+      },
+      dakaFlag:0,
+      articles:[],
+      loginCode:'',
+      runData:{},
+      latestMesaage:{},
+      toDayStep:'--',
+      loaded:false,
+      authFlag:false
+    }
+    
+    computed = {
+    }
+
+    methods = {
+      onChangeSwiper(e){
+        this.methods.changeTab(e.detail.current)
+      },
+      onLoginSuccess(data){
+
+      },
+      swichNav(index){
+        const self = this;
+        if( this.curtab === index ) {
+            return false;
+        } else {
+          if(index == 2 && !this.authFlag){
+            if(this.loginCode == null) return;
+            wx.navigateTo({
+              url:'login?loginCode='+this.loginCode,
+              events: {
+                // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+                acceptDataFromOpenedPage: function(data) {
+                  self.onLoginSuccess(data);
+                }
+              }
+            })
+          }else{
+            this.methods.changeTab(index);
+          }
+        }
+      },
+/*    onGotUserInfo(e){
+        const self = this;
+        const userInfo = e.detail;
+        util.showBusy('登录中...');
+        this.$parent.login(userInfo,self.loginCode).then((result)=>{
+          wx.hideToast();
+          self.authFlag = true;
+          wx.setStorageSync(LOGIN_AUTH_FLAG,'true');
+          self.initData(result);
+        },()=>{
+          wx.hideToast();
+        })
+      }*/
+    }
+    onLoginSuccess(data){
+      const self = this;
+      console.log('data :',data);
+      const {authFlag,result} = data;
+      self.authFlag = true;
+      wx.setStorageSync(LOGIN_AUTH_FLAG,'true');
+      self.initData(result);
+    }
+    events = {
+      onLoginSuccess:function(data){
+        this.onLoginSuccess(data);
+      }
+    }
+    onShareAppMessage(){
+      return {
+        title:'HealthHelper',
+        path:'pages/index?uid='+this.userInfo.uid,
+        imageUrl:'https://gw.alicdn.com/tfs/TB1t7u2q77mBKNjSZFyXXbydFXa-1181-1181.png',
+        success: async (res) =>{
+          const shareTicket = res.shareTickets[0];
+          const ret = await this.getOpenGId(shareTicket);
+          util.req({
+            url:svrConfig.service.createShare,
+            data:{
+              type:1, 
+              value:ret.openGId
+            },
+            method:'POST'
+          })
+        }
+      }
+    }
+    initData(result){
+      const self = this;
+      const {skey,userinfo} = result;
+      userinfo.todayTotal = self.todayTotal || 0;
+      self.userInfo = userinfo;
+      util.req({
+          url:svrConfig.service.getAllBousRecord,
+          data:{
+              uid:userinfo.uid
+          }
+      }).then((resp)=>{
+        let total = self.todayTotal || 0;
+        if(resp){
+          const now = dayjs();
+          total = resp.filter((item)=>{
+            const dt = dayjs(new Date(item.create_time));
+            return isSameDate(now,dt)
+          }).reduce((total,item)=>{
+            return total + item.add_bonus
+          },0);
+        }
+        self.todayTotal = total;
+        self.userInfo.todayTotal = total
+        self.$apply();
+      })
+      self.skey = skey;
+      self.$apply();
+      self.loadAricles();
+      self.getRunData().then((runData)=>{
+        const {stepInfoList=[]} = runData || {};
+        if(stepInfoList.length > 0){
+          self.runData = stepInfoList;
+          self.toDayStep = stepInfoList[stepInfoList.length - 1].step;
+          self.$apply();
+        }
+      },(err)=>{
+        if(err.message && err.message.indexOf('过期') >= 0){
+          wx.login({
+            success (loginResult) {
+              self.loginCode = loginResult.code
+              self.authFlag = false;
+              self.$apply();
+            },
+            fail (loginError) {
+            
+            }
+          })
+        }
+      });
+    }
+    loadAricles(){
+      util.req({
+        url:svrConfig.service.getArticles,
+        method:'get',
+        data:{
+        }
+      }).then((resp)=>{
+        this.articles = resp || [];
+        //console.log('articles :',this.articles);
+        this.$apply();
+      })
+    }
+    getRunData(){
+       const self = this;
+       return new Promise((resolve,reject)=>{
+         wepy.getWeRunData({
+          success (res) {
+            return util.req({
+              url:svrConfig.service.parseRunDataUrl,
+              data:{
+                encryptedData:res.encryptedData,
+                skey:self.skey,
+                iv:res.iv
+              },
+              method:'POST'
+            }).then(resolve,reject)
+          },
+          fail (err) {
+            reject(err)
+          }
+        })
+       })
+    }
+    async getLatestUnreadMessage(){
+      const user = this.userInfo;
+      const ret = await util.req({
+        url:svrConfig.service.getLatestUnreadMessage,
+        data:{
+          uid:user.uid
+        }
+      })
+      ret.create_time_str = dayjs(new Date(ret.create_time)).format('YYYY-MM-DD HH:mm')
+      this.latestMesaage = ret;
+      // console.log('ret :',ret);
+      this.$apply();
+    }
+    onShow(){
+      this.loadAricles();
+      let self = this  
+      const curHour = new Date().getHours();
+      let dakaFlag = 0;
+      if(curHour >= 6 && curHour < 8){
+        dakaFlag = 1;
+      }else if(curHour >= 21 && curHour < 23){
+        dakaFlag = 2;
+      }
+      self.dakaFlag = dakaFlag;
+      if(this.authFlag){
+        this.$parent.loginWidthCode().then((result)=>{
+          //console.log('result :',result)
+          this.onShareHandle(result);
+          self.initData(result);
+          self.getLatestUnreadMessage();
+        },(err)=>{
+          // util.showModel('登录失败',err.message);
+          this.authFlag = false;
+          wx.login({
+            success (loginResult) {
+              self.loginCode = loginResult.code
+              self.$apply();
+            },
+            fail (loginError) {
+            
+            }
+          })
+        })
+      }else{
+        wx.login({
+          success (loginResult) {
+            self.loginCode = loginResult.code
+            self.$apply();
+          },
+          fail (loginError) {
+          
+          }
+        })
+      }
+    }
+    getOpenGId(shareTicket){
+      return new Promise((resolve,reject)=>{
+        wx.getShareInfo({
+          shareTicket,
+          success:async function(resp){
+            try{
+              const ret = await util.req({
+                url:svrConfig.service.parseRunDataUrl,
+                method:'POST',
+                data:{
+                  encryptedData:resp.encryptedData,
+                  iv:resp.iv
+                }
+              })
+              resolve(ret);
+              //const {openGld,watermark} = ret
+            }catch(e){
+              console.error(e);
+            }
+          },
+          fail:function(err){
+            console.error(err);
+          }
+        })
+      })
+    }
+    onShareHandle(result={}){
+      const obj = this.$parent.option || {};
+      // console.log('obj :',obj);
+      // const {shareTicket='6575f8f2-d5fa-464e-94c1-da259a65afe9'} = obj;
+      const {shareTicket,query} = obj;
+      // console.log(query.uid,result.userinfo.uid);
+      if(shareTicket && query && query.uid && query.uid !== (result.userinfo.uid+'')){
+        this.getOpenGId(shareTicket).then((resp)=>{
+           return util.req({
+            url:svrConfig.service.createShareInfo,
+            data:{
+              cid:query.uid,
+              value:resp.openGId
+            },
+            method:'POST'
+          })
+        })
+      }
+    }
+    onLoad() {
+      this.authFlag = wx.getStorageSync(LOGIN_AUTH_FLAG) === 'true';
+      this.loaded = true;
+      this.$apply();
+
+      
+      // console.log('wx.getStorageSync(LOGIN_AUTH_FLAG) :',wx.getStorageSync(LOGIN_AUTH_FLAG))
+      // console.log('globalData :',this.$parent.data.name);
+      // let self = this
+      // if(this.authFlag){
+      //   this.$parent.loginWidthCode().then((result)=>{
+      //     self.initData(result);
+      //   },(err)=>{
+      //     util.showModel('登录失败',err.message);
+      //   })
+      // }
+    }
+  }
+</script>

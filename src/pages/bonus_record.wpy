@@ -1,0 +1,109 @@
+<style lang="less">
+  @import '../styles/base.less';
+  .bonus-record-container{
+    height: 100%;
+    width: 100%;
+    background: #FBF9FE;
+    // padding:48px 0 0;
+    box-sizing: border-box;
+    .empty_container{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .bonus-list-container{
+        width: 100%;
+        height: 100%;
+    }
+    .bonus-record{
+        font-size:12px;
+        background: white;
+        margin-bottom: 4px;
+        padding: 8px 0px 8px 16px;
+    }
+  }
+</style>
+<template>
+  <view class="bonus-record-container">
+      <view wx:if="{{loaded && records.length === 0}}" class="empty_container">
+          你暂时没有积分记录，加油~
+      </view>
+    <scroll-view wx:if="{{loaded && records.length > 0}}" class="bonus-list-container" scroll-y>
+        <repeat for="{{records}}" key="index" index="index" item="item">
+            <view class="bonus-record">
+                <text >{{item.tm}}</text>
+                <text>【{{item.type_name}}】</text>
+                <text>获得</text>
+                <text style="margin:0px 2px;color:#179B16;">{{item.add_bonus}}</text>
+                <text>积分</text>
+            </view>
+        </repeat>
+    </scroll-view>
+  </view>
+</template>
+
+<script>
+// wx:if="{{loaded && userinfo && userinfo.realName}}"
+    import wepy from 'wepy';
+    import dayjs from 'dayjs';
+    const util = require('../util/index');
+    const {req} = util;
+    const svrConfig = require('../vendor/config');
+
+    export default class BonusRecord extends wepy.page {
+
+        config = {
+            "navigationBarTitleText": "积分记录"
+        };
+        components = {
+        };
+        data = {
+          loaded:true,
+          records:[]
+        };
+        computed = {
+        };
+        methods = {
+
+        };
+        markReaded(ids){
+            if(!ids || ids.length === 0) return;
+            req({
+                url:svrConfig.service.markBonusInfoReaded,
+                method:'POST',
+                data:{
+                    ids
+                }
+            });
+        }
+        async onLoad(option){
+            const uid = option.cid;
+            try{
+                if(uid){
+                    const ret = await req({
+                        url:svrConfig.service.getAllBousRecord,
+                        data:{
+                            uid
+                        }
+                    })
+                    const unReadIds = [];
+                    this.records = ret.map((item)=>{
+                        if(!item.readed){
+                            unReadIds.push(item.id);
+                        }
+                        item.tm = dayjs(new Date(item.create_time)).format('YYYY-MM-DD HH:mm');
+                        return item;
+                    })
+                    this.$apply();
+                    this.markReaded(unReadIds);
+                    // console.log('ret :',ret);
+                }
+            }catch(e){
+
+            }
+            this.loaded = true;
+        }
+    }
+</script>
