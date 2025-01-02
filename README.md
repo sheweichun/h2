@@ -8,7 +8,7 @@ c28371cb4ba84256439ac99417463a24
 账号 root
 密码 Qq18521068045
 5JhTP0Lu5uvvu8T4
-
+JJAdegxC1
 scp root@124.223.159.182:/usr/local/nginx/conf/nginx.conf
 
 scp ./nginx.conf root@124.223.159.182:/usr/local/lighthouse/softwares/nginx/conf/
@@ -48,6 +48,14 @@ https://826625173.ehpp.club/phpmyadmin/
 域名解析添加 https://console.cloud.tencent.com/cns
 
 open -a "Google Chrome" --args --disable-web-security  --user-data-dir=/tmp
+
+windows版本
+
+start "" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=C:\tmp
+windows power shell
+
+Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentList "--disable-web-security --user-data-dir=E:\tmp"
+
 
 
 工单记录  https://console.cloud.tencent.com/workorder
@@ -123,3 +131,7 @@ https://lg-ick5yu5q-1257296211.cos.ap-shanghai.myqcloud.com
 # 浏览器跨域支持
 //chrome 浏览器
 open -a "Google Chrome" --args --disable-web-security  --user-data-dir=/tmp
+
+# mysql数据导入
+
+Get-Content "F:\workspace\miniapp\mysql.sql" | mysql.exe --defaults-file="F:\workspace\miniapp\tmpv3lwkvq4.cnf" --protocol=tcp --host=localhost --user=root --port=3306 --password=JJAdegxC1 --default-character-set=utf8 --comments --database=cauth

@@ -3,7 +3,7 @@
 const localIdentName = '[name][local]-[hash:base64:5]'
 module.exports = {
   packName: 'webpack',
-  packScope: '@ali',
+  // packScope: '@ali',
   packOption: ({context}) => {
     return {
       dll: false,
@@ -11,7 +11,7 @@ module.exports = {
       happypack: true,
       common: 'vendor',
       less: true,
-      sass: true,
+      sass: false,
       config: {
         pages: 'backend',
         comment: '洛丹',

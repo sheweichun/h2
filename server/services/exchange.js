@@ -275,5 +275,43 @@ module.exports = {
             current,
             data: result
         }
+    },
+    getAllExchangeRecordListFromAdmin: async function ( where, search, order = {}) {
+        const {whereList, paramList} = where2Query(where)
+        const selectSchema = `a.*,b.companyName,b.avatarUrl,b.companyid,b.nickName,b.realName,b.total_bonus,b.bonus,b.aid,c.name as addrName,c.phone as addrPhone,c.province,c.city,c.region,c.info`
+        if (search) {
+            const searchVal = `%${search}%`
+            paramList.push(searchVal, searchVal)
+            whereList.push(`(realName like ? or nickName like ?)`)
+        }
+        const whereStr = `${whereList.length > 0 ? 'where' : ''} ${whereList.join('and')}`
+        // const totalResult = await mysql.raw(`SELECT ${totalSchema} FROM cAuth.${TABLE_INFO_NAME} as a  left join cAuth.${USER_TABLE_NAME} as b on a.uid = b.uid left join cAuth.${ADDRESS_TABLE} as c on a.addressId = c.id  ${whereStr}`, paramList)
+        const resultInfos = await mysql.raw(`SELECT ${selectSchema} FROM cAuth.${TABLE_INFO_NAME} as a  left join cAuth.${USER_TABLE_NAME} as b on a.uid = b.uid left join cAuth.${ADDRESS_TABLE} as c on a.addressId = c.id
+        ${whereStr} order by ${order.column || 'create_time'} ${order.order || 'desc'}`, paramList)
+        const resultMap = {}
+        const result = resultInfos[0]
+        // console.log('result :',result);
+        const ridList = result.map((item) => {
+            item.subItems = []
+            resultMap[item.id] = item
+            return item.id
+        })
+        if (ridList.length > 0) {
+            const subResult = await mysql(TABLE_ITEM_INFO_NAME).select().whereIn('rid', ridList)
+            subResult.forEach((subItem) => {
+                const { rid } = subItem
+                const item = resultMap[rid]
+                if (item) {
+                    item.subItems.push(subItem)
+                }
+            })
+        }
+        result.forEach((item)=>{
+            item.giftInfo = (item.subItems || []).map((subItem)=>{
+                return `${subItem.gift_name} ${subItem.num}`
+            }).join(';');
+            delete item.subItems
+        })
+        return result
     }
 }

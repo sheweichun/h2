@@ -125,6 +125,11 @@ export default addWithCredentials({
       url: `${domain}/weapp/exchange/allUserExchange`
     }
   },
+  allUserExchangeExportAll: {
+    param: {
+      url: `${domain}/weapp/exchange/allUserExchangeExportAll`
+    }
+  },
   completeUserExchange: {
     param: {
       url: `${domain}/weapp/exchange/completeExchange`,

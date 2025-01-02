@@ -1,10 +1,14 @@
 
 import React, { Component } from 'react'
-import {Table, Button, Dialog, Input, Icon, Pagination, Select} from '@alife/next'
+import {Table, Button, Dialog, Input, Icon, Pagination, Select, DatePicker, Message} from '@alife/next'
+import moment from 'moment'
 import {Fetch} from '../../util/request'
 import ApiMap from '../../util/apiMap'
 import {Link} from 'react-router-dom'
 import Form from './form'
+
+
+const { RangePicker } = DatePicker
 
 const Option = Select.Option
 // import ExchangeForm from './exchange'
@@ -84,6 +88,7 @@ class UserExchange extends Component {
       search: '',
       companies: [],
       filterParams: {},
+      range: [moment().subtract(7, 'days'), moment()],
       sort: {
         create_time: 'desc'
       }
@@ -91,6 +96,7 @@ class UserExchange extends Component {
     this.sortColumn = 'create_time'
     this.sortOrder = 'desc'
     this.query = {}
+    this.onChangeTime = this.onChangeTime.bind(this)
     this.COLUMNS = [{
       dataIndex: 'avatarUrl',
       title: '兑换人头像',
@@ -338,6 +344,7 @@ class UserExchange extends Component {
   }
   loadCompany() {
     return Fetch('getAllCompany').then((resp) => {
+      // console.log('resp :', resp)
       this.state.companies = resp.data.map((item) => {
         return {
           label: item.name,
@@ -354,12 +361,14 @@ class UserExchange extends Component {
     return Fetch('getExchangeList', {code_id: cid})
   }
   loadList=() => {
-    const {pageSize, current, filterParams, search} = this.state
-    // console.log('filterParams :', filterParams)
+    const {pageSize, current, filterParams, search, range} = this.state
+    console.log('filterParams :', filterParams)
     return Fetch('allUserExchange', {
       pageSize,
       current,
       search,
+      startTime:  `${range[0].format('YYYY-MM-DD')} 00:00:00`,
+      endTime:  `${range[1].format('YYYY-MM-DD')} 23:59:59`,
       sortColumn: this.sortColumn,
       sortOrder: this.sortOrder,
       filterStr: JSON.stringify(Object.keys(filterParams).map((name) => {
@@ -414,14 +423,33 @@ class UserExchange extends Component {
     })
   }
   loadlistBySearch=() => {
+    const range = this.state.range
     this.state.current = 1
+    if(range.some((item)=> item == null)){
+      Message.warning('请选择开始日期和结束日期')
+      return
+    }
     this.loadList()
   }
   // onExportFile=()=>{
   //   return Fetch('getExportCustomers')
   // }
+  onChangeTime(val) {
+    // console.log('val :', val)
+    // if()
+    // this.state.range = val
+    this.setState({
+      range: val
+    })
+    // this.loadList()
+  }
   render() {
-    const {data, total, current, pageSize, filterParams, search, sort} = this.state
+    const {data, total, current, pageSize, filterParams, search, sort, range} = this.state
+    const startTime = range[0]
+    const endTime = range[1]
+    // startTime:  `${range[0].format('YYYY-MM-DD')} 00:00:00`,
+    // endTime:  `${range[1].format('YYYY-MM-DD')} 23:59:59`,
+    const exportUrl = startTime == null || endTime == null ? 'javascript:void(0);' : `${ApiMap['allUserExchangeExportAll'].param.url}?startTime=${startTime.format('YYYY-MM-DD')} 00:00:00&endTime=${endTime.format('YYYY-MM-DD')} 23:59:59`
     // console.log('total :',total,current,pageSize);
     return (
                 <div style={{padding: '16px'}}>
@@ -429,13 +457,19 @@ class UserExchange extends Component {
                     <Input
                     value={search}
                     onChange={this.changeSearch}
-                    onPressEnter={this.loadlistBySearch}
+                    // onPressEnter={this.loadlistBySearch}
                     placeholder="要搜索的姓名"
-                    innerAfter={<Icon type="search" size="xs" onClick={this.loadlistBySearch} style={{margin: 4}}/>}
+                    // innerAfter={<Icon type="search" size="xs" onClick={this.loadlistBySearch} style={{margin: 4}}/>}
                     ></Input>
+
+                    <RangePicker style={{marginLeft: '12px'}} value={range} onChange={this.onChangeTime}></RangePicker>
+                    <Button type="primary" style={{marginLeft:"12px"}} onClick={this.loadlistBySearch}>查询</Button>
                     {/* <Button type="primary" style={{float:'right'}}>
                       <a target="_blank" href={ApiMap['getExportCustomers'].param.url} style={{color:'white'}}>导出文件</a>
                     </Button> */}
+                    {data.length > 0 ? <Button type="primary" style={{float: 'right'}}>
+                      <a target="_blank" style={{color: 'white'}} href={exportUrl}>导出信息</a>
+                    </Button> : ''}
                   </div>
                   <Table sort={sort} 
                   dataSource={data} 

@@ -128,6 +128,8 @@ router.post('/exchange/doCustomerExchange', adminAuthMiddleware, controllers.cus
 
 router.get('/exchange/allUserExchange', adminAuthMiddleware, controllers.exchange.allUserExchange)
 
+router.get('/exchange/allUserExchangeExportAll', adminAuthMiddleware, controllers.exchange.allUserExchangeExportAll)
+
 router.post('/exchange/cancelExchange', adminAuthMiddleware, controllers.exchange.cancelExchange)
 router.post('/exchange/completeExchange', adminAuthMiddleware, controllers.exchange.completeExchange)
 router.post('/exchange/updateExchangeRecordRemark', adminAuthMiddleware, controllers.exchange.updateExchangeRecordRemark)

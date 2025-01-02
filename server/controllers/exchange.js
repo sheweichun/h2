@@ -1,4 +1,5 @@
 const ExchangeService = require('../services/exchange')
+const {Parser} = require('../services/json2csv/json2csv')
 // 登录授权接口
 module.exports = {
     getAllExchanges: async (ctx, next) => {
@@ -39,7 +40,7 @@ module.exports = {
         ctx.state.data = ret
     },
     allUserExchange: async(ctx) => {
-        const {pageSize = 10, current = 1, filterStr, search, sortOrder, sortColumn} = ctx.request.query
+        const {pageSize = 10, current = 1, filterStr, search, sortOrder, sortColumn, startTime, endTime } = ctx.request.query
         const filter = filterStr ? JSON.parse(filterStr) : []
         const {aid} = ctx.session.adminer
         const superFlag = ctx.session.adminer.super
@@ -48,10 +49,49 @@ module.exports = {
         } else {
             filter.push({name: 'aid', value: aid})
         }
+        filter.push({
+            content: ` a.create_time < "${endTime}" `
+        })
+        filter.push({
+            content: ` a.create_time >= "${startTime}" `
+        })
         ctx.state.data = await ExchangeService.getExchangeRecordListFromAdmin(parseInt(pageSize), parseInt(current), filter, search, {
             column: sortColumn,
             order: sortOrder
         })
+    },
+    allUserExchangeExportAll: async(ctx) => {
+        const {filterStr, search, sortOrder, sortColumn, startTime, endTime} = ctx.request.query
+        const filter = filterStr ? JSON.parse(filterStr) : []
+        const {aid} = ctx.session.adminer
+        const superFlag = ctx.session.adminer.super
+        if (superFlag) {
+            filter.push({content: `(aid = ${aid} or aid is null)`})
+        } else {
+            filter.push({name: 'aid', value: aid})
+        }
+        filter.push({
+            content: ` a.create_time < "${endTime}" `
+        })
+        filter.push({
+            content: ` a.create_time >= "${startTime}" `
+        })
+        // console.log('startTime :', startTime, endTime)
+        const ret = await ExchangeService.getAllExchangeRecordListFromAdmin(filter, search, {
+            column: sortColumn,
+            order: sortOrder
+        })
+
+        const parser = new Parser({
+            // fields
+        })
+        // const {res} = ctx;
+        ctx.set('Content-disposition', `attachment; filename=bonus_${(Math.random() + '').substring(2, 8)}.csv`) //attachment
+        ctx.set('Content-type', 'text/plain')
+        ctx.body = Buffer.from(parser.parse(ret), 'utf-8')
+
+        // ctx.state.data ={a:3}
+        return
     },
     allUserExchangeByUid: async(ctx) => {
         const { uid } = ctx.session.userinfo
