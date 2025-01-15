@@ -66,12 +66,13 @@ module.exports = {
         // ctx.state.data = ret
     },
     changeUploadBonusFlag: async(ctx) => {
-        const {uid, value, cid, reason} = ctx.request.body
+        let {uid, value, cid, reason} = ctx.request.body
         if (!uid || !value || !cid) {
             ctx.state.code = 1
             ctx.state.data = '参数无效'
             return
         }
+        value = value + ''
         if (value === '2' && !reason) {
             ctx.state.code = 1
             ctx.state.data = '拒绝原因不能为空'

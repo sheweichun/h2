@@ -23,8 +23,8 @@ const CONF = {
     // uploaderDir: '/home/lighthouse/uploadres', // 生产环境
     // uploaderCdNPath: 'https://826625173.ehpp.club/res',
     mysql: {
-        // host: 'localhost', // 10.0.4.16
-        host: '10.0.4.16',
+        host: 'localhost', // 10.0.4.16
+        // host: '10.0.4.16',
         port: 3306,
         user: 'root',
         db: 'cAuth',

@@ -76,6 +76,12 @@ class Upload extends Component {
         }
       }
     }, {
+      dataIndex: 'reason',
+      title: '拒绝原因',
+      cell: (value, index, record) => {
+        return value
+      }
+    }, {
       dataIndex: 'bonusFlag',
       title: '操作',
       cell: (value, index, record) => {
