@@ -20,6 +20,7 @@ const CQuestionnaireAns_Table = 'cQuestionnaireAns'
 const CQuestionnaireItem_Table = 'cQuestionnaireItem'
 const CQuestionnaireAndItem_Table = 'cQuestionnaireAndItem'
 const CQuestionnaireOption_Table = 'cQuestionnaireOption'
+const Questionnaire_Bonus_table = 'cquestionnairebonus'
 // const cQuestionnaireItem_Table = 'cQuestionnaireItem'
 
 const ATTR_LIST = ['timestamp', 'step', 'bonus_flag', 'uid']
@@ -753,6 +754,75 @@ module.exports = {
     getExportHealthCustomersByCid: async function (param_id, cid) {
         const qid = param_id || 1
         const data = await mysql(TABLE_NAME).select().where({companyid: cid})
+        const answers = await mysql(CQuestionnaireAns_Table).select().where({qid})
+        const answerMap = answers.reduce((ret, ans) => {
+            let ele = ret[ans.uid]
+            if (ele == null) {
+                ele = {}
+                ret[ans.uid] = ele
+            }
+            let ansList = ele[ans.item_id]
+            if (ansList == null) {
+                ansList = []
+                ele[ans.item_id] = ansList
+            }
+            ansList.push(ans)
+            return ret
+        }, {})
+        // const item_indexes = await mysql(CQuestionnaireAndItem_Table).select().where({qid})
+        const result = await mysql.raw(`SELECT a.qid,a.item_id,b.* FROM cAuth.cQuestionnaireAndItem as a  left join cQuestionnaireItem as b on a.item_id = b.id where qid = ?`, [qid])
+        const items = result[0]
+        const item_ids = items.map((item) => {
+            // console.log('item :',item);
+            return item.item_id
+        })
+        // console.log('item_ids :',item_ids);
+        const options = await mysql(CQuestionnaireOption_Table).select().whereIn('item_id', item_ids)
+        const optionMap = options.reduce((ret, opt) => {
+            ret[opt.id] = opt
+            return ret
+        }, {})
+        data.forEach((user) => {
+            const user_answerMap = answerMap[user.uid] || {}
+            items.forEach((item, index) => {
+                const {title} = item
+                const keyName = `${index + 1}.${title}`
+                const ansList = user_answerMap[item.item_id]
+                let curVal = ''
+                if (ansList) {
+                    // console.log('item :',item);
+                    // console.log('ansList :',ansList,item.type);
+                    curVal = ansList.map((ans) => {
+                        let ansVal = ''
+                        if (item.type == '1' || item.type == '5' || ans.oid == null) { // 填空题
+                            ansVal = ans.value
+                        } else {
+                            // console.log('optionMap :',optionMap,ans.oid,ans);
+                            const curOpt = optionMap[ans.oid]
+                            // console.log('optionMap :',optionMap,ans.oid,ans,curOpt);
+                            if (curOpt) {
+                                // console.log('curOpt :',curOpt,ans);
+                                ansVal = curOpt.name
+                            }
+                        }
+                        return ansVal
+                    }).join('|')
+                }
+                user[keyName] = curVal
+            })
+        })
+        // throw new Error('test')
+        return data
+    },
+    getExportHealthInfoByQus: async function (param_id) {
+        const qid = param_id
+
+        const uids = await mysql(Questionnaire_Bonus_table).select('uid').where({
+            qid
+        })
+        const data = await mysql(TABLE_NAME).select().whereIn('uid', uids.map((item)=>{
+            return item.uid
+        }))
         const answers = await mysql(CQuestionnaireAns_Table).select().where({qid})
         const answerMap = answers.reduce((ret, ans) => {
             let ele = ret[ans.uid]

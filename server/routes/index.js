@@ -73,6 +73,8 @@ router.get('/address/getAddressById', miniAuthMiddleware, controllers.address.ge
 router.get('/questionnaire/getQuestionnaireDetail', miniAuthMiddleware, controllers.questionnaire.getQuestionnaireDetail)
 router.get('/questionnaire/getQuestionnaireAnswer', miniAuthMiddleware, controllers.questionnaire.getQuestionnaireAnswer)
 router.post('/questionnaire/saveQuestionnaireAnswers', miniAuthMiddleware, controllers.questionnaire.saveQuestionnaireAnswers)
+router.post('/questionnaire/saveQuestionnaireAnswersV2', miniAuthMiddleware, controllers.questionnaire.saveQuestionnaireAnswersV2)
+
 
 router.post('/exchange/doexchange', miniAuthMiddleware, controllers.exchange.doExchange)
 router.get('/exchange/queryexchange', miniAuthMiddleware, controllers.exchange.allUserExchangeByUid)
@@ -110,6 +112,7 @@ router.post('/upload/changeUploadBonusFlag', adminAuthMiddleware, controllers.up
 router.get('/customer/all', adminAuthMiddleware, controllers.customer.all)
 router.get('/customer/exportCustomers', adminAuthMiddleware, controllers.customer.exportCustomers)
 router.get('/customer/exportHealthCustomersByCid', adminAuthMiddleware, controllers.customer.exportHealthCustomersByCid)
+router.get('/customer/exportHealthInfoByQus', adminAuthMiddleware, controllers.customer.exportHealthInfoByQus)
 router.get('/customer/getAllBonusInfo', adminAuthMiddleware, controllers.customer.getAllBonusInfo)
 router.post('/customer/addBonus', adminAuthMiddleware, controllers.customer.addBonus)
 router.post('/customer/batchAddBonus', adminAuthMiddleware, controllers.customer.batchAddBonus)
@@ -181,5 +184,14 @@ router.post('/backend-upload', adminAuthMiddleware, uploadMiddleware, controller
 
 router.get('/collectionque/list', adminAuthMiddleware, controllers.collectionque.getAll)
 router.post('/collectionque/add', controllers.collectionque.addQue)
+
+router.get('/questionnaire/getAllActivityQuestionnairesByType', adminAuthMiddleware, controllers.questionnaire.getAllActivityQuestionnairesByType)
+router.get('/questionnaire/getAllShowQuestionnairesByType', controllers.questionnaire.getAllShowQuestionnairesByType)
+
+router.post('/questionnaire/createQuestionnaire', adminAuthMiddleware, controllers.questionnaire.createQuestionnaire)
+router.post('/questionnaire/updateQuestionnaire', adminAuthMiddleware, controllers.questionnaire.updateQuestionnaire)
+
+
+router.get('/questionnaire/hasValidQuestionnaire', controllers.questionnaire.hasValidQuestionnaire)
 
 module.exports = router

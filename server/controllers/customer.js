@@ -143,6 +143,28 @@ module.exports = {
         return ctx.body = Buffer.from(parser.parse(data), 'utf-8')
         // console.log('ctx :',ctx);
     },
+    exportHealthInfoByQus: async(ctx) => {
+        const {qid } = ctx.request.query
+        if (qid == null) {
+            ctx.state.code = 1
+            ctx.state.data = 'cid 不能为空'
+            return
+        }
+        const data = await CustomerService.getExportHealthInfoByQus(qid)
+
+
+        // const fields = [
+        //     ''
+        // ]
+        const parser = new Parser({
+            // fields
+        })
+        // const {res} = ctx;
+        ctx.set('Content-disposition', `attachment; filename=${'health_qus'}.csv`)// attachment
+        ctx.set('Content-type', 'text/plain')
+        return ctx.body = Buffer.from(parser.parse(data), 'utf-8')
+        // console.log('ctx :',ctx);
+    },
     exportHealthCustomersByCid: async(ctx) => {
         const {qid = 2, cid} = ctx.request.query
         if (cid == null) {

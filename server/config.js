@@ -17,11 +17,11 @@ const CONF = {
      * 开发环境下，MySQL 的初始密码为您的微信小程序 appid
      */
     uploadPrefix: 'res',
-    uploaderDir: '/Users/luodan/uploadertestplace', // 本地开发
-    uploaderCdNPath: 'http://localhost:5757/res',
+    // uploaderDir: '/Users/luodan/uploadertestplace', // 本地开发
+    // uploaderCdNPath: 'http://localhost:5757/res',
 
-    // uploaderDir: '/home/lighthouse/uploadres', // 生产环境
-    // uploaderCdNPath: 'https://826625173.ehpp.club/res',
+    uploaderDir: '/home/lighthouse/uploadres', // 生产环境
+    uploaderCdNPath: 'https://www.h2phb.com/res',
     mysql: {
         host: 'localhost', // 10.0.4.16
         // host: '10.0.4.16',

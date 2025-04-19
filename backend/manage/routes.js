@@ -77,6 +77,7 @@ class Layout extends Component {
               <Route component={Bundle(() => import(/* webpackChunkName: "article" */'./containers/test'))} path="/test"></Route>
               <Route component={Bundle(() => import(/* webpackChunkName: "exportData" */'./containers/exportData'))} path="/exportdata"></Route>
               <Route component={Bundle(() => import(/* webpackChunkName: "manager" */'./containers/manager'))} path="/manager"></Route>
+              <Route component={Bundle(() => import(/* webpackChunkName: "healthqus" */'./containers/healthqus'))} path="/healthqus"></Route>
               
             </Switch>
           </div>

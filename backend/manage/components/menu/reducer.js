@@ -211,6 +211,9 @@ export default CreateReducer({
   }, {
     title: '分享记录',
     href: '/share'
+  },{
+    title: '健康问卷',
+    href: '/healthqus'
   }, {
     title: '文章管理',
     href: '/article'

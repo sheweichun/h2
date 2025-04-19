@@ -115,6 +115,12 @@ export default addWithCredentials({
       method: 'post'
     }
   },
+  exportHealthInfoByQus: {
+    param: {
+      url: `${domain}/weapp/customer/exportHealthInfoByQus`,
+      method: 'get'
+    }
+  },
   getAllCustomers: {
     param: {
       url: `${domain}/weapp/customer/all`
@@ -376,5 +382,32 @@ export default addWithCredentials({
       url: `${domain}/weapp/admin/batchUpdateBonusByOpenIds`,
       method: 'post'
     }
+  },
+  getAllActivityQuestionnairesByType: {
+    param: {
+      url: `${domain}/weapp/questionnaire/getAllActivityQuestionnairesByType`,
+      method: 'get'
+    }
+  },
+  createQuestionnaire: {
+    param: {
+      url: `${domain}/weapp/questionnaire/createQuestionnaire`,
+      method: 'post'
+    }
+  },
+  updateQuestionnaire: {
+    param: {
+      url: `${domain}/weapp/questionnaire/updateQuestionnaire`,
+      method: 'post'
+    }
+  },
+
+  hasValidQuestionnaire: {
+    param: {
+      url: `${domain}/weapp/questionnaire/hasValidQuestionnaire`,
+      method: 'get'
+    }
   }
+
+
 })

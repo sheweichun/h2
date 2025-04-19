@@ -1,6 +1,8 @@
 
 const { mysql } = require('../qcloud')
+const dayjs = require('dayjs')
 const Questionnaire_table = 'cQuestionnaire'
+const Questionnaire_Bonus_table = 'cquestionnairebonus'
 const QuestionnaireAndItem_table = 'cQuestionnaireAndItem'
 const QuestionnaireAns_table = 'cQuestionnaireAns'
 const QuestionnaireItem_table = 'cQuestionnaireItem'
@@ -39,6 +41,58 @@ function flatternObj2List (data) {
 
 
 module.exports = {
+    getAllActivityQuestionnairesByType: async function (type) {
+        const result = await mysql(Questionnaire_table).select().where({
+            type:type || 1
+        });
+        return result
+    },
+    getAllShowQuestionnairesByType: async function (type) {
+        const result = await mysql(Questionnaire_table).select().where({
+            type:type || 1,
+            flag: 1
+        });
+        const now = dayjs(new Date())
+        result.forEach((item)=>{
+            const startTm = dayjs(item.start)
+            const endTm = dayjs(item.end)
+            if((startTm.isBefore(now) || startTm.isSame(now)) && endTm.isAfter(now)){
+                item.valid = true
+            }
+        })
+        return result
+    },
+    
+    createQuestionnaire: async function (data) {
+        const result = await mysql(Questionnaire_table).insert(data);
+        return result
+    },
+    updateQuestionnaire: async function (data, id) {
+        const result = await mysql(Questionnaire_table).update(data).where({
+            id: id
+        });
+        return result
+    },
+    
+    hasValidQuestionnaire: async function (type) {
+        // const nowTimeStr = new Dayjs().format('YYYY-MM-DD')
+        // const result = await mysql.raw(
+        //     `select * from ${Questionnaire_table} where sta`,
+        //     [qid,uid]
+        // )
+        // return result
+        const result = await mysql(Questionnaire_table).count('* as total').where({
+            type: type || 1,
+            flag: 1
+        });
+        return (result && result[0]) ? result[0].total : 0
+    },
+    // getAllQuestionnaireList: async function (type) {
+    //     const result = await mysql(Questionnaire_table).select().where({
+    //         type: type || 1
+    //     });
+    //     return result
+    // },
     getQuestionnaireDetail: async function (id) {
         const db = mysql
         // const questionnaire = await db(Questionnaire_table).select().where({
@@ -84,6 +138,72 @@ module.exports = {
             uid
         });
         return answers;
+    },
+    saveQuestionnaireAnswersV2:async function(qid,uid,answers,notneedBonus){ //{uid,qid,item_id,value,oid}
+        if(answers && answers.length > 0){
+            await mysql.transaction(function (trx) {
+                return new Promise(async(resolve, reject) => {
+                    try {
+                        // console.log('notneedBonus :',notneedBonus);
+                        if(!notneedBonus){
+                            const info = await trx(Questionnaire_Bonus_table).select().where({
+                                qid,
+                                uid
+                            }).first();
+                            if(!info){ //已经计算了积分
+                                const curQus = await trx(Questionnaire_table).select().where({
+                                    id: qid
+                                }).first()
+                                const user = await trx(USER_TABLE_NAME).select().where({
+                                    uid: uid
+                                }).first()
+
+                                let addBonus = (curQus.bonus || 0);
+                                let curTotalBonus = user.total_bonus || 0;
+                                curTotalBonus += addBonus;
+                                const newBonus = user.bonus + addBonus
+                                console.log('addBonus :',addBonus,newBonus);
+                                await trx(CBONUS_TABLE_NAME).insert({
+                                    origin_bonus: user.bonus,
+                                    add_bonus: addBonus,
+                                    new_bonus: newBonus,
+                                    type: 15,
+                                    readed: false,
+                                    uid: uid,
+                                    type_name: '健康问卷'
+                                })
+                                await trx(USER_TABLE_NAME).update({
+                                    bonus: newBonus,
+                                    total_bonus:curTotalBonus
+                                }).where({
+                                    uid
+                                })
+                                await trx(Questionnaire_Bonus_table).insert({
+                                    qid,
+                                    uid,
+                                    bonus: addBonus
+                                })
+                            }
+                        }
+                        const rawQuery = 'insert into ' + QuestionnaireAns_table + ' (' + ATTR_LIST.join(',') + ') values ' + list2Values(answers) 
+                        // + ' on duplicate key update ' + UPDATE_RAW + ';'
+                        // await trx(QuestionnaireAns_table).where()
+                        await trx.raw(
+                            `delete from ${QuestionnaireAns_table} where qid = ? and uid = ?`,
+                            [qid,uid]
+                        )
+                        await trx.raw(
+                            rawQuery,
+                            flatternObj2List(answers)
+                        )
+                        return resolve();
+                    }catch(e){
+                        console.log(e)
+                        return reject(e);
+                    }
+                })
+            })
+        }
     },
     saveQuestionnaireAnswers:async function(qid,uid,answers,notneedBonus){ //{uid,qid,item_id,value,oid}
         if(answers && answers.length > 0){

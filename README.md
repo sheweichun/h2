@@ -108,6 +108,9 @@ DELETE FROM `cauth`.`cruninfo` where FROM_UNIXTIME(timestamp) < '2022-06-30 00:0
 # SSL证书部署
 
 scp -r ~/Downloads/www.h2phb.com_nginx.zip root@124.223.159.182:/usr/local/lighthouse/softwares/nginx/conf/
+
+scp -r C:\Users\洛丹\Downloads\h2phb.com_nginx.zip root@124.223.159.182:/usr/local/lighthouse/softwares/nginx/conf/
+
 unzip 826625173.ehpp.club_nginx.zip
 mv ./826625173.ehpp.club_nginx/* ./
 /usr/local/lighthouse/softwares/nginx/sbin/nginx -s reload
