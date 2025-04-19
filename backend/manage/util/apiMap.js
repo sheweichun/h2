@@ -407,6 +407,32 @@ export default addWithCredentials({
       url: `${domain}/weapp/questionnaire/hasValidQuestionnaire`,
       method: 'get'
     }
+  },
+
+  // Questionnaire Items Management
+  getQuestionnaireItems: {
+    param: {
+      url: `${domain}/weapp/questionnaire/getQuestionnaireItems`,
+      method: 'get'
+    }
+  },
+  addQuestionnaireItem: {
+    param: {
+      url: `${domain}/weapp/questionnaire/addQuestionnaireItem`,
+      method: 'post'
+    }
+  },
+  updateQuestionnaireItem: {
+    param: {
+      url: `${domain}/weapp/questionnaire/updateQuestionnaireItem`,
+      method: 'post'
+    }
+  },
+  deleteQuestionnaireItem: {
+    param: {
+      url: `${domain}/weapp/questionnaire/deleteQuestionnaireItem`,
+      method: 'post'
+    }
   }
 
 

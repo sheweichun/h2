@@ -1,9 +1,10 @@
 
 import React, { Component } from 'react'
-import {Table, Button, Dialog} from '@alife/next'
+import {Table, Button, Dialog, Message} from '@alife/next'
 import {Fetch} from '../../util/request'
 import ApiMap from '../../util/apiMap'
 import ArticleForm from './form'
+import QuestionnaireItems from './items'
 import {Link} from 'react-router-dom'
 import dayjs from 'dayjs'
 
@@ -18,7 +19,10 @@ class Share extends Component {
       data: [],
       companyMap: {},
       filterParams: {},
-      companySource: []
+      companySource: [],
+      showItemsManagement: false,
+      selectedQuestionnaire: null,
+      questionnaireItems: []
     }
     this.query = {}
     this.onFilter = this.onFilter.bind(this)
@@ -67,6 +71,7 @@ class Share extends Component {
       cell: (value, index, record) => {
         return <div>
             <Button onClick={this.editArticle.bind(this, record)}>修改</Button>
+            <Button style={{marginLeft: '8px'}} type="primary" onClick={this.manageQuestionnaireItems.bind(this, record)}>管理题目</Button>
             <a target="_blank" href={`${ApiMap['exportHealthInfoByQus'].param.url}?qid=${record.id}`} style={{marginLeft: '8px'}}>导出健康信息告知问卷</a>
             {/* <Button style={{marginLeft: '12px'}} type="primary" warning onClick={this.removeArticle.bind(this, record)}>删除</Button> */}
         </div>
@@ -180,28 +185,78 @@ class Share extends Component {
       footer: false
     })
   }
+
+  manageQuestionnaireItems(record) {
+    this.setState({
+      showItemsManagement: true,
+      selectedQuestionnaire: record
+    }, () => {
+      // this.loadQuestionnaireItems(record.id)
+    })
+  }
+
+  // loadQuestionnaireItems(qid) {
+  //   Fetch('getQuestionnaireItems', {
+  //     data: { qid }
+  //   }).then((resp) => {
+  //     this.setState({
+  //       questionnaireItems: resp.data || []
+  //     })
+  //   }).catch(err => {
+  //     Message.error('加载题目失败')
+  //   })
+  // }
+
+  handleItemsChanged = () => {
+    const { selectedQuestionnaire } = this.state
+    if (selectedQuestionnaire) {
+      // this.loadQuestionnaireItems(selectedQuestionnaire.id)
+    }
+  }
+
+  backToQuestionnaireList = () => {
+    this.setState({
+      showItemsManagement: false,
+      selectedQuestionnaire: null
+    })
+  }
   render() {
-    const {data, filterParams} = this.state
+    const { data, filterParams, showItemsManagement, selectedQuestionnaire, questionnaireItems } = this.state
+
+    if (showItemsManagement && selectedQuestionnaire) {
+      return (
+        <div style={{padding: '16px'}}>
+          <h2>{selectedQuestionnaire.name} - 题目管理</h2>
+          <QuestionnaireItems
+            questionnaireId={selectedQuestionnaire.id}
+            questionnaireItems={questionnaireItems}
+            onItemsChanged={this.handleItemsChanged}
+            onBack={this.backToQuestionnaireList}
+          />
+        </div>
+      )
+    }
+
     return (
-                <div style={{padding: '16px'}}>
-                  <div style={{margin: '4px 0 8px'}}> 
-                    <Button type="primary" onClick={this.addArticle}>创建问卷</Button>
-                  </div>
-                  <Table dataSource={data} filterParams={filterParams} onFilter={this.onFilter}>
-                    {
-                      this.COLUMNS.map((item, key) => {
-                        return <Table.Column
-                        key={key}
-                        title={item.title}
-                        cell={item.cell}
-                        width={item.width}
-                        filters={item.filters && item.filters()}
-                        dataIndex={item.dataIndex}
-                        ></Table.Column>
-                      })
-                    }
-                  </Table>
-                </div>
+      <div style={{padding: '16px'}}>
+        <div style={{margin: '4px 0 8px'}}>
+          <Button type="primary" onClick={this.addArticle}>创建问卷</Button>
+        </div>
+        <Table dataSource={data} filterParams={filterParams} onFilter={this.onFilter}>
+          {
+            this.COLUMNS.map((item, key) => {
+              return <Table.Column
+              key={key}
+              title={item.title}
+              cell={item.cell}
+              width={item.width}
+              filters={item.filters && item.filters()}
+              dataIndex={item.dataIndex}
+              ></Table.Column>
+            })
+          }
+        </Table>
+      </div>
     )
   }
 }

@@ -191,6 +191,11 @@ router.get('/questionnaire/getAllShowQuestionnairesByType', controllers.question
 router.post('/questionnaire/createQuestionnaire', adminAuthMiddleware, controllers.questionnaire.createQuestionnaire)
 router.post('/questionnaire/updateQuestionnaire', adminAuthMiddleware, controllers.questionnaire.updateQuestionnaire)
 
+// Questionnaire Items Management
+router.get('/questionnaire/getQuestionnaireItems', adminAuthMiddleware, controllers.questionnaire.getQuestionnaireItems)
+router.post('/questionnaire/addQuestionnaireItem', adminAuthMiddleware, controllers.questionnaire.addQuestionnaireItem)
+router.post('/questionnaire/updateQuestionnaireItem', adminAuthMiddleware, controllers.questionnaire.updateQuestionnaireItem)
+router.post('/questionnaire/deleteQuestionnaireItem', adminAuthMiddleware, controllers.questionnaire.deleteQuestionnaireItem)
 
 router.get('/questionnaire/hasValidQuestionnaire', controllers.questionnaire.hasValidQuestionnaire)
 

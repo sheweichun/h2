@@ -62,7 +62,7 @@ module.exports = {
         })
         return result
     },
-    
+
     createQuestionnaire: async function (data) {
         const result = await mysql(Questionnaire_table).insert(data);
         return result
@@ -73,7 +73,7 @@ module.exports = {
         });
         return result
     },
-    
+
     hasValidQuestionnaire: async function (type) {
         // const nowTimeStr = new Dayjs().format('YYYY-MM-DD')
         // const result = await mysql.raw(
@@ -86,6 +86,104 @@ module.exports = {
             flag: 1
         });
         return (result && result[0]) ? result[0].total : 0
+    },
+
+    // Questionnaire Items Management
+    getQuestionnaireItems: async function (qid) {
+        let items = await mysql(QuestionnaireItem_table).select();
+        if (qid) {
+            const relations = await mysql(QuestionnaireAndItem_table).select().where({ qid });
+            const itemIds = relations.map(rel => rel.item_id);
+            items =  items.filter(item => itemIds.includes(item.id));
+        }
+
+        const options = await mysql(QuestionnaireOption_table).select().whereIn('item_id', items.map(item => item.id))
+        const optionsMap = options.reduce((ret, opt) => {
+            const arr = ret[opt.item_id] || []
+            arr.push(opt);
+            ret[opt.item_id] = arr;
+            return ret;
+        }, {})
+        items.forEach(item => {
+            const target = optionsMap[item.id];
+            target && (item.options = target)
+        });
+        return items;
+    },
+
+    addQuestionnaireItem: async function (qid, itemdata) {
+        // console.log('data :', qid, itemdata)
+        let itemId;
+        const { options, ...data } = itemdata;
+        await mysql.transaction(async (trx) => {
+            // Insert the item
+            const [id] = await trx(QuestionnaireItem_table).insert(data);
+            itemId = id;
+
+            // If qid is provided, create the relation
+            if (qid) {
+                await trx(QuestionnaireAndItem_table).insert({
+                    qid,
+                    item_id: id,
+                    dep_item_id: data.dep_item_id || null,
+                    dep_item_val: data.dep_item_val || null
+                });
+            }
+
+            // If options are provided, insert them
+            if (options && Array.isArray(options) && options.length > 0) {
+                const optionsToInsert = options.map(opt => ({
+                    item_id: id,
+                    value: opt.value,
+                    name: opt.name
+                }));
+                await trx(QuestionnaireOption_table).insert(optionsToInsert);
+            }
+        });
+
+        return itemId;
+    },
+
+    updateQuestionnaireItem: async function (data, id) {
+        const { options, ...itemData } = data;
+
+        await mysql.transaction(async (trx) => {
+            // Update the item
+            await trx(QuestionnaireItem_table).update(itemData).where({ id });
+
+            // If options are provided, update them
+            if (options && Array.isArray(options)) {
+                // Delete existing options
+                await trx(QuestionnaireOption_table).where({ item_id: id }).del();
+
+                // Insert new options
+                if (options.length > 0) {
+                    const optionsToInsert = options.map(opt => ({
+                        item_id: id,
+                        value: opt.value,
+                        name: opt.name
+                    }));
+                    await trx(QuestionnaireOption_table).insert(optionsToInsert);
+                }
+            }
+        });
+
+        return id;
+    },
+
+    deleteQuestionnaireItem: async function (qid, id) {
+        await mysql.transaction(async (trx) => {
+            // Delete relations
+            await trx(QuestionnaireAndItem_table).where({ item_id: id, qid: qid }).del();
+
+            // Delete options
+            await trx(QuestionnaireOption_table).where({ item_id: id }).del();
+
+            // Delete the item
+            await trx(QuestionnaireItem_table).where({ id }).del();
+        });
+
+        return id;
     },
     // getAllQuestionnaireList: async function (type) {
     //     const result = await mysql(Questionnaire_table).select().where({
@@ -185,7 +283,7 @@ module.exports = {
                                 })
                             }
                         }
-                        const rawQuery = 'insert into ' + QuestionnaireAns_table + ' (' + ATTR_LIST.join(',') + ') values ' + list2Values(answers) 
+                        const rawQuery = 'insert into ' + QuestionnaireAns_table + ' (' + ATTR_LIST.join(',') + ') values ' + list2Values(answers)
                         // + ' on duplicate key update ' + UPDATE_RAW + ';'
                         // await trx(QuestionnaireAns_table).where()
                         await trx.raw(
@@ -254,7 +352,7 @@ module.exports = {
                                 })
                             }
                         }
-                        const rawQuery = 'insert into ' + QuestionnaireAns_table + ' (' + ATTR_LIST.join(',') + ') values ' + list2Values(answers) 
+                        const rawQuery = 'insert into ' + QuestionnaireAns_table + ' (' + ATTR_LIST.join(',') + ') values ' + list2Values(answers)
                         // + ' on duplicate key update ' + UPDATE_RAW + ';'
                         // await trx(QuestionnaireAns_table).where()
                         await trx.raw(

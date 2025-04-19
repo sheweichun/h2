@@ -14,7 +14,7 @@ module.exports = {
         ctx.state.data = result
         ctx.state.code = 0
     },
-    
+
     createQuestionnaire: async(ctx) => {
         const {data} = ctx.request.body
         const result = await QuestionnaireService.createQuestionnaire(data)
@@ -31,6 +31,38 @@ module.exports = {
     hasValidQuestionnaire: async(ctx) => {
         const {type} = ctx.request.query
         const result = await QuestionnaireService.hasValidQuestionnaire(type)
+        ctx.state.data = result
+        ctx.state.code = 0
+    },
+
+    // Questionnaire Items Management
+    getQuestionnaireItems: async(ctx) => {
+        const {data} = ctx.request.query
+        const dataObj = JSON.parse(data)
+        // console.log('dataObj :', dataObj, dataObj.qid)
+        const result = await QuestionnaireService.getQuestionnaireItems(dataObj.qid)
+        ctx.state.data = result
+        ctx.state.code = 0
+    },
+
+    addQuestionnaireItem: async(ctx) => {
+        const {qid, data} = ctx.request.body
+        const result = await QuestionnaireService.addQuestionnaireItem(qid, data)
+        ctx.state.data = result
+        ctx.state.code = 0
+    },
+
+    updateQuestionnaireItem: async(ctx) => {
+        const {data} = ctx.request.body
+        const {id, ...others} = data
+        const result = await QuestionnaireService.updateQuestionnaireItem(others, id)
+        ctx.state.data = result
+        ctx.state.code = 0
+    },
+
+    deleteQuestionnaireItem: async(ctx) => {
+        const {id, qid} = ctx.request.body
+        const result = await QuestionnaireService.deleteQuestionnaireItem(qid, id)
         ctx.state.data = result
         ctx.state.code = 0
     },
